@@ -7,5 +7,6 @@ website: https://legendarysportsconstruction.com
 blurb: "Las Vegas court builder with 20+ years of experience, building residential and commercial courts for homeowners, schools, HOAs and communities across Southern Nevada and Arizona."
 services: [Pickleball, Basketball, Tennis, Volleyball, Hockey, Multi-sport, Maintenance]
 # Source: legendarysportsconstruction.com (home, about). Site claims 10,000+ projects; confirm before publishing.
+# Older YouTube video calls Miles "of Sport Court of Las Vegas" (possible former name). Confirm before mentioning.
 published: false
 ---
