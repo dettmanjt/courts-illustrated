@@ -64,6 +64,14 @@ window.CI = {
       blurb: "Family-owned St. Louis court builder founded by Austin and Dionna Helfers, with 700+ courts built across Missouri and Illinois.",
       services: ["Basketball", "Pickleball", "Tennis", "Putting greens", "Home gyms", "Batting cages"],
       builders: ["austin-helfers", "dionna-helfers"], projects: []
+    },
+    "legendary-sports-construction": {
+      name: "Legendary Sports Construction", region: "Las Vegas, Southern Nevada & Arizona",
+      states: ["NV","AZ"], zip3: ["889","890","891","850","851","852","853","854","855","856","857","858","859","860","861","862","863","864","865"],
+      url: "https://legendarysportsconstruction.com", urlLabel: "legendarysportsconstruction.com",
+      blurb: "Las Vegas court builder with 20+ years of experience, building residential and commercial courts for homeowners, schools, HOAs and communities across Southern Nevada and Arizona.",
+      services: ["Pickleball", "Basketball", "Tennis", "Volleyball", "Hockey", "Multi-sport", "Maintenance"],
+      builders: ["miles-reynolds"], projects: []
     }
   },
   builders: {
@@ -88,7 +96,9 @@ window.CI = {
     "jeff-chambers":     { name: "Jeff Chambers", role: "Founder & CEO", company: "sportscape-builders", courts: 0, years: 25, certs: [], articles: 0, videos: 0, photo: "jeff-chambers.png",
       bio: "I've been building courts and gyms for over 25 years. I founded SportScape Builders in Marysville, Ohio, where our team designs and installs backyard courts, home gymnasiums and sports centers." },
     "austin-helfers":    { name: "Austin Helfers", role: "Co-Founder", company: "court-builders-stl", courts: 0, years: 0, certs: [], articles: 0, videos: 0 },
-    "dionna-helfers":    { name: "Dionna Helfers", role: "Co-Founder", company: "court-builders-stl", courts: 0, years: 0, certs: [], articles: 0, videos: 0 }
+    "dionna-helfers":    { name: "Dionna Helfers", role: "Co-Founder", company: "court-builders-stl", courts: 0, years: 0, certs: [], articles: 0, videos: 0 },
+    "miles-reynolds":    { name: "Miles Reynolds", role: "Court builder", company: "legendary-sports-construction", courts: 0, years: 0, certs: [], articles: 0, videos: 0,
+      bio: "I grew up playing sports with my three brothers and friends almost every day on the court in our driveway. I love seeing a family's home become the hangout house in the neighborhood." }
   }
 };
 

@@ -71,7 +71,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Co
   <script is:inline>
     const CI = JSON.parse(document.getElementById('ci-data').textContent);
     const COLORS = ['var(--teal)','var(--pink)','var(--sun)','var(--violet)','var(--paper)'];
-    const STATES = { TX: 'Texas', OK: 'Oklahoma', OH: 'Ohio', WV: 'West Virginia', FL: 'Florida', GA: 'Georgia', MO: 'Missouri', IL: 'Illinois' };
+    const STATES = { TX: 'Texas', OK: 'Oklahoma', OH: 'Ohio', WV: 'West Virginia', FL: 'Florida', GA: 'Georgia', MO: 'Missouri', IL: 'Illinois', NV: 'Nevada', AZ: 'Arizona' };
     const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
     let mode = 'builders', query = '';
     const match = (c, q) => {
