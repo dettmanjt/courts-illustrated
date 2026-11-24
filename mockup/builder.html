@@ -33,7 +33,7 @@ body{margin:0}
   <section class="about wrap">
     <div class="sh"><h2>About</h2></div>
     <div class="split">
-      <div><p class="drop" id="b-bio"></p><p>Bio, background and the courts this builder knows best go here, written in their own voice.</p></div>
+      <div><p class="drop" id="b-bio"></p><p id="b-bio-more">Bio, background and the courts this builder knows best go here, written in their own voice.</p></div>
       <div>
         <div class="ph"><b id="b-init"></b></div>
         <ul class="facts">
@@ -83,18 +83,18 @@ function render(){
   document.title=b.name+' · Courts Illustrated';
   $('b-eyebrow').textContent='Builder Profile · '+c.region;
   $('b-name').textContent=b.name;
-  $('b-role').textContent='Court builder at '+c.name+'.';
-  $('b-bio').textContent=b.name.split(' ')[0]+' builds courts with '+c.name+' in '+c.region+'.';
+  $('b-role').textContent=(b.role||'Court builder')+' at '+c.name+'.';
+  $('b-bio').textContent=b.bio||(b.name.split(' ')[0]+' works with '+c.name+' in '+c.region+'.'); $('b-bio-more').hidden=!!b.bio;
   const sc=CI.score(b);
   $('b-stats').innerHTML=`<div><b>${sc.total}</b>CI score</div><div><b>${b.courts}</b>Courts built</div><div><b>${b.years}</b>Years building</div><div><b>${b.certs.length}</b>Certifications</div><div><b>${b.articles+b.videos}</b>Articles &amp; videos</div>`;
-  $('b-init').textContent=CI.initials(b.name);
+  $('b-init').textContent=b.photo?'':CI.initials(b.name); $('b-init').parentElement.style.background=b.photo?'url('+b.photo+') center/cover':'';
   $('b-co-link').textContent=c.name; $('b-co-link').href=href; $('b-co-nav').href=href;
   $('b-region').textContent=c.region;
   $('b-co-name').textContent=c.name; $('b-co-blurb').textContent=c.blurb;
   $('b-co-btns').innerHTML=`<a class="btn" href="${href}">View company profile</a>`+(c.url?`<a class="btn ghost" href="${c.url}" target="_blank" rel="noopener">Visit ${c.urlLabel} ↗</a>`:'');
   if(ld) ld.remove();
   ld=document.createElement('script'); ld.type='application/ld+json';
-  ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":b.name,"jobTitle":"Court Builder",
+  ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":b.name,"jobTitle":b.role||"Court Builder",
     "worksFor":{"@type":"Organization","name":c.name,"url":c.url||undefined,"areaServed":c.region}}});
   document.head.appendChild(ld);
   window.scrollTo(0,0);

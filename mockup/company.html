@@ -99,14 +99,14 @@ function render(){
     ? `<a class="btn" href="${esc(c.url)}" target="_blank" rel="noopener">Visit ${esc(c.urlLabel)} ↗</a>`
     : `<span class="btn ghost" style="cursor:default">${esc(c.urlLabel)}</span>`;
   document.getElementById('c-team').innerHTML=c.builders.map((b,i)=>{const p=CI.builders[b];
-    return `<a class="member" href="${CI.builderHref(b)}"><div class="av" style="background:${COLORS[i%COLORS.length]}">${p.photo?`<img src="${p.photo}" alt="">`:esc(CI.initials(p.name))}</div><span class="nm">${esc(p.name)}</span><span class="rl">Court builder</span>${p.verified?`<span class="badge">✓ Verified builder</span>`:`<span class="badge" style="color:var(--mute)">Verification pending</span>`}</a>`}).join('');
+    return `<a class="member" href="${CI.builderHref(b)}"><div class="av" style="background:${COLORS[i%COLORS.length]}">${p.photo?`<img src="${p.photo}" alt="">`:esc(CI.initials(p.name))}</div><span class="nm">${esc(p.name)}</span><span class="rl">${esc(p.role||"Court builder")}</span>${p.verified?`<span class="badge">✓ Verified builder</span>`:`<span class="badge" style="color:var(--mute)">Verification pending</span>`}</a>`}).join('');
   const g=document.getElementById('c-projects');
-  g.innerHTML=c.projects.map((p,i)=>`<figure class="shot${i===0?' wide':''}" data-court="${p.court}" data-c="${p.c}"><figcaption><b>${esc(p.t)}</b>${esc(p.d)}</figcaption></figure>`).join('');
-  g.querySelectorAll('.shot').forEach(court);
+  g.innerHTML=c.projects.length?c.projects.map((p,i)=>p.img?`<figure class="shot"><img src="${p.img}" alt="${esc(p.t)} by ${esc(c.name)}" loading="lazy" style="width:100%;height:100%;object-fit:cover"><figcaption><b>${esc(p.t)}</b>${esc(p.d)} · ${esc(c.region)}</figcaption></figure>`:`<figure class="shot${i===0?' wide':''}" data-court="${p.court}" data-c="${p.c}"><figcaption><b>${esc(p.t)}</b>${esc(p.d)}</figcaption></figure>`).join(''):'<p class="note">Project photos coming soon.</p>';
+  g.querySelectorAll('.shot[data-court]').forEach(court);
   if(ld) ld.remove();
   ld=document.createElement('script'); ld.type='application/ld+json';
   ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Organization","name":c.name,"url":c.url||undefined,"areaServed":c.region,
-    "employee":c.builders.map(b=>({"@type":"Person","name":CI.builders[b].name,"jobTitle":"Court Builder"}))});
+    "employee":c.builders.map(b=>({"@type":"Person","name":CI.builders[b].name,"jobTitle":CI.builders[b].role||"Court Builder"}))});
   document.head.appendChild(ld);
   window.scrollTo(0,0);
 }

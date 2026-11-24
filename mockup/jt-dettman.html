@@ -72,6 +72,11 @@ section{padding-block:44px;border-top:2px solid var(--line)}
 .facts li span{font-family:var(--ui);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);padding-top:3px}
 
 /* videos */
+.ygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
+.yv{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border:2px solid var(--line)}
+.yv img{width:100%;height:100%;object-fit:cover}
+.yv span{position:absolute;inset:0;display:grid;place-items:center;font-size:34px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+@media (max-width:820px){.ygrid{grid-template-columns:1fr 1fr}}
 .yt-feature{display:grid;grid-template-columns:1.6fr 1fr;gap:22px}
 .yt-feature>*{min-width:0}
 .vid{position:relative;display:block;aspect-ratio:16/9;max-width:100%;text-decoration:none;overflow:hidden;background:var(--navy)}
@@ -203,7 +208,7 @@ body{margin:0}
   <div class="mast wrap">
     <div class="eyebrow">Builder Profile · Austin, TX</div>
     <h1>JT Dettman</h1>
-    <p class="role">Court builder at Austin Courts &amp; Floors. I write and film plain-spoken guides on what it really takes to build a backyard court.</p>
+    <p class="role">Director of Sales and Marketing at Austin Courts &amp; Floors. I write and film plain-spoken guides on what it really takes to build a backyard court.</p>
     <div class="tiles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
     <div class="stats" aria-label="Profile at a glance">
       <div><b>120</b>Courts built</div>
@@ -256,20 +261,18 @@ body{margin:0}
 
   <section id="videos" class="wrap">
     <div class="sh"><h2>Videos</h2><a class="more" href="https://www.youtube.com/@JTtheCourtBuilder" target="_blank" rel="noopener">Open channel ↗</a></div>
-    <div class="yt-feature">
-      <a class="feat" href="https://www.youtube.com/@JTtheCourtBuilder" target="_blank" rel="noopener" style="text-decoration:none">
-        <div class="vid"><div class="art p1 court"></div><div class="play"></div><div class="dur">12:48</div></div>
-        <div class="vtitle">How much does a backyard pickleball court cost in Texas?</div>
-        <div class="vmeta">Latest upload · sample title</div>
-      </a>
-      <div class="vlist">
-        <a class="row" href="https://www.youtube.com/@JTtheCourtBuilder" target="_blank" rel="noopener"><div class="vid"><div class="art p2"></div><div class="play"></div><div class="dur">8:02</div></div><div><div class="vtitle">Post-tension vs. regular concrete for courts</div><div class="vmeta">Sample title</div></div></a>
-        <a class="row" href="https://www.youtube.com/@JTtheCourtBuilder" target="_blank" rel="noopener"><div class="vid"><div class="art p5 court"></div><div class="play"></div><div class="dur">5:31</div></div><div><div class="vtitle">Job-site walkthrough: a 30×60 court build</div><div class="vmeta">Sample title</div></div></a>
-        <a class="row" href="https://www.youtube.com/@JTtheCourtBuilder" target="_blank" rel="noopener"><div class="vid"><div class="art p6"></div><div class="play"></div><div class="dur">9:15</div></div><div><div class="vtitle">5 reasons courts crack, and how to prevent it</div><div class="vmeta">Sample title</div></div></a>
-      </div>
+    <div class="ygrid">
+      <a class="yv" href="https://www.youtube.com/watch?v=0uqiIQ8sDLc" target="_blank" rel="noopener" aria-label="Watch JT's video on YouTube"><img src="https://i.ytimg.com/vi/0uqiIQ8sDLc/hqdefault.jpg" alt="" loading="lazy"><span aria-hidden="true">▶</span></a>
+      <a class="yv" href="https://www.youtube.com/watch?v=rs5VYR8zJpI" target="_blank" rel="noopener" aria-label="Watch JT's video on YouTube"><img src="https://i.ytimg.com/vi/rs5VYR8zJpI/hqdefault.jpg" alt="" loading="lazy"><span aria-hidden="true">▶</span></a>
+      <a class="yv" href="https://www.youtube.com/watch?v=bwbqzRIERAk" target="_blank" rel="noopener" aria-label="Watch JT's video on YouTube"><img src="https://i.ytimg.com/vi/bwbqzRIERAk/hqdefault.jpg" alt="" loading="lazy"><span aria-hidden="true">▶</span></a>
+      <a class="yv" href="https://www.youtube.com/watch?v=lALwJwGZqbM" target="_blank" rel="noopener" aria-label="Watch JT's video on YouTube"><img src="https://i.ytimg.com/vi/lALwJwGZqbM/hqdefault.jpg" alt="" loading="lazy"><span aria-hidden="true">▶</span></a>
+      <a class="yv" href="https://www.youtube.com/watch?v=LY_fIn5YV5A" target="_blank" rel="noopener" aria-label="Watch JT's video on YouTube"><img src="https://i.ytimg.com/vi/LY_fIn5YV5A/hqdefault.jpg" alt="" loading="lazy"><span aria-hidden="true">▶</span></a>
+      <a class="yv" href="https://www.youtube.com/watch?v=ZpaSd2YWr4Q" target="_blank" rel="noopener" aria-label="Watch JT's video on YouTube"><img src="https://i.ytimg.com/vi/ZpaSd2YWr4Q/hqdefault.jpg" alt="" loading="lazy"><span aria-hidden="true">▶</span></a>
+      <a class="yv" href="https://www.youtube.com/watch?v=Cz0-d7zwxM0" target="_blank" rel="noopener" aria-label="Watch JT's video on YouTube"><img src="https://i.ytimg.com/vi/Cz0-d7zwxM0/hqdefault.jpg" alt="" loading="lazy"><span aria-hidden="true">▶</span></a>
+      <a class="yv" href="https://www.youtube.com/watch?v=6CaHIuj7-UA" target="_blank" rel="noopener" aria-label="Watch JT's video on YouTube"><img src="https://i.ytimg.com/vi/6CaHIuj7-UA/hqdefault.jpg" alt="" loading="lazy"><span aria-hidden="true">▶</span></a>
     </div>
     <div class="channel">
-      <div><strong>JT on YouTube</strong><div class="vmeta">The live site will embed your channel feed here.</div></div>
+      <div><strong>JT on YouTube</strong><div class="vmeta">Short, plain-spoken answers to the questions customers ask on the job site.</div></div>
       <a class="btn" href="https://www.youtube.com/@JTtheCourtBuilder" target="_blank" rel="noopener">Subscribe</a>
     </div>
   </section>
@@ -315,14 +318,16 @@ body{margin:0}
       <button type="button" aria-pressed="false" data-f="multi">Multi-sport</button>
     </div>
     <div class="gallery">
-      <figure class="shot wide" data-k="pickleball" data-court="pickleball" data-c="#2f6fb3,#1d4f86"><figcaption><b>Backyard pickleball, West Austin</b>30×60 · post-tension slab · acrylic</figcaption></figure>
-      <figure class="shot" data-k="basketball" data-court="half" data-c="#5a5f66,#b5462f"><figcaption><b>Driveway half court</b>Basketball · 30×30</figcaption></figure>
-      <figure class="shot" data-k="multi" data-court="multi" data-c="#3d7d4f,#2a5c39"><figcaption><b>Camp multi-sport court</b>Modular tile · basketball + pickleball</figcaption></figure>
-      <figure class="shot" data-k="tennis" data-court="tennis" data-c="#3a7a58,#2f5e8c"><figcaption><b>HOA tennis rebuild</b>Post-tension cap · light bars</figcaption></figure>
-      <figure class="shot" data-k="pickleball" data-court="pickleball" data-c="#6a4fa3,#3d2e66"><figcaption><b>Hill Country pickleball</b>Two-tone acrylic</figcaption></figure>
-      <figure class="shot wide" data-k="multi" data-court="double" data-c="#c27a2c,#2f6fb3"><figcaption><b>School courts</b>Multi-sport · 2 courts</figcaption></figure>
+      <figure class="shot" data-k="pickleball"><img src="projects/austin-courts-floors/2940293283.jpg" alt="Shaded pickleball courts by Austin Courts &amp; Floors" loading="lazy" style="width:100%;height:100%;object-fit:cover"><figcaption><b>Shaded pickleball courts</b>Austin &amp; Central Texas</figcaption></figure>
+      <figure class="shot" data-k="multi"><img src="projects/austin-courts-floors/3050430999.jpg" alt="Backyard multi-sport court by Austin Courts &amp; Floors" loading="lazy" style="width:100%;height:100%;object-fit:cover"><figcaption><b>Backyard multi-sport court</b>Austin &amp; Central Texas</figcaption></figure>
+      <figure class="shot" data-k="basketball"><img src="projects/austin-courts-floors/3291285488.jpg" alt="Backyard basketball court by Austin Courts &amp; Floors" loading="lazy" style="width:100%;height:100%;object-fit:cover"><figcaption><b>Backyard basketball court</b>Austin &amp; Central Texas</figcaption></figure>
+      <figure class="shot" data-k="tennis"><img src="projects/austin-courts-floors/2970199726.jpg" alt="Tennis and pickleball court by Austin Courts &amp; Floors" loading="lazy" style="width:100%;height:100%;object-fit:cover"><figcaption><b>Tennis and pickleball court</b>Austin &amp; Central Texas</figcaption></figure>
+      <figure class="shot" data-k="pickleball"><img src="projects/austin-courts-floors/3307361637.jpg" alt="Pickleball and basketball combo by Austin Courts &amp; Floors" loading="lazy" style="width:100%;height:100%;object-fit:cover"><figcaption><b>Pickleball and basketball combo</b>Austin &amp; Central Texas</figcaption></figure>
+      <figure class="shot" data-k="multi"><img src="projects/austin-courts-floors/3326423340.jpg" alt="Hill Country multi-sport court by Austin Courts &amp; Floors" loading="lazy" style="width:100%;height:100%;object-fit:cover"><figcaption><b>Hill Country multi-sport court</b>Austin &amp; Central Texas</figcaption></figure>
+      <figure class="shot" data-k="basketball"><img src="projects/austin-courts-floors/3671654350.jpg" alt="Blue full basketball court by Austin Courts &amp; Floors" loading="lazy" style="width:100%;height:100%;object-fit:cover"><figcaption><b>Blue full basketball court</b>Austin &amp; Central Texas</figcaption></figure>
+      <figure class="shot" data-k="tennis"><img src="projects/austin-courts-floors/3573396365.jpg" alt="Green tennis and pickleball court by Austin Courts &amp; Floors" loading="lazy" style="width:100%;height:100%;object-fit:cover"><figcaption><b>Green tennis and pickleball court</b>Austin &amp; Central Texas</figcaption></figure>
     </div>
-    <p class="note">Illustrated examples. Your real project photos replace these.</p>
+    <p class="note">Real Austin Courts &amp; Floors projects, from our CompanyCam job photos.</p>
   </section>
 
   <section id="contact" class="contact wrap">
@@ -367,7 +372,7 @@ body{margin:0}
   "mainEntity": {
     "@type": "Person",
     "name": "JT Dettman",
-    "jobTitle": "Court Builder",
+    "jobTitle": "Director of Sales and Marketing",
     "image": "jt-headshot.png",
     "knowsAbout": ["Pickleball court construction", "Tennis court resurfacing", "Post-tension concrete court slabs", "Acrylic court surfacing", "Sport flooring"],
     "worksFor": {
