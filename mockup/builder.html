@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CI Builder Profile</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Archivo:wght@500;700&display=swap">
+<link rel="stylesheet" href="ci.css">
+<style>
+body{margin:0}
+.ph{aspect-ratio:4/5;max-width:100%;display:grid;place-items:center;background:conic-gradient(from 90deg at 50% 50%,var(--teal) 0 25%,var(--pink) 0 50%,var(--sun) 0 75%,var(--violet) 0);margin-bottom:18px}
+.ph b{width:62%;aspect-ratio:1;border-radius:50%;background:var(--ink);display:grid;place-items:center;font-family:var(--display);font-weight:400;font-size:clamp(48px,8vw,90px)}
+.empty{border:2px dashed #555;padding:28px;color:var(--mute);font-size:14px}
+.dir{display:flex;gap:10px;flex-wrap:wrap;font-family:var(--ui);font-size:13px}
+.dir a{text-decoration:none;color:var(--mute)}
+</style>
+</head>
+<body>
+<div class="frame">
+  <header class="top wrap">
+    <a href="index.html"><img src="ci-logo.png" alt="Courts Illustrated"></a>
+    <nav class="dir" aria-label="Builder"><a id="b-co-nav" href="company.html">Company</a></nav>
+  </header>
+
+  <div class="mast wrap">
+    <div class="eyebrow" id="b-eyebrow"></div>
+    <h1 id="b-name"></h1>
+    <p class="role" id="b-role"></p>
+    <div class="tiles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="stats" id="b-stats"></div>
+  </div>
+
+  <section class="about wrap">
+    <div class="sh"><h2>About</h2></div>
+    <div class="split">
+      <div><p class="drop" id="b-bio"></p><p>Bio, background and the courts this builder knows best go here, written in their own voice.</p></div>
+      <div>
+        <div class="ph"><b id="b-init"></b></div>
+        <ul class="facts">
+          <li><span>Company</span><a id="b-co-link" href="company.html"></a></li>
+          <li><span>Service area</span><span id="b-region" style="font-family:var(--body);font-size:15px;letter-spacing:0;text-transform:none;color:var(--paper);padding:0"></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="sh"><h2>Works at</h2></div>
+    <div class="co">
+      <div class="co-main">
+        <div class="eyebrow">Verified company · Courts Illustrated</div>
+        <h3 id="b-co-name"></h3>
+        <p id="b-co-blurb"></p>
+        <div class="co-links" id="b-co-btns"></div>
+      </div>
+      <ul class="verify" aria-label="What Courts Illustrated verified">
+        <li><span class="ck pending" aria-hidden="true"></span><div><b>Real person</b>Identity check pending</div></li>
+        <li><span class="ck pending" aria-hidden="true"></span><div><b>Employment</b>Confirmation pending</div></li>
+        <li><span class="ck pending" aria-hidden="true"></span><div><b>Completed projects</b>Photos not yet submitted</div></li>
+        <li><span class="ck pending" aria-hidden="true"></span><div><b>License &amp; insurance</b>Verification pending</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap"><div class="sh"><h2>Videos</h2></div><div class="empty">This builder's YouTube channel appears here once it's connected.</div></section>
+  <section class="wrap"><div class="sh"><h2>Articles</h2></div><div class="empty">Articles this builder writes for Courts Illustrated will be listed here.</div></section>
+  <section class="wrap"><div class="sh"><h2>Projects</h2></div><div class="empty">Completed project photos go here after review.</div></section>
+
+  <footer class="wrap">
+    <img src="ci-logo.png" alt="Courts Illustrated">
+    <span>Courts Illustrated · Builder profile mockup</span>
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+let ld;
+function render(){
+  const ids=Object.keys(CI.builders).filter(k=>!CI.builders[k].page);
+  const id=CI.builders[location.hash.slice(1)]&&!CI.builders[location.hash.slice(1)].page?location.hash.slice(1):ids[0];
+  const b=CI.builders[id], c=CI.companies[b.company], href='company.html#'+b.company;
+  const $=x=>document.getElementById(x);
+  document.title=b.name+' · Courts Illustrated';
+  $('b-eyebrow').textContent='Builder Profile · '+c.region;
+  $('b-name').textContent=b.name;
+  $('b-role').textContent='Court builder at '+c.name+'.';
+  $('b-bio').textContent=b.name.split(' ')[0]+' builds courts with '+c.name+' in '+c.region+'.';
+  const sc=CI.score(b);
+  $('b-stats').innerHTML=`<div><b>${sc.total}</b>CI score</div><div><b>${b.courts}</b>Courts built</div><div><b>${b.years}</b>Years building</div><div><b>${b.certs.length}</b>Certifications</div><div><b>${b.articles+b.videos}</b>Articles &amp; videos</div>`;
+  $('b-init').textContent=CI.initials(b.name);
+  $('b-co-link').textContent=c.name; $('b-co-link').href=href; $('b-co-nav').href=href;
+  $('b-region').textContent=c.region;
+  $('b-co-name').textContent=c.name; $('b-co-blurb').textContent=c.blurb;
+  $('b-co-btns').innerHTML=`<a class="btn" href="${href}">View company profile</a>`+(c.url?`<a class="btn ghost" href="${c.url}" target="_blank" rel="noopener">Visit ${c.urlLabel} ↗</a>`:'');
+  if(ld) ld.remove();
+  ld=document.createElement('script'); ld.type='application/ld+json';
+  ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":b.name,"jobTitle":"Court Builder",
+    "worksFor":{"@type":"Organization","name":c.name,"url":c.url||undefined,"areaServed":c.region}}});
+  document.head.appendChild(ld);
+  window.scrollTo(0,0);
+}
+addEventListener('hashchange',render); render();
+</script>
+</body>
+</html>

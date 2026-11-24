@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+# loose mockup copies (originals live in mockup/)
+/builder-profile.html
+/builder.html
+/company.html
+/jt-dettman.html
+/data.js
+/ci.css
+/court.js
+/ci-logo.png
+/jt-headshot.png

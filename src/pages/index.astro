@@ -1,0 +1,121 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { score, initials } from '../lib/score';
+
+const companies = await getCollection('companies', (c) => c.data.published);
+const live = new Set(companies.map((c) => c.id));
+const builders = await getCollection('builders', (b) => b.data.published && live.has(b.data.company.id));
+
+// Small JSON payload for the in-page search.
+const data = {
+  companies: Object.fromEntries(companies.map((c) => [c.id, {
+    name: c.data.name, region: c.data.region, states: c.data.states, zip3: c.data.zip3, services: c.data.services,
+  }])),
+  builders: builders.map((b) => ({
+    slug: b.slug, name: b.data.name, company: b.data.company.id, photo: b.data.photo, initials: initials(b.data.name),
+    courts: b.data.courts, years: b.data.years, certs: b.data.certs, articles: b.data.articles, videos: b.data.videos,
+    verified: b.data.verified.identity && b.data.verified.employment, score: score(b.data),
+  })),
+};
+const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Courts Illustrated', url: Astro.site?.href };
+---
+<Base title="Courts Illustrated | Find a verified court builder" description="Search verified court builders by ZIP code or state. Real people at real companies, ranked by courts built, experience, certifications and the guides they publish." jsonld={jsonld}>
+  <link rel="stylesheet" href="/home.css">
+  <div class="mast wrap" id="find">
+    <div class="eyebrow">Verified court builders · Real people</div>
+    <h1>Find a court builder</h1>
+    <p class="role">Search by ZIP code or state. Every builder listed works for a verified company, and rankings come from their real work.</p>
+    <form class="search" id="q-form" role="search">
+      <label for="q" style="position:absolute;left:-9999px">ZIP code or state</label>
+      <input id="q" placeholder="ZIP code or state, e.g. 78704 or TX" autocomplete="postal-code">
+      <button class="btn" type="submit">Search</button>
+    </form>
+    <div class="modes" role="group" aria-label="Show">
+      <button type="button" data-m="builders" aria-pressed="true">Builders</button>
+      <button type="button" data-m="companies" aria-pressed="false">Companies</button>
+    </div>
+  </div>
+
+  <section class="wrap">
+    <div class="sh"><h2 id="r-title">Top builders</h2></div>
+    <div class="status" id="r-status"></div>
+    <div class="legend" id="legend">
+      <span style="--c:var(--teal)">Courts built</span><span style="--c:var(--sun)">Years building</span><span style="--c:var(--pink)">Certifications</span><span style="--c:var(--violet)">Content</span>
+    </div>
+    <div class="list" id="results">
+      {/* Server-rendered list so search engines see every builder without JavaScript. */}
+      {data.builders.sort((a, b) => b.score.total - a.score.total).map((b, i) => (
+        <a class="row" href={`/builders/${b.slug}`}>
+          <div class="rank">{i + 1}</div>
+          <div class="av">{b.photo ? <img src={b.photo} alt="" /> : b.initials}</div>
+          <div class="who"><b>{b.name}</b><span>{data.companies[b.company].name} · {data.companies[b.company].region}</span></div>
+          <div class="score"><div class="num">CI score <b>{b.score.total}</b></div></div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap" id="how">
+    <div class="sh"><h2>How rankings work</h2></div>
+    <p style="max-width:68ch;margin:0 0 22px">Each builder gets a Courts Illustrated score out of 100. It rewards experience you can check, plus the time builders spend teaching buyers. Company scores are the average of their builders.</p>
+    <div class="how">
+      <div><b>40</b><h3>Courts built</h3><p>Full points at 400 or more completed courts, backed by reviewed project photos.</p></div>
+      <div><b>25</b><h3>Years building</h3><p>Full points at 25 or more years building courts.</p></div>
+      <div><b>20</b><h3>Certifications</h3><p>10 points each, up to two. For example, ASBA Certified Tennis Court Builder or ASBA membership.</p></div>
+      <div><b>15</b><h3>Content</h3><p>Articles and videos published on Courts Illustrated. Four videos count as one article. Full points at 15.</p></div>
+    </div>
+  </section>
+
+  <script type="application/json" id="ci-data" set:html={JSON.stringify(data)} />
+  <script is:inline>
+    const CI = JSON.parse(document.getElementById('ci-data').textContent);
+    const COLORS = ['var(--teal)','var(--pink)','var(--sun)','var(--violet)','var(--paper)'];
+    const STATES = { TX: 'Texas', OK: 'Oklahoma', OH: 'Ohio', WV: 'West Virginia', FL: 'Florida', GA: 'Georgia', MO: 'Missouri', IL: 'Illinois' };
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    let mode = 'builders', query = '';
+    const match = (c, q) => {
+      if (!q) return true;
+      if (/^\d{3,5}$/.test(q)) return c.zip3.includes(q.slice(0, 3));
+      const up = q.toUpperCase();
+      const code = STATES[up] ? up : Object.keys(STATES).find(k => STATES[k].toUpperCase() === up);
+      return code ? c.states.includes(code) : false;
+    };
+    const bar = p => `<div class="bar" aria-hidden="true">${['courts','years','certs','content'].map(k => `<span class="k-${k}" style="width:${p[k]}%"></span>`).join('')}</div>`;
+    function render() {
+      const q = query.trim();
+      const cos = Object.keys(CI.companies).filter(id => match(CI.companies[id], q));
+      const label = !q ? '' : (/^\d/.test(q) ? 'near ' + q : 'in ' + (STATES[q.toUpperCase()] || q));
+      document.getElementById('r-title').textContent = (mode === 'builders' ? 'Top builders ' : 'Top companies ') + label;
+      const el = document.getElementById('results');
+      if (!cos.length) {
+        document.getElementById('r-status').textContent = '0 results';
+        el.innerHTML = `<div class="empty">No verified builders serve ${esc(label || 'that area')} yet.</div>`;
+        return;
+      }
+      if (mode === 'builders') {
+        const list = CI.builders.filter(b => cos.includes(b.company)).sort((a, b) => b.score.total - a.score.total);
+        document.getElementById('r-status').textContent = list.length + ' builders · ranked by score';
+        el.innerHTML = list.map((b, i) => { const c = CI.companies[b.company];
+          return `<a class="row" href="/builders/${b.slug}"><div class="rank">${i + 1}</div>
+            <div class="av" style="background:${COLORS[i % COLORS.length]}">${b.photo ? `<img src="${b.photo}" alt="">` : esc(b.initials)}</div>
+            <div class="who"><b>${esc(b.name)}</b><span>${esc(c.name)} · ${esc(c.region)}</span>
+            <div class="tags"><i>${b.courts} courts</i><i>${b.years} yrs</i>${b.certs.map(t => `<i class="cert">${esc(t)}</i>`).join('')}<i>${b.articles} articles · ${b.videos} videos</i>${b.verified ? '' : '<i class="pend">Verification pending</i>'}</div></div>
+            <div class="score"><div class="num">CI score <b>${b.score.total}</b></div>${bar(b.score.parts)}</div></a>`; }).join('');
+      } else {
+        const list = cos.map(id => { const bs = CI.builders.filter(b => b.company === id);
+          return { id, c: CI.companies[id], n: bs.length, s: bs.length ? Math.round(bs.reduce((a, b) => a + b.score.total, 0) / bs.length) : 0 }; })
+          .sort((a, b) => b.s - a.s);
+        document.getElementById('r-status').textContent = list.length + ' companies · ranked by average builder score';
+        el.innerHTML = list.map((x, i) => `<a class="row" href="/companies/${x.id}"><div class="rank">${i + 1}</div>
+          <div class="av" style="background:${COLORS[(i + 2) % COLORS.length]}">${esc(x.c.name.split(' ').map(w => w[0]).join('').slice(0, 3))}</div>
+          <div class="who"><b>${esc(x.c.name)}</b><span>${esc(x.c.region)}</span><div class="tags"><i>${x.n} builders</i>${x.c.services.slice(0, 3).map(t => `<i>${esc(t)}</i>`).join('')}</div></div>
+          <div class="score"><div class="num">CI score <b>${x.s}</b></div><div class="bar" aria-hidden="true"><span class="k-courts" style="width:${x.s}%"></span></div></div></a>`).join('');
+      }
+      document.getElementById('legend').hidden = mode !== 'builders';
+    }
+    document.getElementById('q-form').addEventListener('submit', e => { e.preventDefault(); query = document.getElementById('q').value; render(); });
+    document.querySelectorAll('[data-m]').forEach(b => b.addEventListener('click', () => { mode = b.dataset.m; document.querySelectorAll('[data-m]').forEach(x => x.setAttribute('aria-pressed', x === b)); render(); }));
+    render();
+  </script>
+</Base>

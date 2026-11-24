@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CI Company Profile</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Archivo:wght@500;700&display=swap">
+<link rel="stylesheet" href="ci.css">
+<style>
+body{margin:0}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--line);border-left:2px solid var(--line)}
+.member{display:flex;flex-direction:column;align-items:center;gap:10px;padding:26px 18px;border-right:2px solid var(--line);border-bottom:2px solid var(--line);text-decoration:none;text-align:center;min-width:0}
+.member:hover .nm{text-decoration:underline;text-decoration-color:var(--sun);text-underline-offset:4px}
+.av{width:120px;height:120px;border-radius:50%;overflow:hidden;display:grid;place-items:center;font-family:var(--display);font-size:44px;color:var(--ink)}
+.av img{width:100%;height:100%;object-fit:cover}
+.nm{font-family:var(--ui);font-weight:700;font-size:19px}
+.rl{font-size:13px;color:var(--mute)}
+.badge{font-family:var(--ui);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips span{font-family:var(--ui);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:2px solid var(--line);padding:6px 10px}
+.dir{display:flex;gap:10px;flex-wrap:wrap;font-family:var(--ui);font-size:13px}
+.dir a{text-decoration:none;color:var(--mute);border-bottom:2px solid transparent;padding-bottom:2px}
+.dir a[aria-current="page"]{color:var(--paper);border-color:var(--sun)}
+@media (max-width:820px){.team{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.team{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="frame">
+  <header class="top wrap">
+    <a href="index.html"><img src="ci-logo.png" alt="Courts Illustrated"></a>
+    <nav class="dir" aria-label="Companies" id="dir"></nav>
+  </header>
+
+  <div class="mast wrap">
+    <div class="eyebrow" id="c-eyebrow"></div>
+    <h1 id="c-name"></h1>
+    <p class="role" id="c-blurb"></p>
+    <div class="tiles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="stats" id="c-stats"></div>
+  </div>
+
+  <section class="wrap">
+    <div class="sh"><h2>Company</h2></div>
+    <div class="co">
+      <div class="co-main">
+        <div class="eyebrow">Verified company · Courts Illustrated</div>
+        <h3 id="c-name2"></h3>
+        <p id="c-region"></p>
+        <div class="chips" id="c-services"></div>
+        <div class="co-links" style="margin-top:22px" id="c-links"></div>
+      </div>
+      <ul class="verify" aria-label="What Courts Illustrated verified">
+        <li><span class="ck" aria-hidden="true"></span><div><b>Business</b>Registered business, confirmed</div></li>
+        <li><span class="ck" aria-hidden="true"></span><div><b>Builders</b>Every builder listed works here</div></li>
+        <li><span class="ck" aria-hidden="true"></span><div><b>Completed projects</b>Photos reviewed by Courts Illustrated</div></li>
+        <li><span class="ck pending" aria-hidden="true"></span><div><b>License &amp; insurance</b>Verification date goes here</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="sh"><h2>Builders</h2></div>
+    <div class="team" id="c-team"></div>
+  </section>
+
+  <section class="wrap">
+    <div class="sh"><h2>Projects</h2></div>
+    <div class="gallery" id="c-projects"></div>
+    <p class="note">Illustrated examples. Real project photos replace these.</p>
+  </section>
+
+  <footer class="wrap">
+    <img src="ci-logo.png" alt="Courts Illustrated">
+    <span>Courts Illustrated · Company profile mockup</span>
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script src="court.js"></script>
+<script>
+const COLORS=['var(--teal)','var(--pink)','var(--sun)','var(--violet)','var(--paper)'];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let ld;
+function render(){
+  const ids=Object.keys(CI.companies);
+  const id=CI.companies[location.hash.slice(1)]?location.hash.slice(1):ids[0];
+  const c=CI.companies[id];
+  document.title=c.name+' · Courts Illustrated';
+  document.getElementById('dir').innerHTML=ids.map(k=>`<a href="#${k}" ${k===id?'aria-current="page"':''}>${esc(CI.companies[k].name)}</a>`).join('');
+  document.getElementById('c-eyebrow').textContent='Company Profile · '+c.region;
+  document.getElementById('c-name').textContent=c.name;
+  document.getElementById('c-name2').textContent=c.name;
+  document.getElementById('c-blurb').textContent=c.blurb;
+  document.getElementById('c-region').textContent='Service area: '+c.region;
+  document.getElementById('c-stats').innerHTML=`<div><b>${c.builders.length}</b>Builders listed</div><div><b>00+</b>Courts built</div><div><b>00</b>Years in business</div>`;
+  document.getElementById('c-services').innerHTML=c.services.map(s=>`<span>${esc(s)}</span>`).join('');
+  document.getElementById('c-links').innerHTML=c.url
+    ? `<a class="btn" href="${esc(c.url)}" target="_blank" rel="noopener">Visit ${esc(c.urlLabel)} ↗</a>`
+    : `<span class="btn ghost" style="cursor:default">${esc(c.urlLabel)}</span>`;
+  document.getElementById('c-team').innerHTML=c.builders.map((b,i)=>{const p=CI.builders[b];
+    return `<a class="member" href="${CI.builderHref(b)}"><div class="av" style="background:${COLORS[i%COLORS.length]}">${p.photo?`<img src="${p.photo}" alt="">`:esc(CI.initials(p.name))}</div><span class="nm">${esc(p.name)}</span><span class="rl">Court builder</span>${p.verified?`<span class="badge">✓ Verified builder</span>`:`<span class="badge" style="color:var(--mute)">Verification pending</span>`}</a>`}).join('');
+  const g=document.getElementById('c-projects');
+  g.innerHTML=c.projects.map((p,i)=>`<figure class="shot${i===0?' wide':''}" data-court="${p.court}" data-c="${p.c}"><figcaption><b>${esc(p.t)}</b>${esc(p.d)}</figcaption></figure>`).join('');
+  g.querySelectorAll('.shot').forEach(court);
+  if(ld) ld.remove();
+  ld=document.createElement('script'); ld.type='application/ld+json';
+  ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Organization","name":c.name,"url":c.url||undefined,"areaServed":c.region,
+    "employee":c.builders.map(b=>({"@type":"Person","name":CI.builders[b].name,"jobTitle":"Court Builder"}))});
+  document.head.appendChild(ld);
+  window.scrollTo(0,0);
+}
+addEventListener('hashchange',render); render();
+</script>
+</body>
+</html>

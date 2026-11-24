@@ -1,0 +1,37 @@
+---
+interface Props { title: string; description: string; jsonld?: object }
+const { title, description, jsonld } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonical}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <link rel="icon" href="/ci-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Archivo:wght@500;700&display=swap">
+  <link rel="stylesheet" href="/ci.css">
+  <style is:global>body{margin:0}</style>
+  {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
+</head>
+<body>
+  <div class="frame">
+    <header class="top wrap">
+      <a href="/"><img src="/ci-logo.png" alt="Courts Illustrated" height="52"></a>
+      <nav class="dir" aria-label="Site"><a href="/">Find a builder</a><a href="/#how">How rankings work</a></nav>
+    </header>
+    <slot />
+    <footer class="wrap">
+      <img src="/ci-logo.png" alt="" height="64">
+      <span>Courts Illustrated · Verified court builders</span>
+    </footer>
+  </div>
+</body>
+</html>

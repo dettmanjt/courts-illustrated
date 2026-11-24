@@ -1,0 +1,104 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { score, initials } from '../../lib/score';
+
+export async function getStaticPaths() {
+  const builders = await getCollection('builders', (b) => b.data.published);
+  return builders.map((b) => ({ params: { slug: b.slug }, props: { b } }));
+}
+const { b } = Astro.props;
+const d = b.data;
+const company = await getEntry(d.company);
+const c = company.data;
+const { Content } = await b.render();
+const sc = score(d);
+const first = d.name.split(' ')[0];
+const v = d.verified;
+const checks = [
+  ['Real person', v.identity, `${d.name}, identity confirmed`, 'Identity check pending'],
+  ['Employment', v.employment, `Confirmed with ${c.name}`, 'Confirmation pending'],
+  ['Completed projects', v.projects, 'Photos reviewed by Courts Illustrated', 'Photos not yet reviewed'],
+  ['License & insurance', v.license, v.checkedOn ? `Checked ${v.checkedOn}` : 'Verified', 'Verification pending'],
+];
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    name: d.name,
+    jobTitle: d.role,
+    image: d.photo ? new URL(d.photo, Astro.site).href : undefined,
+    worksFor: { '@type': 'Organization', name: c.name, url: c.website, areaServed: c.region },
+    sameAs: d.youtube ? [d.youtube] : undefined,
+  },
+};
+---
+<Base title={`${d.name}, ${d.role} at ${c.name} | Courts Illustrated`} description={`${d.name} builds courts with ${c.name} in ${c.region}. Verified builder profile, projects and articles.`} jsonld={jsonld}>
+  <div class="mast wrap">
+    <div class="eyebrow">Builder Profile · {c.region}</div>
+    <h1>{d.name}</h1>
+    <p class="role">{d.role} at {c.name}.</p>
+    <div class="tiles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="stats">
+      <div><b>{sc.total}</b>CI score</div>
+      <div><b>{d.courts}</b>Courts built</div>
+      <div><b>{d.years}</b>Years building</div>
+      <div><b>{d.certs.length}</b>Certifications</div>
+    </div>
+  </div>
+
+  <section class="about wrap">
+    <div class="sh"><h2>About</h2></div>
+    <div class="split">
+      <div class="drop-first"><Content /></div>
+      <div>
+        <div class="portrait">
+          {d.photo ? <img src={d.photo} alt={d.name} /> : <span>{initials(d.name)}</span>}
+        </div>
+        <ul class="facts">
+          <li><span>Company</span><a href={`/companies/${company.id}`}>{c.name}</a></li>
+          <li><span>Service area</span>{c.region}</li>
+          {d.certs.length > 0 && <li><span>Certifications</span>{d.certs.join(' · ')}</li>}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="sh"><h2>Works at</h2></div>
+    <div class="co">
+      <div class="co-main">
+        <div class="eyebrow">Company · Courts Illustrated</div>
+        <h3>{c.name}</h3>
+        <p>{c.blurb}</p>
+        <div class="co-links">
+          <a class="btn" href={`/companies/${company.id}`}>View company profile</a>
+          {c.website && <a class="btn ghost" href={c.website} rel="noopener" target="_blank">Visit {new URL(c.website).hostname} ↗</a>}
+        </div>
+      </div>
+      <ul class="verify" aria-label="What Courts Illustrated verified">
+        {checks.map(([label, ok, yes, no]) => (
+          <li><span class:list={['ck', { pending: !ok }]} aria-hidden="true"></span><div><b>{label}</b>{ok ? yes : no}</div></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  {d.youtube && (
+    <section class="wrap">
+      <div class="sh"><h2>Videos</h2><a class="more" href={d.youtube} target="_blank" rel="noopener">Open channel ↗</a></div>
+      <div class="channel">
+        <div><strong>{first} on YouTube</strong></div>
+        <a class="btn" href={d.youtube} target="_blank" rel="noopener">Watch on YouTube</a>
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .portrait img{width:78%;aspect-ratio:1;object-fit:cover;border-radius:50%;border:8px solid var(--ink)}
+  .portrait span{font-family:var(--display);font-size:80px;background:var(--ink);width:62%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center}
+  .portrait{place-items:center;padding:0}
+  .drop-first :global(p){margin:0 0 1em;max-width:62ch}
+</style>
