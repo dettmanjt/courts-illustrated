@@ -25,6 +25,7 @@ const builders = defineCollection({
     role: z.string().default('Court builder'),
     photo: z.string().optional(),          // path under /public
     youtube: z.string().url().optional(),
+    videoIds: z.array(z.string()).default([]), // YouTube video IDs to feature
     courts: z.number().int().nonnegative(),
     years: z.number().int().nonnegative(),
     certs: z.array(z.string()).default([]),
