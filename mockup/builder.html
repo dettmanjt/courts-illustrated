@@ -62,7 +62,7 @@ body{margin:0}
     </div>
   </section>
 
-  <section class="wrap"><div class="sh"><h2>Videos</h2></div><div class="empty">This builder's YouTube channel appears here once it's connected.</div></section>
+  <section class="wrap"><div class="sh"><h2>Videos</h2><a class="more" id="b-yt" hidden target="_blank" rel="noopener">Open channel ↗</a></div><div class="ygrid" id="b-vids" hidden></div><div class="empty" id="b-vids-empty">This builder's YouTube channel appears here once it's connected.</div></section>
   <section class="wrap"><div class="sh"><h2>Articles</h2></div><div class="empty">Articles this builder writes for Courts Illustrated will be listed here.</div></section>
   <section class="wrap"><div class="sh"><h2>Projects</h2></div><div class="empty">Completed project photos go here after review.</div></section>
 
@@ -90,6 +90,8 @@ function render(){
   $('b-init').textContent=CI.initials(b.name); $('b-init').style.display=b.photo?'none':''; $('b-init').parentElement.style.background=b.photo?'url('+b.photo+') center/cover':'';
   $('b-co-link').textContent=c.name; $('b-co-link').href=href; $('b-co-nav').href=href;
   $('b-region').textContent=c.region;
+  const v=b.vids||[]; $('b-vids').hidden=!v.length; $('b-vids-empty').hidden=!!v.length; $('b-yt').hidden=!b.youtube; if(b.youtube) $('b-yt').href=b.youtube;
+  $('b-vids').innerHTML=v.map(id=>'<a class="yv" href="https://www.youtube.com/watch?v='+id+'" target="_blank" rel="noopener" aria-label="Watch on YouTube"><img src="yt/'+id+'.jpg" alt=""><span aria-hidden="true">▶</span></a>').join('');
   $('b-co-name').textContent=c.name; $('b-co-blurb').textContent=c.blurb;
   $('b-co-btns').innerHTML=`<a class="btn" href="${href}">View company profile</a>`+(c.url?`<a class="btn ghost" href="${c.url}" target="_blank" rel="noopener">Visit ${c.urlLabel} ↗</a>`:'');
   if(ld) ld.remove();

@@ -97,7 +97,7 @@ window.CI = {
       bio: "I've been building courts and gyms for over 25 years. I founded SportScape Builders in Marysville, Ohio, where our team designs and installs backyard courts, home gymnasiums and sports centers." },
     "austin-helfers":    { name: "Austin Helfers", role: "Co-Founder", company: "court-builders-stl", courts: 0, years: 0, certs: [], articles: 0, videos: 0 },
     "dionna-helfers":    { name: "Dionna Helfers", role: "Co-Founder", company: "court-builders-stl", courts: 0, years: 0, certs: [], articles: 0, videos: 0 },
-    "miles-reynolds":    { name: "Miles Reynolds", role: "Court builder", company: "legendary-sports-construction", courts: 0, years: 0, certs: [], articles: 0, videos: 0,
+    "miles-reynolds":    { name: "Miles Reynolds", role: "Court builder", company: "legendary-sports-construction", courts: 0, years: 0, certs: [], articles: 0, videos: 1, youtube: "https://www.youtube.com/@legendary_sports_construction", vids: ["XJEkms8tCK0"],
       bio: "I grew up playing sports with my three brothers and friends almost every day on the court in our driveway. I love seeing a family's home become the hangout house in the neighborhood." }
   }
 };
