@@ -87,7 +87,7 @@ function render(){
   $('b-bio').textContent=b.bio||(b.name.split(' ')[0]+' works with '+c.name+' in '+c.region+'.'); $('b-bio-more').hidden=!!b.bio;
   const sc=CI.score(b);
   $('b-stats').innerHTML=`<div><b>${sc.total}</b>CI score</div><div><b>${b.courts}</b>Courts built</div><div><b>${b.years}</b>Years building</div><div><b>${b.certs.length}</b>Certifications</div><div><b>${b.articles+b.videos}</b>Articles &amp; videos</div>`;
-  $('b-init').textContent=b.photo?'':CI.initials(b.name); $('b-init').parentElement.style.background=b.photo?'url('+b.photo+') center/cover':'';
+  $('b-init').textContent=CI.initials(b.name); $('b-init').style.display=b.photo?'none':''; $('b-init').parentElement.style.background=b.photo?'url('+b.photo+') center/cover':'';
   $('b-co-link').textContent=c.name; $('b-co-link').href=href; $('b-co-nav').href=href;
   $('b-region').textContent=c.region;
   $('b-co-name').textContent=c.name; $('b-co-blurb').textContent=c.blurb;
