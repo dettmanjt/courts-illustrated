@@ -18,6 +18,7 @@ const companies = defineCollection({
     blurb: z.string(),
     services: z.array(z.string()),
     photos: z.array(z.object({ src: z.string(), title: z.string(), type: z.string() })).default([]),
+    posts: z.array(z.object({ title: z.string(), url: z.string().url(), summary: z.string().optional() })).default([]),
     socials,
     videoIds: z.array(z.string()).default([]),   // YouTube videos from the company channel
     articles: z.array(z.object({ title: z.string(), url: z.string().url(), summary: z.string().optional() })).default([]), // from their own blog

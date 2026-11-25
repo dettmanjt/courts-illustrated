@@ -121,6 +121,14 @@ const jsonld = {
       )}
     </section>
   )}
+  {d.posts.length > 0 && (
+    <section class="wrap">
+      <div class="sh"><h2>Articles</h2></div>
+      <ul class="alist">
+        {d.posts.map((a) => <li><a href={a.url} target="_blank" rel="noopener">{a.title}<span aria-hidden="true">↗</span></a>{a.summary && <p class="asum">{a.summary}</p>}</li>)}
+      </ul>
+    </section>
+  )}
   {d.photos.length > 0 && (
     <section class="wrap">
       <div class="sh"><h2>Courts {first} has built</h2></div>
