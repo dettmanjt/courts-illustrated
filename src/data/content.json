@@ -270,6 +270,53 @@
  },
  {
   "type": "Article",
+  "title": "What Indoor Volleyball Net System Is Right for Me?",
+  "url": "https://www.austincourts.com/blog/what-indoor-volleyball-net-system-is-right-for-me/",
+  "company": "austin-courts-floors",
+  "builder": null,
+  "topic": "Cost & pricing",
+  "sports": [
+   "Volleyball",
+   "Indoor & gym floors"
+  ],
+  "views": null,
+  "date": null,
+  "score": 74,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "Helps choose an indoor volleyball net system by comparing carbon fiber, steel and aluminum poles. Covers relative cost, weight, flex and best-use settings, and says the main deciding factor is how often the system will be set up and removed."
+ },
+ {
+  "type": "Article",
+  "title": "Why Our Backyard Court Became the Heart of Our Home",
+  "url": "https://www.austincourts.com/blog/why-our-backyard-court-became-the-heart-of-our-home/",
+  "company": "austin-courts-floors",
+  "builder": null,
+  "topic": "Cost & pricing",
+  "sports": [
+   "Pickleball",
+   "Basketball",
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 74,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "Makes the case for a backyard court as an alternative to a pool. Says courts cost less to maintain, work year-round, and avoid deep-end safety worries, and lists everyday uses from basketball and pickleball to parties and movie nights."
+ },
+ {
+  "type": "Article",
   "title": "How Much Does a Backyard Game Court Cost?",
   "url": "https://lonestargamecourts.com/backyard-game-court-cost/",
   "company": "lone-star-game-courts",
@@ -288,34 +335,12 @@
    "specificity": 4,
    "freshness": 5
   },
-  "text": null
+  "text": "Explains what drives the cost of a backyard game court. No single price is given. Lists sitework, concrete, drainage, fencing, lighting and landscape repair as cost factors, cites one site with about eight feet of slope, and says what to send for a quote."
  },
  {
   "type": "Article",
   "title": "How Much Does an Outdoor Game Court Cost?",
   "url": "https://lonestargamecourts.com/outdoor-game-court-cost/",
-  "company": "lone-star-game-courts",
-  "builder": null,
-  "topic": "Cost & pricing",
-  "sports": [
-   "Multi-sport"
-  ],
-  "views": null,
-  "date": null,
-  "score": 74,
-  "parts": {
-   "topic": 45,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 4,
-   "freshness": 5
-  },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "How Much Does an Indoor Game Court Cost?",
-  "url": "https://lonestargamecourts.com/indoor-game-court-cost/",
   "company": "lone-star-game-courts",
   "builder": null,
   "topic": "Cost & pricing",
@@ -333,7 +358,53 @@
    "specificity": 4,
    "freshness": 5
   },
-  "text": null
+  "text": "Breaks down what drives the cost of an outdoor game court. Names grading, base, concrete, fencing, lighting and freight as the main factors, compares acrylic with modular flooring, and discusses single versus multiple courts. No dollar figures are given."
+ },
+ {
+  "type": "Article",
+  "title": "How Much Does an Indoor Game Court Cost?",
+  "url": "https://lonestargamecourts.com/indoor-game-court-cost/",
+  "company": "lone-star-game-courts",
+  "builder": null,
+  "topic": "Cost & pricing",
+  "sports": [
+   "Basketball",
+   "Indoor & gym floors",
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 74,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "Explains what goes into an indoor game court quote. Lists removal, base preparation, flooring, lines, goals and freight, compares floor-only quotes with full scope, and notes how existing floors and scheduling affect price. No dollar figures are given."
+ },
+ {
+  "type": "Article",
+  "title": "What Is the Best Gym Floor for Your Facility?",
+  "url": "https://lonestargamecourts.com/best-gym-floor/",
+  "company": "lone-star-game-courts",
+  "builder": null,
+  "topic": "Cost & pricing",
+  "sports": [
+   "Indoor & gym floors"
+  ],
+  "views": null,
+  "date": null,
+  "score": 74,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "Helps choose a gym floor for a facility. Names wood, resilient sheet, modular and rubber systems, lists the costs a quote should include, advises checking the base for moisture, flatness and cracks, and suggests separate zones when activities conflict."
  },
  {
   "type": "Video",
@@ -472,12 +543,79 @@
  },
  {
   "type": "Article",
-  "title": "Half Court vs. Full Court: Sizes, Costs & Which Is Right for You",
-  "url": "https://www.austincourts.com/blog/half-court-vs-full-court-sizes-costs-which-is-right-for-you/",
-  "company": "austin-courts-floors",
+  "title": "Cushioned Court Surface Systems: Worth It or Not",
+  "url": "https://legendarysportsconstruction.com/cushioned-court-surface-systems/",
+  "company": "legendary-sports-construction",
   "builder": null,
   "topic": "Cost & pricing",
   "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 70,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Asks whether a cushioned court surface is worth the added cost. Explains how rubber-granule layers sit under the color coats, compares light and heavier cushion, and notes longer curing time, harder repairs and possibly shorter resurfacing intervals, with no prices given."
+ },
+ {
+  "type": "Article",
+  "title": "Building a Sport Court on a Sloped Lot",
+  "url": "https://legendarysportsconstruction.com/building-a-court-on-a-sloped-lot/",
+  "company": "legendary-sports-construction",
+  "builder": null,
+  "topic": "Cost & pricing",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 70,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Covers what a sloped lot means for building a court. Compares cut versus fill, retaining walls and drainage, lists common failure modes, and shows how slope drives cost, citing one site with about eight feet of slope that needed hundreds of cubic yards of base."
+ },
+ {
+  "type": "Article",
+  "title": "Practice Walls and Rebounders for Backyard Courts",
+  "url": "https://legendarysportsconstruction.com/practice-walls-and-rebounders/",
+  "company": "legendary-sports-construction",
+  "builder": null,
+  "topic": "Cost & pricing",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 70,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Compares options for a backyard practice wall or rebounder. Weighs masonry, framed panels, fence-mounted panels and netted rebounders on rebound quality, relative cost and permits, and covers height, width, angle and why building it with the court helps."
+ },
+ {
+  "type": "Article",
+  "title": "Dimensions of a Basketball & Pickleball Half-Court",
+  "url": "https://www.cbasports.com/blog/dimensions-of-a-basketball-pickleball-half-court/",
+  "company": "cba-sports",
+  "builder": null,
+  "topic": "Cost & pricing",
+  "sports": [
+   "Pickleball",
    "Basketball"
   ],
   "views": null,
@@ -490,7 +628,97 @@
    "specificity": 0,
    "freshness": 5
   },
-  "text": null
+  "text": "Gives basketball and pickleball half-court dimensions for planning a shared space. Lists a 50 x 47 ft basketball half court, a 20 x 44 ft pickleball court, key and line distances, net heights, and installation costs of $6 to $22 per square foot."
+ },
+ {
+  "type": "Article",
+  "title": "Half Court vs. Full Court: Sizes, Costs & Which Is Right for You",
+  "url": "https://www.austincourts.com/blog/half-court-vs-full-court-sizes-costs-which-is-right-for-you/",
+  "company": "austin-courts-floors",
+  "builder": null,
+  "topic": "Cost & pricing",
+  "sports": [
+   "Pickleball",
+   "Basketball"
+  ],
+  "views": null,
+  "date": null,
+  "score": 70,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Helps decide between a half court and a full court. Lists a residential half court at about 28 x 45 ft, a backyard full court starting near 65 x 35 ft, and a 30 x 60 ft upgrade that also fits pickleball, plus slab needs for tile (4 inch) versus acrylic (5 inch post-tension)."
+ },
+ {
+  "type": "Article",
+  "title": "Pickleball Court Construction: What to Know Before You Build",
+  "url": "https://lonestargamecourts.com/pickleball-court-construction/",
+  "company": "lone-star-game-courts",
+  "builder": null,
+  "topic": "Cost & pricing",
+  "sports": [
+   "Pickleball"
+  ],
+  "views": null,
+  "date": null,
+  "score": 70,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Explains what to know before building a pickleball court. Gives the marked area as 20 x 44 ft, notes the site needs more room for fencing and movement, and compares surfaces, fixed versus portable nets, fencing and lighting. No prices or timelines are given."
+ },
+ {
+  "type": "Article",
+  "title": "Outdoor Court Lighting: Planning for Basketball and Pickleball",
+  "url": "https://lonestargamecourts.com/outdoor-court-lighting/",
+  "company": "lone-star-game-courts",
+  "builder": null,
+  "topic": "Cost & pricing",
+  "sports": [
+   "Pickleball",
+   "Basketball"
+  ],
+  "views": null,
+  "date": null,
+  "score": 70,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Helps plan outdoor court lighting for basketball and pickleball. Compares solar with standard power, explains why wattage alone misleads, and lists poles, foundations, wiring and controls as part of the budget, with electrical work possibly contracted separately."
+ },
+ {
+  "type": "Article",
+  "title": "Game Court Fencing: Ball Containment, Access, and Design",
+  "url": "https://lonestargamecourts.com/game-court-fencing/",
+  "company": "lone-star-game-courts",
+  "builder": null,
+  "topic": "Cost & pricing",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 70,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Explains how to plan fencing for a game court. Covers netting versus chain-link for ball containment, what affects cost (length, height, material, gates, site access), and how adding a windscreen changes loads on the fence. No measurements are given."
  },
  {
   "type": "Article",
@@ -512,7 +740,29 @@
    "specificity": 4,
    "freshness": 5
   },
-  "text": null
+  "text": "Answers how big a basketball court should be for a given yard. Covers widths from 20 to 60 ft, full-court lengths from 60 to 106 ft, half courts of 30 to 34 ft, and a suggested 50 x 80 ft footprint for recreational backyard play."
+ },
+ {
+  "type": "Article",
+  "title": "What Is Post-Tension Concrete (and Why It Matters for Courts)",
+  "url": "https://www.austincourts.com/blog/what-is-post-tension-concrete-and-why-it-matters-for-courts/",
+  "company": "austin-courts-floors",
+  "builder": null,
+  "topic": "Problems & fixes",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 69,
+  "parts": {
+   "topic": 40,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "Explains what a post-tension slab is and why acrylic game courts use one. Gives about 5 inches of thickness, a 9 to 10 inch edge beam, cables roughly 4 ft apart, 3,500 PSI concrete, tensioning at 10 to 14 days, and a 1 percent minimum slope, contrasted with rebar slabs."
  },
  {
   "type": "Article",
@@ -534,18 +784,19 @@
    "specificity": 4,
    "freshness": 5
   },
-  "text": null
+  "text": "Helps choose a net system for a beach-style volleyball court. Compares competition, slider-style, recreational and fixed-height systems by fit, advantage and tradeoff, and gives 6-on-6 court size as 60 x 30 ft and 2-on-2 as 52 ft 6 in x 26 ft 3 in."
  },
  {
   "type": "Article",
-  "title": "What Indoor Volleyball Net System Is Right for Me?",
-  "url": "https://www.austincourts.com/blog/what-indoor-volleyball-net-system-is-right-for-me/",
-  "company": "austin-courts-floors",
+  "title": "Multi-Sport Court Design: Can Basketball and Pickleball Share?",
+  "url": "https://lonestargamecourts.com/multi-sport-court-design/",
+  "company": "lone-star-game-courts",
   "builder": null,
   "topic": "Comparisons",
   "sports": [
-   "Volleyball",
-   "Indoor & gym floors"
+   "Pickleball",
+   "Basketball",
+   "Multi-sport"
   ],
   "views": null,
   "date": null,
@@ -557,7 +808,7 @@
    "specificity": 4,
    "freshness": 5
   },
-  "text": null
+  "text": "Asks whether basketball and pickleball can share one court. Covers choosing a practice area, half or full basketball court, color-coded lines for each sport, shared equipment such as goals and net posts, and scheduling shared use versus separate areas."
  },
  {
   "type": "Article",
@@ -580,7 +831,29 @@
    "specificity": 3,
    "freshness": 5
   },
-  "text": null
+  "text": "Compares four ways to fix a failing asphalt tennis or pickleball court, using a 60 x 120 ft court as the basis. Ballparks run from about $20,000 for an acrylic resurface up to $150,000 to $250,000 for a full rebuild, with lifespans and warranties for each."
+ },
+ {
+  "type": "Article",
+  "title": "Rooftop Pickleball in Austin: Why the Right Surface Matters",
+  "url": "https://www.austincourts.com/blog/rooftop-pickleball-court-surface/",
+  "company": "austin-courts-floors",
+  "builder": null,
+  "topic": "Comparisons",
+  "sports": [
+   "Pickleball"
+  ],
+  "views": null,
+  "date": null,
+  "score": 68,
+  "parts": {
+   "topic": 40,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 3,
+   "freshness": 5
+  },
+  "text": "Looks at which surface suits a rooftop pickleball court. Contrasts heavy roll-out mats that shift, curl and need regular cleaning with a modular tile system that drains fast and grips better, using one Austin rooftop group's switch as the example."
  },
  {
   "type": "Video",
@@ -760,13 +1033,13 @@
  },
  {
   "type": "Article",
-  "title": "Cushioned Court Surface Systems: Worth It or Not",
-  "url": "https://legendarysportsconstruction.com/cushioned-court-surface-systems/",
+  "title": "Basketball Goal Systems: What Actually Matters",
+  "url": "https://legendarysportsconstruction.com/basketball-goal-systems-buyers-guide/",
   "company": "legendary-sports-construction",
   "builder": null,
   "topic": "Comparisons",
   "sports": [
-   "Multi-sport"
+   "Basketball"
   ],
   "views": null,
   "date": null,
@@ -778,12 +1051,12 @@
    "specificity": 0,
    "freshness": 5
   },
-  "text": null
+  "text": "Breaks down what to look for in a basketball goal. Compares in-ground, portable and wall-mounted mounting, tempered glass, acrylic and polycarbonate backboards, breakaway versus static rims, height adjustment, and why the distance from pole to backboard matters more than most other specifications."
  },
  {
   "type": "Article",
-  "title": "Building a Sport Court on a Sloped Lot",
-  "url": "https://legendarysportsconstruction.com/building-a-court-on-a-sloped-lot/",
+  "title": "Replacing a Lawn With a Sport Court",
+  "url": "https://legendarysportsconstruction.com/replacing-lawn-with-a-sport-court/",
   "company": "legendary-sports-construction",
   "builder": null,
   "topic": "Problems & fixes",
@@ -800,17 +1073,17 @@
    "specificity": 0,
    "freshness": 5
   },
-  "text": null
+  "text": "Explains how to replace a lawn with a sport court. Lays out a six-step sequence from design and irrigation handling to turf stripping, base and drainage, and covers heat, water use, and checking local turf-removal incentives."
  },
  {
   "type": "Article",
-  "title": "Pickleball Court Size vs. Other Court Sizes",
-  "url": "https://www.cbasports.com/blog/pickleball-court-size-vs-other-court-sizes/",
-  "company": "cba-sports",
+  "title": "Court Edges, Curbs and Transitions",
+  "url": "https://legendarysportsconstruction.com/court-edges-curbs-and-transitions/",
+  "company": "legendary-sports-construction",
   "builder": null,
   "topic": "Comparisons",
   "sports": [
-   "Pickleball"
+   "Multi-sport"
   ],
   "views": null,
   "date": null,
@@ -822,7 +1095,77 @@
    "specificity": 0,
    "freshness": 5
   },
-  "text": null
+  "text": "Explains how to handle court edges, curbs and transitions. Compares ways to confine the base, inside versus outside fence post placement, net post footings at construction versus coring later, and why a defined, level joint beats butting surfaces together."
+ },
+ {
+  "type": "Article",
+  "title": "Court Accessories: Seating, Storage, Shade and Scoreboards",
+  "url": "https://legendarysportsconstruction.com/court-accessories-seating-storage-and-scoreboards/",
+  "company": "legendary-sports-construction",
+  "builder": null,
+  "topic": "Comparisons",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 65,
+  "parts": {
+   "topic": 40,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Helps decide which court accessories to include. Compares shade options, storage, water points and scoreboard types, and lists what to build in during construction, such as footings, conduit and net sleeves, versus what can be added later."
+ },
+ {
+  "type": "Article",
+  "title": "Futsal and Small-Sided Soccer Courts",
+  "url": "https://legendarysportsconstruction.com/futsal-and-small-sided-soccer-courts/",
+  "company": "legendary-sports-construction",
+  "builder": null,
+  "topic": "Problems & fixes",
+  "sports": [
+   "Pickleball",
+   "Basketball",
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 65,
+  "parts": {
+   "topic": 40,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Covers how to build a futsal or small-sided soccer court. Compares acrylic, modular tile and turf surfaces, portable and fixed goals, containment height, pairing with basketball or pickleball, and how desert heat and dust affect players and ball wear."
+ },
+ {
+  "type": "Article",
+  "title": "Pickleball Court Size vs. Other Court Sizes",
+  "url": "https://www.cbasports.com/blog/pickleball-court-size-vs-other-court-sizes/",
+  "company": "cba-sports",
+  "builder": null,
+  "topic": "Comparisons",
+  "sports": [
+   "Pickleball",
+   "Basketball",
+   "Tennis"
+  ],
+  "views": null,
+  "date": null,
+  "score": 65,
+  "parts": {
+   "topic": 40,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Compares pickleball court size with other courts. A pickleball court is 20 x 44 ft, with 30 x 60 ft recommended including surrounding space. A basketball court fits roughly three of them and a tennis court about four."
  },
  {
   "type": "Article",
@@ -844,7 +1187,79 @@
    "specificity": 0,
    "freshness": 5
   },
-  "text": null
+  "text": "Weighs modular tile against standard and cushioned acrylic for pickleball. Tile runs half an inch to three-quarters of an inch thick on a 4-inch slab with a 10 to 20 year warranty, while acrylic needs a 5-inch post-tension slab and fresh color coats every five to seven years."
+ },
+ {
+  "type": "Article",
+  "title": "Court Lighting: Keep Playing After Sunset",
+  "url": "https://www.austincourts.com/blog/court-lighting-guide/",
+  "company": "austin-courts-floors",
+  "builder": null,
+  "topic": "Problems & fixes",
+  "sports": [
+   "Pickleball",
+   "Basketball",
+   "Tennis"
+  ],
+  "views": null,
+  "date": null,
+  "score": 65,
+  "parts": {
+   "topic": 40,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Explains how to light a court for evening play. Offers foot-candle targets for basketball, pickleball and tennis, and compares 16 ft LED poles, low fence-line LED fixtures and solar units, with notes on wiring and planning power before concrete is poured."
+ },
+ {
+  "type": "Article",
+  "title": "Game Court Dimensions: Plan Your Court With Eric",
+  "url": "https://lonestargamecourts.com/game-court-dimensions/",
+  "company": "lone-star-game-courts",
+  "builder": null,
+  "topic": "Comparisons",
+  "sports": [
+   "Pickleball",
+   "Basketball",
+   "Volleyball",
+   "Indoor & gym floors",
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 65,
+  "parts": {
+   "topic": 40,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Explains how to plan court dimensions for basketball, pickleball, volleyball and badminton, indoors or out. Stresses that the marked court is only part of the footprint and compares equipment, shared-use, spectator, divider curtain and existing-gym versus new-building needs."
+ },
+ {
+  "type": "Article",
+  "title": "PE Gym Floor Design That Supports Your Curriculum",
+  "url": "https://lonestargamecourts.com/pe-gym-floor-design-curriculum/",
+  "company": "lone-star-game-courts",
+  "builder": null,
+  "topic": "Comparisons",
+  "sports": [
+   "Indoor & gym floors"
+  ],
+  "views": null,
+  "date": null,
+  "score": 65,
+  "parts": {
+   "topic": 40,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Explains how to design a PE gym floor around the curriculum. Compares seating squares, permanent four-square and hopscotch markings against cones, contrasting floor pieces versus painted lines, and color-coded gathering areas versus consistent shapes and line styles, depending on class size and flooring system."
  },
  {
   "type": "Video",
@@ -865,28 +1280,6 @@
    "engagement": 9,
    "specificity": 0,
    "freshness": 10
-  },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "What Is the Best Gym Floor for Your Facility?",
-  "url": "https://lonestargamecourts.com/best-gym-floor/",
-  "company": "lone-star-game-courts",
-  "builder": null,
-  "topic": "Best of",
-  "sports": [
-   "Indoor & gym floors"
-  ],
-  "views": null,
-  "date": null,
-  "score": 64,
-  "parts": {
-   "topic": 35,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 4,
-   "freshness": 5
   },
   "text": null
  },
@@ -980,28 +1373,6 @@
   "text": null
  },
  {
-  "type": "Article",
-  "title": "Basketball Goal Systems: What Actually Matters",
-  "url": "https://legendarysportsconstruction.com/basketball-goal-systems-buyers-guide/",
-  "company": "legendary-sports-construction",
-  "builder": null,
-  "topic": "Best of",
-  "sports": [
-   "Basketball"
-  ],
-  "views": null,
-  "date": null,
-  "score": 60,
-  "parts": {
-   "topic": 35,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
- },
- {
   "type": "FAQ",
   "title": "Do Las Vegas court builders work with HOAs?",
   "url": "/companies/legendary-sports-construction#faq-4",
@@ -1088,75 +1459,7 @@
    "specificity": 4,
    "freshness": 5
   },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "What Is Post-Tension Concrete (and Why It Matters for Courts)",
-  "url": "https://www.austincourts.com/blog/what-is-post-tension-concrete-and-why-it-matters-for-courts/",
-  "company": "austin-courts-floors",
-  "builder": null,
-  "topic": "How-to & planning",
-  "sports": [
-   "Multi-sport"
-  ],
-  "views": null,
-  "date": null,
-  "score": 59,
-  "parts": {
-   "topic": 30,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 4,
-   "freshness": 5
-  },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Why Our Backyard Court Became the Heart of Our Home",
-  "url": "https://www.austincourts.com/blog/why-our-backyard-court-became-the-heart-of-our-home/",
-  "company": "austin-courts-floors",
-  "builder": null,
-  "topic": "Reviews & stories",
-  "sports": [
-   "Multi-sport"
-  ],
-  "views": null,
-  "date": null,
-  "score": 59,
-  "parts": {
-   "topic": 30,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 4,
-   "freshness": 5
-  },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Multi-Sport Court Design: Can Basketball and Pickleball Share?",
-  "url": "https://lonestargamecourts.com/multi-sport-court-design/",
-  "company": "lone-star-game-courts",
-  "builder": null,
-  "topic": "How-to & planning",
-  "sports": [
-   "Pickleball",
-   "Basketball",
-   "Multi-sport"
-  ],
-  "views": null,
-  "date": null,
-  "score": 59,
-  "parts": {
-   "topic": 30,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 4,
-   "freshness": 5
-  },
-  "text": null
+  "text": "Outlines how to start a pickleball business or league. Compares buying an existing business, franchising and starting from scratch, lists five revenue niches such as rentals and lessons, and gives a six-step setup sequence from market research to promotion."
  },
  {
   "type": "Video",
@@ -1315,12 +1618,37 @@
  },
  {
   "type": "Article",
+  "title": "Landscaping and Irrigation Around a Sport Court",
+  "url": "https://legendarysportsconstruction.com/landscaping-and-irrigation-around-a-court/",
+  "company": "legendary-sports-construction",
+  "builder": null,
+  "topic": "How-to & planning",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 55,
+  "parts": {
+   "topic": 30,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 5
+  },
+  "text": "Explains how to plant and irrigate around a sport court without harming it. Favors drip over spray, hardscape bands next to the surface, root barriers, shade structures over trees, and building the court before planting."
+ },
+ {
+  "type": "Article",
   "title": "Create Memories with a Custom Backyard Court Design",
   "url": "https://www.cbasports.com/blog/create-memories-with-a-custom-backyard-court-design/",
   "company": "cba-sports",
   "builder": null,
   "topic": "How-to & planning",
   "sports": [
+   "Basketball",
+   "Tennis",
+   "Volleyball",
    "Multi-sport"
   ],
   "views": null,
@@ -1333,119 +1661,7 @@
    "specificity": 0,
    "freshness": 5
   },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Dimensions of a Basketball & Pickleball Half-Court",
-  "url": "https://www.cbasports.com/blog/dimensions-of-a-basketball-pickleball-half-court/",
-  "company": "cba-sports",
-  "builder": null,
-  "topic": "How-to & planning",
-  "sports": [
-   "Pickleball",
-   "Basketball"
-  ],
-  "views": null,
-  "date": null,
-  "score": 55,
-  "parts": {
-   "topic": 30,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Pickleball Court Construction: What to Know Before You Build",
-  "url": "https://lonestargamecourts.com/pickleball-court-construction/",
-  "company": "lone-star-game-courts",
-  "builder": null,
-  "topic": "How-to & planning",
-  "sports": [
-   "Pickleball"
-  ],
-  "views": null,
-  "date": null,
-  "score": 55,
-  "parts": {
-   "topic": 30,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Game Court Dimensions: Plan Your Court With Eric",
-  "url": "https://lonestargamecourts.com/game-court-dimensions/",
-  "company": "lone-star-game-courts",
-  "builder": null,
-  "topic": "How-to & planning",
-  "sports": [
-   "Multi-sport"
-  ],
-  "views": null,
-  "date": null,
-  "score": 55,
-  "parts": {
-   "topic": 30,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Outdoor Court Lighting: Planning for Basketball and Pickleball",
-  "url": "https://lonestargamecourts.com/outdoor-court-lighting/",
-  "company": "lone-star-game-courts",
-  "builder": null,
-  "topic": "How-to & planning",
-  "sports": [
-   "Pickleball",
-   "Basketball"
-  ],
-  "views": null,
-  "date": null,
-  "score": 55,
-  "parts": {
-   "topic": 30,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Game Court Fencing: Ball Containment, Access, and Design",
-  "url": "https://lonestargamecourts.com/game-court-fencing/",
-  "company": "lone-star-game-courts",
-  "builder": null,
-  "topic": "How-to & planning",
-  "sports": [
-   "Multi-sport"
-  ],
-  "views": null,
-  "date": null,
-  "score": 55,
-  "parts": {
-   "topic": 30,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
+  "text": "Explains what a custom backyard court offers a homeowner. Covers basketball, tennis, volleyball or multi-sport layouts, modular systems said to last multiple decades, and a possible resale benefit, with pointers to the company's outdoor court options and online builder."
  },
  {
   "type": "Article",
@@ -1455,6 +1671,7 @@
   "builder": null,
   "topic": "How-to & planning",
   "sports": [
+   "Basketball",
    "Indoor & gym floors"
   ],
   "views": null,
@@ -1467,29 +1684,7 @@
    "specificity": 0,
    "freshness": 5
   },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "PE Gym Floor Design That Supports Your Curriculum",
-  "url": "https://lonestargamecourts.com/pe-gym-floor-design-curriculum/",
-  "company": "lone-star-game-courts",
-  "builder": null,
-  "topic": "How-to & planning",
-  "sports": [
-   "Indoor & gym floors"
-  ],
-  "views": null,
-  "date": null,
-  "score": 55,
-  "parts": {
-   "topic": 30,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
+  "text": "Explains what to consider before installing padding on gym walls. Covers site features such as doors, corners, columns and goals, what a quote should confirm, and a Laredo example where stone walls needed a separate framed mounting surface."
  },
  {
   "type": "Video",
@@ -1723,6 +1918,7 @@
   "builder": null,
   "topic": "Project showcase",
   "sports": [
+   "Pickleball",
    "Multi-sport"
   ],
   "views": null,
@@ -1735,29 +1931,7 @@
    "specificity": 3,
    "freshness": 5
   },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Rooftop Pickleball in Austin: Why the Right Surface Matters",
-  "url": "https://www.austincourts.com/blog/rooftop-pickleball-court-surface/",
-  "company": "austin-courts-floors",
-  "builder": null,
-  "topic": "Project showcase",
-  "sports": [
-   "Pickleball"
-  ],
-  "views": null,
-  "date": null,
-  "score": 48,
-  "parts": {
-   "topic": 20,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 3,
-   "freshness": 5
-  },
-  "text": null
+  "text": "Answers whether a padel court is practical for a home or business. Describes the glass and mesh enclosure and sand-filled turf surface, says it needs more engineering than pickleball and suits large properties or commercial sites, and flags permit and HOA concerns."
  },
  {
   "type": "Video",
@@ -1936,138 +2110,6 @@
   "text": null
  },
  {
-  "type": "Article",
-  "title": "Replacing a Lawn With a Sport Court",
-  "url": "https://legendarysportsconstruction.com/replacing-lawn-with-a-sport-court/",
-  "company": "legendary-sports-construction",
-  "builder": null,
-  "topic": "Project showcase",
-  "sports": [
-   "Multi-sport"
-  ],
-  "views": null,
-  "date": null,
-  "score": 45,
-  "parts": {
-   "topic": 20,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Court Edges, Curbs and Transitions",
-  "url": "https://legendarysportsconstruction.com/court-edges-curbs-and-transitions/",
-  "company": "legendary-sports-construction",
-  "builder": null,
-  "topic": "Project showcase",
-  "sports": [
-   "Multi-sport"
-  ],
-  "views": null,
-  "date": null,
-  "score": 45,
-  "parts": {
-   "topic": 20,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Landscaping and Irrigation Around a Sport Court",
-  "url": "https://legendarysportsconstruction.com/landscaping-and-irrigation-around-a-court/",
-  "company": "legendary-sports-construction",
-  "builder": null,
-  "topic": "Project showcase",
-  "sports": [
-   "Multi-sport"
-  ],
-  "views": null,
-  "date": null,
-  "score": 45,
-  "parts": {
-   "topic": 20,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Court Accessories: Seating, Storage, Shade and Scoreboards",
-  "url": "https://legendarysportsconstruction.com/court-accessories-seating-storage-and-scoreboards/",
-  "company": "legendary-sports-construction",
-  "builder": null,
-  "topic": "Project showcase",
-  "sports": [
-   "Multi-sport"
-  ],
-  "views": null,
-  "date": null,
-  "score": 45,
-  "parts": {
-   "topic": 20,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Practice Walls and Rebounders for Backyard Courts",
-  "url": "https://legendarysportsconstruction.com/practice-walls-and-rebounders/",
-  "company": "legendary-sports-construction",
-  "builder": null,
-  "topic": "Project showcase",
-  "sports": [
-   "Multi-sport"
-  ],
-  "views": null,
-  "date": null,
-  "score": 45,
-  "parts": {
-   "topic": 20,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Futsal and Small-Sided Soccer Courts",
-  "url": "https://legendarysportsconstruction.com/futsal-and-small-sided-soccer-courts/",
-  "company": "legendary-sports-construction",
-  "builder": null,
-  "topic": "Project showcase",
-  "sports": [
-   "Multi-sport"
-  ],
-  "views": null,
-  "date": null,
-  "score": 45,
-  "parts": {
-   "topic": 20,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
- },
- {
   "type": "Video",
   "title": "Burnett Elementary School, Dallas, Texas",
   "url": "https://www.youtube.com/watch?v=PZfL4S7GMxI",
@@ -2109,29 +2151,7 @@
    "specificity": 0,
    "freshness": 5
   },
-  "text": null
- },
- {
-  "type": "Article",
-  "title": "Court Lighting: Keep Playing After Sunset",
-  "url": "https://www.austincourts.com/blog/court-lighting-guide/",
-  "company": "austin-courts-floors",
-  "builder": null,
-  "topic": "Project showcase",
-  "sports": [
-   "Multi-sport"
-  ],
-  "views": null,
-  "date": null,
-  "score": 45,
-  "parts": {
-   "topic": 20,
-   "format": 12,
-   "engagement": 8,
-   "specificity": 0,
-   "freshness": 5
-  },
-  "text": null
+  "text": "Describes a Dallas-Fort Worth court builder's community work. The company has donated and built more than 100 courts for underserved communities through partnerships with four sports foundations, and builds residential and commercial courts in North Texas and Oklahoma."
  },
  {
   "type": "Article",
@@ -2153,7 +2173,7 @@
    "specificity": 0,
    "freshness": 5
   },
-  "text": null
+  "text": "Walks through ways to finish a modular tile court's edge. Compares a standard trimmed edge, edge ramps, security edging and rubber molding for curves, and explains why the tile gap is smallest in summer and widest in winter."
  },
  {
   "type": "Video",

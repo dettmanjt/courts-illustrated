@@ -58,6 +58,7 @@ const jsonld = {
             </a>
             <div class="body">
               <a class="ttl" href={i.url} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>{i.title}{ext && ' ↗'}</a>
+              {i.type === 'Article' && i.text && <p class="sum">{i.text}</p>}
               <div class="meta">
                 <span class="ty">{i.type}</span><span>{i.topic}</span><span>{i.sports.join(', ')}</span>
                 <a href={i.builder ? `/builders/${i.builder}` : `/companies/${i.company}`}>{who}</a>
@@ -118,6 +119,7 @@ const jsonld = {
   .ttl:hover{text-decoration:underline;text-decoration-color:var(--sun);text-underline-offset:4px}
   .meta{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px;font-size:13px;color:var(--mute)}
   .meta a{color:inherit}
+  .sum{margin:6px 0 0;font-size:14px;line-height:1.45;max-width:70ch}
   .ty{font-family:var(--ui);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--paper)}
   .sc{text-align:center;font-family:var(--ui);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
   .sc b{display:block;font-family:var(--display);font-weight:400;font-size:30px;letter-spacing:0;color:var(--paper)}

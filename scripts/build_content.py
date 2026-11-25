@@ -98,7 +98,7 @@ for slug, c in companies.items():
             v, d, t = videos[vid]
             add('Video', t, f'https://www.youtube.com/watch?v={vid}', slug, None, v, d)
     for a in c.get('articles', []) or []:
-        add('Article', a['title'], a['url'], slug)
+        add('Article', a['title'], a['url'], slug, extra=a.get('summary'))
     for i, f in enumerate(c.get('faqs', []) or []):
         add('FAQ', f['q'], f'/companies/{slug}#faq-{i + 1}', slug, extra=f['a'])
 

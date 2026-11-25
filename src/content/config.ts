@@ -20,7 +20,7 @@ const companies = defineCollection({
     photos: z.array(z.object({ src: z.string(), title: z.string(), type: z.string() })).default([]),
     socials,
     videoIds: z.array(z.string()).default([]),   // YouTube videos from the company channel
-    articles: z.array(z.object({ title: z.string(), url: z.string().url() })).default([]), // from their own blog
+    articles: z.array(z.object({ title: z.string(), url: z.string().url(), summary: z.string().optional() })).default([]), // from their own blog
     // Facts from the company's own website (each section lists its source pages).
     founded: z.string().optional(),
     address: z.object({ street: z.string().optional(), city: z.string(), state: z.string(), zip: z.string().optional() }).optional(),

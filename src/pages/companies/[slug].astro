@@ -174,7 +174,7 @@ const facts = [
     <section class="wrap">
       <div class="sh"><h2>From their blog</h2></div>
       <ul class="alist">
-        {c.articles.map((a) => <li><a href={a.url} target="_blank" rel="noopener">{a.title}<span aria-hidden="true">↗</span></a></li>)}
+        {c.articles.map((a) => <li><a href={a.url} target="_blank" rel="noopener">{a.title}<span aria-hidden="true">↗</span></a>{a.summary && <p class="asum">{a.summary}</p>}</li>)}
       </ul>
     </section>
   )}

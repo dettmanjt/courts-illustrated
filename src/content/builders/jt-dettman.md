@@ -7,7 +7,6 @@ youtube: https://www.youtube.com/@JTtheCourtBuilder
 photos:
   - { src: /projects/jt-dettman/3307361637.jpg, title: "Hillside multi-sport court", type: Multi-sport }
   - { src: /projects/jt-dettman/2546749708.jpg, title: "Shaded multi-court", type: Multi-sport }
-  - { src: /projects/jt-dettman/2546746942.jpg, title: "Corporate campus game court", type: Basketball }
   - { src: /projects/jt-dettman/2471494229.jpg, title: "Tennis and pickleball courts from above", type: Tennis }
   - { src: /projects/jt-dettman/2449239475.jpg, title: "Sand volleyball courts", type: Volleyball }
   - { src: /projects/jt-dettman/1788781886.jpg, title: "Pickleball complex", type: Pickleball }
