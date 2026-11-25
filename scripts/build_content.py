@@ -92,6 +92,15 @@ for slug, b in builders.items():
         if vid in videos:
             v, d, t = videos[vid]
             add('Video', t, f'https://www.youtube.com/watch?v={vid}', b['company'], slug, v, d)
+    for i, f in enumerate(b.get('faqs', []) or []):
+        add('FAQ', f['q'], f'/builders/{slug}#faq-{i + 1}', b['company'], slug, extra=f['a'])
+# Articles published on Courts Illustrated (written by builders): full format credit.
+for path in sorted(glob.glob('src/content/articles/*.md')):
+    a = frontmatter(path); slug = path.split('/')[-1][:-3]
+    b = builders.get(a.get('author'))
+    if not b or b.get('published') is not True or a.get('published') is False: continue
+    add('Article', a['title'], f'/articles/{slug}', b['company'], a['author'], None, a.get('date'),
+        extra=a.get('dek', ''))
 for slug, c in companies.items():
     for vid in c.get('videoIds', []) or []:
         if vid in videos:

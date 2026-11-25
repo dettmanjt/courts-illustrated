@@ -6,10 +6,12 @@ export const GET: APIRoute = async ({ site }) => {
   const companies = await getCollection('companies', (c) => c.data.published);
   const live = new Set(companies.map((c) => c.slug));
   const builders = await getCollection('builders', (b) => b.data.published && live.has(b.data.company.slug));
+  const arts = await getCollection('articles', (a) => a.data.published);
   const urls = [
     { loc: '/', pri: '1.0' }, { loc: '/best', pri: '0.9' }, { loc: '/join', pri: '0.5' },
     ...companies.map((c) => ({ loc: `/companies/${c.slug}`, pri: '0.8', mod: c.data.checkedOn })),
     ...builders.map((b) => ({ loc: `/builders/${b.slug}`, pri: '0.7' })),
+    ...arts.map((a) => ({ loc: `/articles/${a.slug}`, pri: '0.8', mod: a.data.date })),
   ];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

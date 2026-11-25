@@ -50,6 +50,7 @@ const builders = defineCollection({
     photo: z.string().optional(),          // path under /public
     photos: z.array(z.object({ src: z.string(), title: z.string(), type: z.string() })).default([]),
     posts: z.array(z.object({ title: z.string(), url: z.string().url(), summary: z.string().optional() })).default([]),
+    faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
     youtube: z.string().url().optional(),
     videoIds: z.array(z.string()).default([]), // YouTube video IDs to feature
     socials,
@@ -79,4 +80,18 @@ const builders = defineCollection({
   }),
 });
 
-export const collections = { companies, builders };
+// Articles written by builders and published on Courts Illustrated.
+const articles = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    dek: z.string(),
+    author: reference('builders'),
+    topic: z.enum(['Cost', 'Comparison', 'Problems', 'How it works']),
+    sports: z.array(z.string()).default([]),
+    date: z.string(),              // YYYY-MM-DD published
+    published: z.boolean().default(true),
+  }),
+});
+
+export const collections = { companies, builders, articles };

@@ -1,0 +1,86 @@
+---
+// One article written by a builder and published on Courts Illustrated.
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+export async function getStaticPaths() {
+  const arts = await getCollection('articles', (a) => a.data.published);
+  return arts.map((a) => ({ params: { slug: a.slug }, props: { a } }));
+}
+const { a } = Astro.props;
+const d = a.data;
+const author = await getEntry(d.author);
+const company = await getEntry(author.data.company);
+const { Content } = await a.render();
+const url = new URL(`/articles/${a.slug}`, Astro.site).href;
+const more = (await getCollection('articles', (x) => x.data.published && x.slug !== a.slug && x.data.author.slug === author.slug)).slice(0, 3);
+const TAG: Record<string, string> = { Cost: 't-cost', Comparison: 't-compare', Problems: 't-problems', 'How it works': 't-how' };
+const fmt = (s: string) => new Date(s + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: d.title,
+      description: d.dek,
+      url,
+      mainEntityOfPage: url,
+      datePublished: d.date,
+      author: { '@type': 'Person', name: author.data.name, jobTitle: author.data.role, url: new URL(`/builders/${author.slug}`, Astro.site).href },
+      publisher: { '@type': 'Organization', name: 'Courts Illustrated', url: new URL('/', Astro.site).href, logo: new URL('/apple-touch-icon.png', Astro.site).href },
+      image: author.data.photo ? new URL(author.data.photo, Astro.site).href : undefined,
+      about: d.sports,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Courts Illustrated', item: new URL('/', Astro.site).href },
+        { '@type': 'ListItem', position: 2, name: author.data.name, item: new URL(`/builders/${author.slug}`, Astro.site).href },
+        { '@type': 'ListItem', position: 3, name: d.title },
+      ],
+    },
+  ],
+};
+---
+<Base title={`${d.title} | Courts Illustrated`} description={d.dek} jsonld={jsonld}>
+  <article>
+    <div class="mast wrap">
+      <div class="eyebrow"><span class={`tag ${TAG[d.topic]}`}>{d.topic}</span> {d.sports.join(' · ')}</div>
+      <h1 class="art-h">{d.title}</h1>
+      <p class="role">{d.dek}</p>
+      <a class="byline" href={`/builders/${author.slug}`}>
+        {author.data.photo && <img src={author.data.photo} alt="" width="48" height="48" />}
+        <span><b>{author.data.name}</b>{author.data.role}, {company.data.name} · {fmt(d.date)}</span>
+      </a>
+    </div>
+    <div class="wrap prose"><Content /></div>
+  </article>
+
+  {more.length > 0 && (
+    <section class="wrap">
+      <div class="sh"><h2>More from {author.data.name.split(' ')[0]}</h2><a class="more" href={`/builders/${author.slug}#articles`}>All articles</a></div>
+      <div class="posts">
+        {more.map((x) => <a class="post" href={`/articles/${x.slug}`}><span class={`tag ${TAG[x.data.topic]}`}>{x.data.topic}</span><h3>{x.data.title}</h3><p>{x.data.dek}</p></a>)}
+      </div>
+    </section>
+  )}
+
+  <ContactForm builder={author.slug} builderName={author.data.name} />
+</Base>
+
+<style>
+  .art-h{font-size:clamp(34px,6vw,64px);line-height:1.02;max-width:20ch}
+  .eyebrow .tag{margin-right:8px}
+  .byline{display:inline-flex;align-items:center;gap:12px;margin-top:18px;text-decoration:none;font-size:14px;color:var(--mute)}
+  .byline img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+  .byline b{display:block;color:var(--paper);font-family:var(--ui)}
+  .prose{max-width:720px;font-size:18px;line-height:1.65}
+  .prose :global(h2){font-family:var(--ui);font-size:26px;line-height:1.2;margin:40px 0 12px}
+  .prose :global(p){margin:0 0 18px}
+  .prose :global(ul),.prose :global(ol){margin:0 0 18px;padding-left:22px}
+  .prose :global(li){margin-bottom:6px}
+  .prose :global(table){border-collapse:collapse;width:100%;margin:0 0 20px;font-size:15px}
+  .prose :global(th),.prose :global(td){border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+</style>

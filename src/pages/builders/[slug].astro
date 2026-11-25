@@ -15,6 +15,9 @@ const d = b.data;
 const company = await getEntry(d.company);
 const c = company.data;
 const { Content } = await b.render();
+const written = (await getCollection('articles', (a) => a.data.published && a.data.author.slug === b.slug))
+  .sort((x, y) => y.data.date.localeCompare(x.data.date));
+const TAG: Record<string, string> = { Cost: 't-cost', Comparison: 't-compare', Problems: 't-problems', 'How it works': 't-how' };
 const sc = score(d);
 const first = d.name.split(' ')[0];
 const v = d.verified;
@@ -39,6 +42,7 @@ const jsonld = {
     hasOccupation: { '@type': 'Occupation', name: 'Court builder', occupationLocation: { '@type': 'Place', name: c.region } },
     sameAs: [d.youtube, ...Object.values(d.socials ?? {})].filter((v, i, a) => v && a.indexOf(v) === i),
   },
+  ...(d.faqs.length > 0 && { hasPart: { '@type': 'FAQPage', mainEntity: d.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) } }),
   breadcrumb: {
     '@type': 'BreadcrumbList',
     itemListElement: [
@@ -121,12 +125,32 @@ const jsonld = {
       )}
     </section>
   )}
-  {d.posts.length > 0 && (
-    <section class="wrap">
-      <div class="sh"><h2>Articles</h2></div>
-      <ul class="alist">
-        {d.posts.map((a) => <li><a href={a.url} target="_blank" rel="noopener">{a.title}<span aria-hidden="true">↗</span></a>{a.summary && <p class="asum">{a.summary}</p>}</li>)}
-      </ul>
+  {(written.length > 0 || d.posts.length > 0) && (
+    <section class="wrap" id="articles">
+      <div class="sh"><h2>Written by {first}</h2></div>
+      {written.length > 0 && (
+        <div class="posts">
+          {written.map((a) => (
+            <a class="post" href={`/articles/${a.slug}`}><span class={`tag ${TAG[a.data.topic]}`}>{a.data.topic}</span><h3>{a.data.title}</h3><p>{a.data.dek}</p><span class="meta">{a.data.sports.join(' · ')}</span></a>
+          ))}
+        </div>
+      )}
+      {d.posts.length > 0 && (
+        <>
+          <h3 class="subh">More from {c.name}</h3>
+          <ul class="alist">
+            {d.posts.map((a) => <li><a href={a.url} target="_blank" rel="noopener">{a.title}<span aria-hidden="true">↗</span></a>{a.summary && <p class="asum">{a.summary}</p>}</li>)}
+          </ul>
+        </>
+      )}
+    </section>
+  )}
+  {d.faqs.length > 0 && (
+    <section class="wrap" id="faq">
+      <div class="sh"><h2>Questions {first} gets asked</h2></div>
+      <div class="faq">
+        {d.faqs.map((f, i) => <details id={`faq-${i + 1}`} open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}
+      </div>
     </section>
   )}
   {d.photos.length > 0 && (

@@ -110,6 +110,50 @@
   "text": null
  },
  {
+  "type": "Article",
+  "title": "How to compare three court bids line by line",
+  "url": "/articles/compare-court-bids-line-by-line",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Cost & pricing",
+  "sports": [
+   "Basketball"
+  ],
+  "views": null,
+  "date": "2026-11-25",
+  "score": 79,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 10
+  },
+  "text": "Ask every builder to price hoops, surfacing, fencing and extensions separately so your board can compare apples to apples and choose what to build."
+ },
+ {
+  "type": "Article",
+  "title": "Engineered slab or standard post-tension: which does your court need?",
+  "url": "/articles/engineered-vs-post-tension-slab",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Cost & pricing",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": "2026-11-25",
+  "score": 79,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 10
+  },
+  "text": "A geotech report tells you what your soil is doing, and sometimes it tells you that fixing the soil costs more than the court."
+ },
+ {
   "type": "Video",
   "title": "How to Build a Better Beach Volleyball Court in Texas",
   "url": "https://www.youtube.com/watch?v=rs5VYR8zJpI",
@@ -196,6 +240,28 @@
    "freshness": 7
   },
   "text": null
+ },
+ {
+  "type": "Article",
+  "title": "Pour now, add shade later: the three tiers of concrete",
+  "url": "/articles/three-tiers-of-concrete",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Cost & pricing",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": "2026-11-25",
+  "score": 75,
+  "parts": {
+   "topic": 45,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 10
+  },
+  "text": "If there's any chance you'll add a pergola or shade structure later, the middle tier costs little now and saves a cracked slab later."
  },
  {
   "type": "FAQ",
@@ -430,6 +496,28 @@
   "text": null
  },
  {
+  "type": "Article",
+  "title": "Fence details that matter: round posts, a top rail and a 4-inch inset",
+  "url": "/articles/fence-details-that-matter",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Problems & fixes",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": "2026-11-25",
+  "score": 73,
+  "parts": {
+   "topic": 40,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 3,
+   "freshness": 10
+  },
+  "text": "Three small fence choices protect players and keep post-tension slabs from cracking at the edge."
+ },
+ {
   "type": "Video",
   "title": "How Do You Clean a Modular Gym Floor?",
   "url": "https://www.youtube.com/watch?v=0uqiIQ8sDLc",
@@ -450,6 +538,72 @@
    "freshness": 10
   },
   "text": null
+ },
+ {
+  "type": "FAQ",
+  "title": "How much slope should a court have?",
+  "url": "/builders/jt-dettman#faq-2",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Cost & pricing",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 72,
+  "parts": {
+   "topic": 45,
+   "format": 10,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "We build about 99% of our courts at 1%, or 1 inch every 10 feet. That's about 3.6 inches across a 30-foot court. Flatter still drains, but slower: more ponding, more squeegeeing and more dirt staining."
+ },
+ {
+  "type": "FAQ",
+  "title": "Portable pickleball net or in-ground posts?",
+  "url": "/builders/jt-dettman#faq-7",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Cost & pricing",
+  "sports": [
+   "Pickleball"
+  ],
+  "views": null,
+  "date": null,
+  "score": 72,
+  "parts": {
+   "topic": 45,
+   "format": 10,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "Modern aluminum portable nets weigh 30 to 40 pounds, cost less, and kids can move them. The tension is a little looser. If you play a lot, in-ground posts are best. Skip the sleeves and you can still core holes later."
+ },
+ {
+  "type": "FAQ",
+  "title": "Can we pour the slab now and add a shade structure later?",
+  "url": "/builders/jt-dettman#faq-8",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Cost & pricing",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 72,
+  "parts": {
+   "topic": 45,
+   "format": 10,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "Yes, if you build it for that now. A pergola-ready slab adds reinforcement, an interior beam and a footer wherever a column will land. It adds very little cost. Drilling posts into a plain 4-inch slab later cracks the edges off."
  },
  {
   "type": "FAQ",
@@ -540,6 +694,51 @@
    "freshness": 5
   },
   "text": "Typically $8\u2013$12 per square foot for a new modular gym floor, not including subfloor prep, accessories or maintenance. A 5,000 sq ft gym runs roughly $40,000\u2013$60,000."
+ },
+ {
+  "type": "Article",
+  "title": "Tarkett vs Taraflex: a head-to-head volleyball floor comparison",
+  "url": "/articles/tarkett-vs-taraflex",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Comparisons",
+  "sports": [
+   "Volleyball",
+   "Indoor & gym floors"
+  ],
+  "views": null,
+  "date": "2026-11-25",
+  "score": 70,
+  "parts": {
+   "topic": 40,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 10
+  },
+  "text": "Both are good floors, but the spec sheets don't measure the same things, so here's how to read them side by side."
+ },
+ {
+  "type": "Article",
+  "title": "Our tennis courts crack every year. Three ways to fix them",
+  "url": "/articles/tennis-courts-crack-three-fixes",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Problems & fixes",
+  "sports": [
+   "Tennis"
+  ],
+  "views": null,
+  "date": "2026-11-25",
+  "score": 70,
+  "parts": {
+   "topic": 40,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 0,
+   "freshness": 10
+  },
+  "text": "Resurfacing, an unengineered post-tension cap and a fully engineered slab each solve a different problem, and only one of them deals with the soil."
  },
  {
   "type": "Article",
@@ -854,6 +1053,28 @@
    "freshness": 5
   },
   "text": "Looks at which surface suits a rooftop pickleball court. Contrasts heavy roll-out mats that shift, curl and need regular cleaning with a modular tile system that drains fast and grips better, using one Austin rooftop group's switch as the example."
+ },
+ {
+  "type": "FAQ",
+  "title": "Why are the fence posts set in from the edge of the slab?",
+  "url": "/builders/jt-dettman#faq-5",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Problems & fixes",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 67,
+  "parts": {
+   "topic": 40,
+   "format": 10,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "Posts right at the edge crack the concrete, especially on post-tension slabs. We set them about 4 inches in. That also leaves no gap where someone could roll an ankle between the fence and the slab edge."
  },
  {
   "type": "Video",
@@ -1284,6 +1505,50 @@
   "text": null
  },
  {
+  "type": "Article",
+  "title": "What to put next to your court, and why fine DG is the worst choice",
+  "url": "/articles/what-to-put-next-to-your-court",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "How-to & planning",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": "2026-11-25",
+  "score": 64,
+  "parts": {
+   "topic": 30,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 10
+  },
+  "text": "Treat acrylic like stucco: keep grass and beds about two inches below the court edge, and keep quarter-inch decomposed granite away from it."
+ },
+ {
+  "type": "Article",
+  "title": "Why we don't coat courts in winter",
+  "url": "/articles/why-we-dont-coat-courts-in-winter",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "How-to & planning",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": "2026-11-25",
+  "score": 64,
+  "parts": {
+   "topic": 30,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 10
+  },
+  "text": "A new slab needs time to cure and the right ground conditions before acrylic goes on, but you can still play on it while you wait."
+ },
+ {
   "type": "Video",
   "title": "Is Modular Indoor Flooring Good for Pickleball?",
   "url": "https://www.youtube.com/watch?v=bwbqzRIERAk",
@@ -1529,6 +1794,72 @@
  },
  {
   "type": "FAQ",
+  "title": "When can you paint the court? Why not in winter?",
+  "url": "/builders/jt-dettman#faq-3",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "How-to & planning",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 57,
+  "parts": {
+   "topic": 30,
+   "format": 10,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "A new slab needs at least 30 days to cure, and then the ground has to warm up and dry out. A slab poured in December usually gets coated in February or March. In the meantime we can put up the fence, nets and even temporary lines so you can play."
+ },
+ {
+  "type": "FAQ",
+  "title": "What should go right up against the court edge?",
+  "url": "/builders/jt-dettman#faq-6",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "How-to & planning",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 57,
+  "parts": {
+   "topic": 30,
+   "format": 10,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "Treat acrylic like stucco. Keep grass, mulch and beds about 2 inches below the court surface, or use a rock border, so water can't wick under the coating and peel it. Pavers can be flush. Avoid fine quarter-inch decomposed granite: it tracks onto the court and scratches it."
+ },
+ {
+  "type": "FAQ",
+  "title": "Can we sell sponsor or donor names on the court to fundraise?",
+  "url": "/builders/jt-dettman#faq-10",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "How-to & planning",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 57,
+  "parts": {
+   "topic": 30,
+   "format": 10,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "Yes. We can stencil names and logos and paint them on, just like the lines. For a yearly fundraiser, paint over old names instead of swapping tiles, since sun-faded tiles won't match new ones."
+ },
+ {
+  "type": "FAQ",
   "title": "Can a sport court hold up to desert heat?",
   "url": "/companies/legendary-sports-construction#faq-2",
   "company": "legendary-sports-construction",
@@ -1707,6 +2038,28 @@
    "freshness": 7
   },
   "text": null
+ },
+ {
+  "type": "Article",
+  "title": "What a \"seven-layer\" court surface really means",
+  "url": "/articles/seven-layer-court-surface",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Project showcase",
+  "sports": [
+   "Indoor & gym floors"
+  ],
+  "views": null,
+  "date": "2026-11-25",
+  "score": 54,
+  "parts": {
+   "topic": 20,
+   "format": 12,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 10
+  },
+  "text": "A rubber cushion under acrylic feels great on day one, but outdoors it's a very different floor by year ten."
  },
  {
   "type": "Video",
@@ -1954,6 +2307,72 @@
    "freshness": 10
   },
   "text": null
+ },
+ {
+  "type": "FAQ",
+  "title": "Is it hard to tell if the ball is in or out on a one-color court?",
+  "url": "/builders/jt-dettman#faq-1",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Project showcase",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 47,
+  "parts": {
+   "topic": 20,
+   "format": 10,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "No. Your eye reads the yellow ball against the white line, not against the court color. An all-one-color court with white lines plays fine. Dark or colored lines are what make calls hard."
+ },
+ {
+  "type": "FAQ",
+  "title": "Square posts or round posts? Do we need a top rail?",
+  "url": "/builders/jt-dettman#faq-4",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Project showcase",
+  "sports": [
+   "Multi-sport"
+  ],
+  "views": null,
+  "date": null,
+  "score": 47,
+  "parts": {
+   "topic": 20,
+   "format": 10,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "Round. If someone runs into a post, they hit a blunt surface instead of a corner, and that's why sports construction standards use round posts. Get a top rail too. Without one, the fence bends when players run into it."
+ },
+ {
+  "type": "FAQ",
+  "title": "Do fence-mounted light bars work as well as poles for tennis?",
+  "url": "/builders/jt-dettman#faq-9",
+  "company": "austin-courts-floors",
+  "builder": "jt-dettman",
+  "topic": "Project showcase",
+  "sports": [
+   "Tennis"
+  ],
+  "views": null,
+  "date": null,
+  "score": 47,
+  "parts": {
+   "topic": 20,
+   "format": 10,
+   "engagement": 8,
+   "specificity": 4,
+   "freshness": 5
+  },
+  "text": "For many courts, yes. Light bars mount on the fence and aim down, so neighbors see a hard edge of darkness, and nothing on the ends blinds the server. They're great for retrofits. For poles, three is good recreational light, four is better and six is tournament level."
  },
  {
   "type": "FAQ",
