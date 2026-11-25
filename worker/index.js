@@ -262,6 +262,9 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const p = url.pathname;
+    if (url.hostname !== 'courtsillustrated.com' && url.hostname !== 'localhost') {
+      return Response.redirect('https://courtsillustrated.com' + p + url.search, 301);
+    }
     try {
       if (p.startsWith('/api/') || p === '/admin' || p.startsWith('/admin/')) await ensureSchema(env.DB);
       if (p === '/api/contact' && request.method === 'POST') return await handleContact(request, env);
