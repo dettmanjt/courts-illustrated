@@ -31,6 +31,7 @@ const companies = defineCollection({
     serviceCities: z.array(z.string()).default([]),
     stats: z.array(z.string()).default([]),          // quoted claims, e.g. "over 700 courts built"
     affiliations: z.array(z.string()).default([]),
+    awards: z.array(z.object({ year: z.string(), title: z.string(), from: z.string() })).default([]),
     prices: z.array(z.object({ label: z.string(), text: z.string() })).default([]),
     faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
     projects: z.array(z.string()).default([]),

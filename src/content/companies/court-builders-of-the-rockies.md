@@ -16,10 +16,10 @@ socials:
   x: "https://x.com/SportCourtRocki"
 videoIds: ["BHkRun0zB_s", "-LtqF1Ze4so"]
 phone: "303-805-2090"
-address: {"state": "CO"}
 serviceCities: ["Denver", "Colorado Springs", "Aurora", "Fort Collins", "Boulder", "Castle Rock", "Vail", "Aspen", "Cheyenne", "Jackson Hole"]
 stats: ["Owned and led by Randy and Kristine Resley", "Also serves Kansas, Nebraska, Montana and New Mexico"]
-affiliations: ["Court Builders of America Certified Builder", "ASBA builder member; 10 years on the ASBA board of directors", "MFMA member", "Racquet Sports Industry: 2025 Tennis Court Builder / Contractor of the Year", "Racquet Sports Industry: 2025 Pickleball Court Builder / Contractor of the Year"]
+affiliations: ["Court Builders of America Certified Builder", "ASBA builder member; 10 years on the ASBA board of directors", "MFMA member"]
+awards: [{"year": "2025", "title": "Tennis Court Builder / Contractor of the Year", "from": "Racquet Sports Industry"}, {"year": "2025", "title": "Pickleball Court Builder / Contractor of the Year", "from": "Racquet Sports Industry"}]
 sources: ["https://www.courtbuildersoftherockies.com/about-us/", "https://www.courtbuildersoftherockies.com/", "https://www.courtbuildersoftherockies.com/contact-us/"]
 checkedOn: "2026-11-25"
 ---
