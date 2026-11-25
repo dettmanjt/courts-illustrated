@@ -2,7 +2,7 @@
 name: Eric Meyer
 company: lone-star-game-courts
 role: Owner
-photo: /eric-meyer.png
+photo: /eric-meyer.jpg
 # Confirm numbers, then set published: true after verification.
 courts: 0
 years: 0
