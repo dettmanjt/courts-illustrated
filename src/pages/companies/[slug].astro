@@ -1,5 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
+import VIDS from '../../data/videos.json';
+const mdy = (s: string) => new Date(s + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+const lastOf = (dates: (string | undefined)[]) => dates.filter(Boolean).sort().pop();
 import Base from '../../layouts/Base.astro';
 import Socials from '../../components/Socials.astro';
 import ContactForm from '../../components/ContactForm.astro';
@@ -15,6 +18,9 @@ const builders = (await getCollection('builders', (b) => b.data.published && b.d
   .map((b) => ({ b, s: score(b.data).total }))
   .sort((x, y) => y.s - x.s);
 const avg = builders.length ? Math.round(builders.reduce((a, x) => a + x.s, 0) / builders.length) : 0;
+const bslugs = new Set(builders.map((x) => x.b.slug));
+const latest = lastOf([...c.videoIds, ...builders.flatMap((x) => x.b.data.videoIds)].map((id) => (VIDS as any)[id]?.date)
+  .concat((await getCollection('articles', (a) => a.data.published && bslugs.has(a.data.author.slug))).map((a) => a.data.date)));
 const COLORS = ['var(--teal)', 'var(--pink)', 'var(--sun)', 'var(--violet)'];
 const url = new URL(`/companies/${co.slug}`, Astro.site).href;
 const sameAs = [c.website, ...Object.values(c.socials ?? {})].filter((v, i, a) => v && a.indexOf(v) === i);
@@ -69,6 +75,7 @@ const facts = [
     <div class="stats">
       <div><b>{builders.length}</b>Builders listed</div>
       <div><b>{avg}</b>Avg. CI score</div>
+      {latest && <div><b>{new Date(latest + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</b>Latest content</div>}
     </div>
   </div>
 
@@ -167,12 +174,16 @@ const facts = [
   {c.videoIds.length > 0 && (
     <section class="wrap">
       <div class="sh"><h2>Videos</h2>{c.socials.youtube && <a class="more" href={c.socials.youtube} target="_blank" rel="noopener">Open channel ↗</a>}</div>
-      <div class="vgrid">
-        {c.videoIds.map((id) => (
-          <a href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noopener" aria-label={`Watch a ${c.name} video on YouTube`}>
-            <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" loading="lazy" /><span aria-hidden="true">▶</span>
-          </a>
-        ))}
+      <div class="vids">
+        {c.videoIds.map((id) => { const v = (VIDS as any)[id] || {}; return (
+            <figure class="vcard">
+              <a class="vid" href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noopener" aria-label={v.title || `Watch a ${c.name} video`}>
+                <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" loading="lazy" />
+                <span class="play" aria-hidden="true"></span>
+              </a>
+              <figcaption>{v.title && <h3>{v.title}</h3>}{v.desc && <p>{v.desc}</p>}{v.date && <small>{mdy(v.date)}</small>}</figcaption>
+            </figure>
+          ); })}
       </div>
     </section>
   )}
