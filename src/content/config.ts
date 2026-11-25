@@ -26,6 +26,16 @@ const builders = defineCollection({
     photo: z.string().optional(),          // path under /public
     youtube: z.string().url().optional(),
     videoIds: z.array(z.string()).default([]), // YouTube video IDs to feature
+    // Hand-picked customer reviews that name this builder. Copy the wording exactly and keep the source link.
+    reviews: z.array(z.object({
+      quote: z.string(),
+      author: z.string(),            // as shown on the source, e.g. "Sarah M."
+      location: z.string().optional(), // e.g. "Westlake, TX"
+      source: z.string(),            // e.g. "Google", "Facebook", "Houzz"
+      url: z.string().url().optional(),
+      date: z.string().optional(),   // e.g. "2025-06"
+      project: z.string().optional(), // e.g. "Backyard pickleball court"
+    })).default([]),
     courts: z.number().int().nonnegative(),
     years: z.number().int().nonnegative(),
     certs: z.array(z.string()).default([]),

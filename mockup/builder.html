@@ -12,6 +12,12 @@ body{margin:0}
 .ph b{width:62%;aspect-ratio:1;border-radius:50%;background:var(--ink);display:grid;place-items:center;font-family:var(--display);font-weight:400;font-size:clamp(48px,8vw,90px)}
 .empty{border:2px dashed #555;padding:28px;color:var(--mute);font-size:14px}
 .dir{display:flex;gap:10px;flex-wrap:wrap;font-family:var(--ui);font-size:13px}
+.revs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.rev{margin:0;border:2px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:14px}
+.rev blockquote{margin:0;font-size:17px;line-height:1.55}
+.rev figcaption{font-family:var(--ui);font-size:13px;display:flex;flex-direction:column;gap:3px;color:var(--mute)}
+.rev figcaption b{color:var(--paper)} .rev a{color:var(--teal)}
+@media (max-width:820px){.revs{grid-template-columns:1fr}}
 .dir a{text-decoration:none;color:var(--mute)}
 </style>
 </head>
@@ -63,6 +69,7 @@ body{margin:0}
   </section>
 
   <section class="wrap"><div class="sh"><h2>Videos</h2><a class="more" id="b-yt" hidden target="_blank" rel="noopener">Open channel ↗</a></div><div class="ygrid" id="b-vids" hidden></div><div class="empty" id="b-vids-empty">This builder's YouTube channel appears here once it's connected.</div></section>
+  <section class="wrap"><div class="sh"><h2 id="b-rev-h">Reviews</h2></div><div class="revs" id="b-revs" hidden></div><div class="empty" id="b-revs-empty"></div></section>
   <section class="wrap"><div class="sh"><h2>Articles</h2></div><div class="empty">Articles this builder writes for Courts Illustrated will be listed here.</div></section>
   <section class="wrap"><div class="sh"><h2>Projects</h2></div><div class="empty">Completed project photos go here after review.</div></section>
 
@@ -92,6 +99,10 @@ function render(){
   $('b-region').textContent=c.region;
   const v=b.vids||[]; $('b-vids').hidden=!v.length; $('b-vids-empty').hidden=!!v.length; $('b-yt').hidden=!b.youtube; if(b.youtube) $('b-yt').href=b.youtube;
   $('b-vids').innerHTML=v.map(id=>'<a class="yv" href="https://www.youtube.com/watch?v='+id+'" target="_blank" rel="noopener" aria-label="Watch on YouTube"><img src="yt/'+id+'.jpg" alt=""><span aria-hidden="true">▶</span></a>').join('');
+  const fn=b.name.split(' ')[0], rv=b.reviews||[], E=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  $('b-rev-h').textContent='Reviews that name '+fn; $('b-revs').hidden=!rv.length; $('b-revs-empty').hidden=!!rv.length;
+  $('b-revs-empty').textContent='Customer reviews that mention '+fn+' by name will appear here once they\'re checked against the original source.';
+  $('b-revs').innerHTML=rv.map(r=>'<figure class="rev"><blockquote>“'+E(r.quote)+'”</blockquote><figcaption><b>'+E(r.author)+'</b>'+(r.location?E(r.location):'')+(r.project?'<span>'+E(r.project)+'</span>':'')+'<span>'+(r.url?'<a href="'+E(r.url)+'" target="_blank" rel="noopener">'+E(r.source)+' review ↗</a>':E(r.source)+' review')+(r.date?' · '+E(r.date):'')+'</span></figcaption></figure>').join('');
   $('b-co-name').textContent=c.name; $('b-co-blurb').textContent=c.blurb;
   $('b-co-btns').innerHTML=`<a class="btn" href="${href}">View company profile</a>`+(c.url?`<a class="btn ghost" href="${c.url}" target="_blank" rel="noopener">Visit ${c.urlLabel} ↗</a>`:'');
   if(ld) ld.remove();
