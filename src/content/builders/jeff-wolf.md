@@ -7,6 +7,6 @@ photo: /jeff-wolf.png
 courts: 0
 years: 0
 certs: []
-published: false
+published: true
 ---
 

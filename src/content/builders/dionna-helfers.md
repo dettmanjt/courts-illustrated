@@ -6,6 +6,7 @@ role: Co-Founder
 courts: 0
 years: 0
 certs: []
-published: false
+published: true
+photo: "/dionna-helfers.jpg"
 ---
 

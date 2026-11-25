@@ -6,6 +6,6 @@ role: Certified Court Builder
 courts: 0
 years: 0
 certs: []   # "Certified Court Builder" per NexCourt; confirm which certification (ASBA?)
-published: false
+published: true
 ---
 

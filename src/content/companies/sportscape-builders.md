@@ -7,5 +7,10 @@ website: https://www.sportscapebuilders.com
 blurb: "Marysville, Ohio court and gym builder since 1990, with more than 5,000 completed projects and a certified Sport Court distributor."
 services: [Backyard courts, Home gymnasiums, Golf greens, Basketball hoops, Fitness equipment]
 # Source: sportscapebuilders.com/about. Florida ZIPs not added (office location unknown).
-published: false
+published: true
+socials:
+  website: "https://www.sportscapebuilders.com"
+  instagram: "https://www.instagram.com/sportscapebuilders/"
+  facebook: "https://www.facebook.com/teamsportscape/"
+  x: "https://x.com/sportscapebldrs"
 ---

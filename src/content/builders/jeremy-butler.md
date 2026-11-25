@@ -7,7 +7,7 @@ photo: /jeremy-butler.png
 courts: 0
 years: 10   # with NexCourt since 2015
 certs: []
-published: false
+published: true
 ---
 I've been with NexCourt since 2015. Before that I designed and sold custom pools and outdoor living spaces.
 

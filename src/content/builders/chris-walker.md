@@ -7,7 +7,7 @@ photo: /chris-walker.png
 courts: 0
 years: 25   # 25-year career with NexCourt
 certs: []
-published: false
+published: true
 ---
 I've had a 25-year career with NexCourt and serve as sales manager. I've worked on projects ranging from one-of-a-kind courts for famous athletes to small shooting courts for families across North Texas and Oklahoma.
 

@@ -1,5 +1,11 @@
 import { defineCollection, reference, z } from 'astro:content';
 
+const socials = z.object({
+  website: z.string().url().optional(), instagram: z.string().url().optional(), facebook: z.string().url().optional(),
+  youtube: z.string().url().optional(), tiktok: z.string().url().optional(), linkedin: z.string().url().optional(),
+  x: z.string().url().optional(),
+}).default({});
+
 // One file per company in src/content/companies/
 const companies = defineCollection({
   type: 'content',
@@ -12,6 +18,9 @@ const companies = defineCollection({
     blurb: z.string(),
     services: z.array(z.string()),
     photos: z.array(z.object({ src: z.string(), title: z.string(), type: z.string() })).default([]),
+    socials,
+    videoIds: z.array(z.string()).default([]),   // YouTube videos from the company channel
+    articles: z.array(z.object({ title: z.string(), url: z.string().url() })).default([]), // from their own blog
     published: z.boolean().default(false),
   }),
 });
@@ -26,6 +35,7 @@ const builders = defineCollection({
     photo: z.string().optional(),          // path under /public
     youtube: z.string().url().optional(),
     videoIds: z.array(z.string()).default([]), // YouTube video IDs to feature
+    socials,
     // Hand-picked customer reviews that name this builder. Copy the wording exactly and keep the source link.
     reviews: z.array(z.object({
       quote: z.string(),

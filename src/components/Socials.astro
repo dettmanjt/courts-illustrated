@@ -1,0 +1,12 @@
+---
+// Row of links to a builder's or company's own profiles.
+interface Props { links?: Record<string, string | undefined> }
+const { links = {} } = Astro.props;
+const LABELS: Record<string, string> = { website: 'Website', youtube: 'YouTube', instagram: 'Instagram', facebook: 'Facebook', tiktok: 'TikTok', linkedin: 'LinkedIn', x: 'X' };
+const items = Object.keys(LABELS).filter((k) => links[k]).map((k) => ({ k, href: links[k] as string, label: LABELS[k] }));
+---
+{items.length > 0 && (
+  <ul class="socials" aria-label="Profiles">
+    {items.map((i) => <li><a href={i.href} target="_blank" rel="noopener me" data-k={i.k}>{i.label} ↗</a></li>)}
+  </ul>
+)}

@@ -7,6 +7,6 @@ photo: /kristy-kundysek.png
 courts: 0
 years: 0
 certs: []
-published: false
+published: true
 ---
 I have a passion for sports and fitness. I hold a BS in Kinesiology and Exercise Science from Texas Tech University and enjoy my role at NexCourt encouraging athletic play and good health.

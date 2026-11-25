@@ -9,6 +9,6 @@ courts: 0
 years: 0
 certs: []
 videos: 11
-published: false
+published: true
 ---
 I grew up playing sports with my three brothers and friends almost every day on the court in our driveway. I love seeing a family's home become the hangout house in the neighborhood.

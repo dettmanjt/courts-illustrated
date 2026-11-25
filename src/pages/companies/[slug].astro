@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import Socials from '../../components/Socials.astro';
+import ContactForm from '../../components/ContactForm.astro';
 import { score, initials } from '../../lib/score';
 
 export async function getStaticPaths() {
@@ -43,12 +45,14 @@ const jsonld = {
         <p>Service area: {c.region}</p>
         <div class="chips">{c.services.map((s) => <span>{s}</span>)}</div>
         {c.website && <div class="co-links" style="margin-top:22px"><a class="btn" href={c.website} target="_blank" rel="noopener">Visit {new URL(c.website).hostname} ↗</a></div>}
+        <Socials links={c.socials} />
       </div>
     </div>
   </section>
 
   <section class="wrap">
     <div class="sh"><h2>Builders</h2></div>
+    {builders.length === 0 && <p class="note" style="font-size:15px">{c.name}'s builders haven't been listed yet.</p>}
     <div class="team">
       {builders.map(({ b, s }, i) => (
         <a class="member" href={`/builders/${b.slug}`}>
@@ -75,6 +79,30 @@ const jsonld = {
       </div>
     </section>
   )}
+
+  {c.videoIds.length > 0 && (
+    <section class="wrap">
+      <div class="sh"><h2>Videos</h2>{c.socials.youtube && <a class="more" href={c.socials.youtube} target="_blank" rel="noopener">Open channel ↗</a>}</div>
+      <div class="vgrid">
+        {c.videoIds.map((id) => (
+          <a href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noopener" aria-label={`Watch a ${c.name} video on YouTube`}>
+            <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" loading="lazy" /><span aria-hidden="true">▶</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {c.articles.length > 0 && (
+    <section class="wrap">
+      <div class="sh"><h2>From their blog</h2></div>
+      <ul class="alist">
+        {c.articles.map((a) => <li><a href={a.url} target="_blank" rel="noopener">{a.title}<span aria-hidden="true">↗</span></a></li>)}
+      </ul>
+    </section>
+  )}
+
+  <ContactForm heading={`Talk to ${c.name}`} />
 </Base>
 
 <style>
