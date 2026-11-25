@@ -4,7 +4,8 @@ import Base from '../../layouts/Base.astro';
 import { score, initials } from '../../lib/score';
 
 export async function getStaticPaths() {
-  const builders = await getCollection('builders', (b) => b.data.published);
+  const live = new Set((await getCollection('companies', (c) => c.data.published)).map((c) => c.slug));
+  const builders = await getCollection('builders', (b) => b.data.published && live.has(b.data.company.id));
   return builders.map((b) => ({ params: { slug: b.slug }, props: { b } }));
 }
 const { b } = Astro.props;
@@ -57,7 +58,7 @@ const jsonld = {
           {d.photo ? <img src={d.photo} alt={d.name} /> : <span>{initials(d.name)}</span>}
         </div>
         <ul class="facts">
-          <li><span>Company</span><a href={`/companies/${company.id}`}>{c.name}</a></li>
+          <li><span>Company</span><a href={`/companies/${company.slug}`}>{c.name}</a></li>
           <li><span>Service area</span>{c.region}</li>
           {d.certs.length > 0 && <li><span>Certifications</span>{d.certs.join(' · ')}</li>}
         </ul>
@@ -73,7 +74,7 @@ const jsonld = {
         <h3>{c.name}</h3>
         <p>{c.blurb}</p>
         <div class="co-links">
-          <a class="btn" href={`/companies/${company.id}`}>View company profile</a>
+          <a class="btn" href={`/companies/${company.slug}`}>View company profile</a>
           {c.website && <a class="btn ghost" href={c.website} rel="noopener" target="_blank">Visit {new URL(c.website).hostname} ↗</a>}
         </div>
       </div>

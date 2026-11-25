@@ -4,12 +4,12 @@ import Base from '../layouts/Base.astro';
 import { score, initials } from '../lib/score';
 
 const companies = await getCollection('companies', (c) => c.data.published);
-const live = new Set(companies.map((c) => c.id));
+const live = new Set(companies.map((c) => c.slug));
 const builders = await getCollection('builders', (b) => b.data.published && live.has(b.data.company.id));
 
 // Small JSON payload for the in-page search.
 const data = {
-  companies: Object.fromEntries(companies.map((c) => [c.id, {
+  companies: Object.fromEntries(companies.map((c) => [c.slug, {
     name: c.data.name, region: c.data.region, states: c.data.states, zip3: c.data.zip3, services: c.data.services,
   }])),
   builders: builders.map((b) => ({

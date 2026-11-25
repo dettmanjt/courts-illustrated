@@ -5,11 +5,11 @@ import { score, initials } from '../../lib/score';
 
 export async function getStaticPaths() {
   const companies = await getCollection('companies', (c) => c.data.published);
-  return companies.map((c) => ({ params: { slug: c.id }, props: { co: c } }));
+  return companies.map((c) => ({ params: { slug: c.slug }, props: { co: c } }));
 }
 const { co } = Astro.props;
 const c = co.data;
-const builders = (await getCollection('builders', (b) => b.data.published && b.data.company.id === co.id))
+const builders = (await getCollection('builders', (b) => b.data.published && b.data.company.id === co.slug))
   .map((b) => ({ b, s: score(b.data).total }))
   .sort((x, y) => y.s - x.s);
 const avg = builders.length ? Math.round(builders.reduce((a, x) => a + x.s, 0) / builders.length) : 0;
