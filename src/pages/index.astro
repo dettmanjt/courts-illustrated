@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
 import { score, initials } from '../lib/score';
 
 const companies = await getCollection('companies', (c) => c.data.published);
@@ -66,6 +67,8 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Co
       <div><b>15</b><h3>Content</h3><p>Articles and videos published on Courts Illustrated. Four videos count as one article. Full points at 15.</p></div>
     </div>
   </section>
+
+  <ContactForm />
 
   <script type="application/json" id="ci-data" set:html={JSON.stringify(data)} />
   <script is:inline>

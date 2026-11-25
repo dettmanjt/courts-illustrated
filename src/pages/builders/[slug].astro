@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import ContactForm from '../../components/ContactForm.astro';
 import { score, initials } from '../../lib/score';
 
 export async function getStaticPaths() {
@@ -105,6 +106,8 @@ const jsonld = {
       )}
     </section>
   )}
+  <ContactForm builder={b.slug} builderName={d.name} />
+
   <section class="wrap">
     <div class="sh"><h2>Reviews that name {first}</h2></div>
     {d.reviews.length > 0 ? (

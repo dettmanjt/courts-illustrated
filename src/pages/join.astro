@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="List your court building business | Courts Illustrated" description="Court builders: submit your profile to Courts Illustrated. We verify every builder and company before publishing, then rank builders by experience and the guides they publish.">
+  <div class="mast wrap">
+    <div class="eyebrow">For court builders</div>
+    <h1>Get listed</h1>
+    <p class="role">Submit your profile for review. Every builder on Courts Illustrated is checked before going live: real person, real company, real work.</p>
+  </div>
+
+  <section class="wrap">
+    <div class="sh"><h2>How it works</h2></div>
+    <div class="how">
+      <div><b>1</b><h3>Submit</h3><p>Fill in the form below. Leave blank anything you don't have handy.</p></div>
+      <div><b>2</b><h3>We verify</h3><p>We confirm you work where you say, and check your company's license and insurance.</p></div>
+      <div><b>3</b><h3>Go live</h3><p>Your profile is published with verification badges, your videos and your links.</p></div>
+      <div><b>4</b><h3>Get found</h3><p>Buyers search by ZIP code. Requests to talk to you come straight to your inbox.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="sh"><h2>Your profile</h2></div>
+    <form class="ci-form" data-endpoint="/api/join" data-done="Thanks. Your profile is in for review. We'll email you once it's verified, or if we need anything." novalidate style="max-width:760px">
+      <div class="hp" aria-hidden="true"><label>Company website<input name="company_website" tabindex="-1" autocomplete="off"></label></div>
+
+      <fieldset><legend>About you</legend>
+        <div class="two"><label>Full name *<input name="name" required autocomplete="name"></label><label>Job title<input name="title" placeholder="e.g. Owner, Court Advisor"></label></div>
+        <div class="two"><label>Work email *<input name="email" type="email" required autocomplete="email"><span class="hint">Used to verify you. Never shown on the site.</span></label><label>Phone<input name="phone" type="tel" autocomplete="tel"><span class="hint">For verification only.</span></label></div>
+        <label>Headshot link<input name="headshot" type="url" placeholder="Link to a photo (LinkedIn, company site, Google Drive…)"></label>
+        <label>Bio<textarea name="bio" placeholder="In your own words: how you got into court building, what you're known for, the courts you know best. 100–250 words."></textarea></label>
+      </fieldset>
+
+      <fieldset><legend>Your company</legend>
+        <div class="two"><label>Company name *<input name="company" required autocomplete="organization"></label><label>Company website<input name="company_url" type="url" placeholder="https://"></label></div>
+        <label>Service area<input name="service_area" placeholder="Cities, counties, states or ZIP codes you build in"></label>
+        <label>Contractor license / insurance<input name="license" placeholder="License number, or say you'll send a certificate of insurance"></label>
+      </fieldset>
+
+      <fieldset><legend>Experience</legend>
+        <div class="two"><label>Courts built (approx.)<input name="courts" inputmode="numeric" placeholder="e.g. 150"><span class="hint">Self-reported until we verify it.</span></label><label>Years building courts<input name="years" inputmode="numeric" placeholder="e.g. 8"></label></div>
+        <label>Certifications<input name="certs" placeholder="e.g. ASBA Certified Tennis Court Builder, ASBA member"></label>
+        <label>Court types you build
+          <span class="checks" data-group="court_types">
+            <label><input type="checkbox" value="Pickleball">Pickleball</label><label><input type="checkbox" value="Basketball">Basketball</label><label><input type="checkbox" value="Tennis">Tennis</label><label><input type="checkbox" value="Multi-sport">Multi-sport</label><label><input type="checkbox" value="Indoor floors">Indoor floors</label><label><input type="checkbox" value="Resurfacing">Resurfacing</label>
+          </span>
+        </label>
+      </fieldset>
+
+      <fieldset><legend>Links &amp; socials</legend>
+        <p class="hint" style="margin:0">Paste the full link to each profile you'd like shown. Skip any you don't use.</p>
+        <div class="two"><label>Website<input name="website" type="url" placeholder="https://"></label><label>YouTube<input name="youtube" type="url" placeholder="https://youtube.com/@…"></label></div>
+        <div class="two"><label>Instagram<input name="instagram" type="url" placeholder="https://instagram.com/…"></label><label>Facebook<input name="facebook" type="url" placeholder="https://facebook.com/…"></label></div>
+        <div class="two"><label>TikTok<input name="tiktok" type="url" placeholder="https://tiktok.com/@…"></label><label>LinkedIn<input name="linkedin" type="url" placeholder="https://linkedin.com/in/…"></label></div>
+        <label>X (Twitter)<input name="x" type="url" placeholder="https://x.com/…"></label>
+      </fieldset>
+
+      <fieldset><legend>Content</legend>
+        <label>Videos to feature<textarea name="videos" placeholder="One YouTube link per line"></textarea></label>
+        <label>Articles<textarea name="articles" placeholder="Links to articles you've written, or topics you'd write about for Courts Illustrated"></textarea></label>
+        <label>Reviews that mention you by name<textarea name="reviews" placeholder="Paste the review link (Google, Facebook, Houzz…). One per line."></textarea></label>
+        <label>Anything else<textarea name="notes"></textarea></label>
+      </fieldset>
+
+      <label class="checks" style="margin-top:6px"><input type="checkbox" name="consent" value="yes" required> I confirm this information is accurate and Courts Illustrated may publish it after review.</label>
+      <button class="btn" type="submit">Submit for review</button>
+      <p class="sent" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</Base>
+<script is:inline src="/forms.js"></script>

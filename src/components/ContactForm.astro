@@ -1,0 +1,44 @@
+---
+// "Talk to a builder" form. Saves to /api/contact; the request goes to Courts Illustrated
+// and, when `builder` is set, to that builder too.
+interface Props { builder?: string; builderName?: string; heading?: string }
+const { builder = '', builderName = '', heading } = Astro.props;
+const first = builderName.split(' ')[0];
+---
+<section class="wrap ci-contact" id="talk">
+  <div class="sh"><h2>{heading ?? (first ? `Talk to ${first}` : 'Talk to a builder')}</h2></div>
+  <div class="split">
+    <div>
+      <p>{first
+        ? `Tell ${first} about your court. Your request goes to ${first} and to Courts Illustrated, so someone follows up either way.`
+        : 'Tell us about your court and where it is. We\'ll connect you with a verified builder who serves your area.'}</p>
+      <p class="fine">We only share your details with the builder you're asking about. No spam, no selling your information.</p>
+    </div>
+    <form class="ci-form" data-endpoint="/api/contact" novalidate>
+      <input type="hidden" name="builder" value={builder}>
+      <input type="hidden" name="page">
+      <div class="hp" aria-hidden="true"><label>Company website<input name="company_website" tabindex="-1" autocomplete="off"></label></div>
+      <div class="two">
+        <label>Name<input name="name" required autocomplete="name"></label>
+        <label>Email<input name="email" type="email" required autocomplete="email"></label>
+      </div>
+      <div class="two">
+        <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
+        <label>Court ZIP code<input name="zip" inputmode="numeric" maxlength="10" autocomplete="postal-code"></label>
+      </div>
+      <div class="two">
+        <label>Court type
+          <select name="court_type"><option value="">Choose one</option><option>Pickleball</option><option>Basketball</option><option>Tennis</option><option>Multi-sport</option><option>Indoor gym floor</option><option>Resurfacing / repair</option><option>Not sure yet</option></select>
+        </label>
+        <label>Timeline
+          <select name="timeline"><option value="">Choose one</option><option>As soon as possible</option><option>1–3 months</option><option>3–6 months</option><option>6+ months</option><option>Just researching</option></select>
+        </label>
+      </div>
+      <label>Tell us about the project<textarea name="message" placeholder="Size, surface, where it's going, questions you have…"></textarea></label>
+      <button class="btn" type="submit">Send request</button>
+      <p class="sent" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script is:inline src="/forms.js"></script>
