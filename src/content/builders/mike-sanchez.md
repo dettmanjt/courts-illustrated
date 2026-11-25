@@ -1,7 +1,8 @@
 ---
 name: Mike Sanchez
 company: austin-courts-floors
-# CONFIRM: Mike's job title, headshot, and real numbers before launch.
+photo: /mike-sanchez.jpg
+# CONFIRM: Mike's job title and real numbers before launch.
 photos:
   - { src: /projects/mike-sanchez/2652882966.jpg, title: "Hillside basketball half court", type: Basketball }
   - { src: /projects/mike-sanchez/2506436047.jpg, title: "Backyard court with a downtown view", type: Multi-sport }
