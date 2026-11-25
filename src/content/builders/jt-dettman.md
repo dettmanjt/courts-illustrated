@@ -5,12 +5,14 @@ role: Director of Sales and Marketing
 photo: /jt-dettman.png
 youtube: https://www.youtube.com/@JTtheCourtBuilder
 photos:
-  - { src: /projects/jt-dettman/3787543874.jpg, title: "Community pickleball courts", type: Pickleball }
-  - { src: /projects/jt-dettman/3787594490.jpg, title: "Tennis and pickleball complex", type: Tennis }
-  - { src: /projects/jt-dettman/3787561022.jpg, title: "Tennis net and court lines", type: Tennis }
-  - { src: /projects/jt-dettman/3773290256.jpg, title: "Backyard multi-sport court", type: Multi-sport }
-  - { src: /projects/jt-dettman/3773281975.jpg, title: "Hillside basketball court", type: Basketball }
-  - { src: /projects/jt-dettman/3773275589.jpg, title: "Backyard court with shaded seating", type: Multi-sport }
+  - { src: /projects/jt-dettman/3307361637.jpg, title: "Hillside multi-sport court", type: Multi-sport }
+  - { src: /projects/jt-dettman/2546749708.jpg, title: "Shaded multi-court", type: Multi-sport }
+  - { src: /projects/jt-dettman/2546746942.jpg, title: "Corporate campus game court", type: Basketball }
+  - { src: /projects/jt-dettman/2471494229.jpg, title: "Tennis and pickleball courts from above", type: Tennis }
+  - { src: /projects/jt-dettman/2449239475.jpg, title: "Sand volleyball courts", type: Volleyball }
+  - { src: /projects/jt-dettman/1788781886.jpg, title: "Pickleball complex", type: Pickleball }
+  - { src: /projects/jt-dettman/1777436577.jpg, title: "Backyard game court", type: Multi-sport }
+  - { src: /projects/jt-dettman/1776835126.jpg, title: "Lighted pickleball court", type: Pickleball }
 videoIds: ["0uqiIQ8sDLc", "rs5VYR8zJpI", "bwbqzRIERAk", "lALwJwGZqbM", "LY_fIn5YV5A", "ZpaSd2YWr4Q", "Cz0-d7zwxM0", "6CaHIuj7-UA"]
 # CONFIRM: real numbers before launch (these came from the mockup).
 courts: 263
