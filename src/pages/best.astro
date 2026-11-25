@@ -1,0 +1,126 @@
+---
+// Best Of: every video, article and FAQ on the site, ranked by quality score.
+// Data comes from src/data/content.json (built by scripts/build_content.py).
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import items from '../data/content.json';
+
+const companies = Object.fromEntries((await getCollection('companies')).map((c) => [c.slug, c.data.name]));
+const builders = Object.fromEntries((await getCollection('builders')).map((b) => [b.slug, b.data.name]));
+const TYPES = ['Video', 'Article', 'FAQ'];
+const SPORTS = ['Pickleball', 'Basketball', 'Tennis', 'Volleyball', 'Multi-sport', 'Indoor & gym floors', 'Hockey'];
+const ytId = (url: string) => (url.match(/[?&]v=([\w-]{11})/) || [])[1];
+const site = Astro.site?.href ?? 'https://courtsillustrated.com/';
+const abs = (u: string) => (u.startsWith('/') ? new URL(u, site).href : u);
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'The best court-building videos, guides and answers',
+  url: new URL('/best', site).href,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListOrder: 'https://schema.org/ItemListOrderDescending',
+    numberOfItems: items.length,
+    itemListElement: items.slice(0, 50).map((i, n) => ({ '@type': 'ListItem', position: n + 1, name: i.title, url: abs(i.url) })),
+  },
+};
+---
+<Base title="Best court-building videos, guides & answers | Courts Illustrated" description="The most useful court-building content from verified builders, ranked: costs, comparisons, fixes and how-tos for pickleball, basketball, tennis and gym floors. Filter by format and sport." jsonld={jsonld}>
+  <link rel="stylesheet" href="/home.css">
+  <div class="mast wrap">
+    <div class="eyebrow">Best of Courts Illustrated</div>
+    <h1>The best of court building</h1>
+    <p class="role">Every video, guide and answer from our verified builders, ranked by how well it answers what buyers actually ask.</p>
+  </div>
+
+  <section class="wrap">
+    <div class="filters" role="group" aria-label="Format">
+      <button type="button" data-f="type" data-v="" aria-pressed="true">All formats</button>
+      {TYPES.map((t) => <button type="button" data-f="type" data-v={t} aria-pressed="false">{t === 'FAQ' ? 'FAQs' : t + 's'}</button>)}
+    </div>
+    <div class="filters" role="group" aria-label="Sport">
+      <button type="button" data-f="sport" data-v="" aria-pressed="true">All sports</button>
+      {SPORTS.map((s) => <button type="button" data-f="sport" data-v={s} aria-pressed="false">{s}</button>)}
+    </div>
+    <p class="status" id="count" aria-live="polite">{items.length} pieces · ranked by score</p>
+
+    <ol class="best" id="best">
+      {items.map((i, n) => {
+        const id = i.type === 'Video' ? ytId(i.url) : null;
+        const who = i.builder ? `${builders[i.builder]} · ${companies[i.company]}` : companies[i.company];
+        const ext = !i.url.startsWith('/');
+        return (
+          <li data-type={i.type} data-sports={i.sports.join('|')}>
+            <span class="rk">{n + 1}</span>
+            <a class="thumb" href={i.url} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined} aria-hidden="true" tabindex="-1">
+              {id ? <img src={`https://i.ytimg.com/vi/${id}/mqdefault.jpg`} alt="" loading="lazy" /> : <span class={`ph t-${i.type.toLowerCase()}`}>{i.type === 'FAQ' ? '?' : 'Aa'}</span>}
+            </a>
+            <div class="body">
+              <a class="ttl" href={i.url} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>{i.title}{ext && ' ↗'}</a>
+              <div class="meta">
+                <span class="ty">{i.type}</span><span>{i.topic}</span><span>{i.sports.join(', ')}</span>
+                <a href={i.builder ? `/builders/${i.builder}` : `/companies/${i.company}`}>{who}</a>
+                {i.views != null && <span>{i.views.toLocaleString('en-US')} views</span>}
+              </div>
+            </div>
+            <div class="sc" title={`Topic ${i.parts.topic} · Format ${i.parts.format} · Engagement ${i.parts.engagement} · Specificity ${i.parts.specificity} · Freshness ${i.parts.freshness}`}><b>{i.score}</b>score</div>
+          </li>
+        );
+      })}
+    </ol>
+  </section>
+
+  <section class="wrap" id="scoring">
+    <div class="sh"><h2>How we rank content</h2></div>
+    <p style="max-width:68ch">Buyers trust the companies that answer their questions honestly, especially the ones other builders avoid. So each piece is scored out of 100, weighted toward the topics buyers search for most.</p>
+    <div class="how">
+      <div><b>45<small> pts</small></b><h3>Topic</h3><p>Cost and pricing ranks highest, then problems and fixes, comparisons, "best of" guides, reviews and how-tos. Project showcases and promos rank lowest.</p></div>
+      <div><b>20<small> pts</small></b><h3>Engagement</h3><p>Video views, on a log scale. Full marks at 10,000 views. Articles and FAQs get a neutral score until we can measure them.</p></div>
+      <div><b>15<small> pts</small></b><h3>Format</h3><p>Video scores highest because buyers want to see the work. Articles next, then short answers.</p></div>
+      <div><b>20<small> pts</small></b><h3>Specific &amp; fresh</h3><p>Up to 10 for answering a specific question with real numbers or places, and up to 10 for being recent.</p></div>
+    </div>
+  </section>
+  <script is:inline>
+  const state = { type: '', sport: '' };
+  const rows = [...document.querySelectorAll('#best li')];
+  function apply() {
+    let n = 0;
+    rows.forEach((li) => {
+      const ok = (!state.type || li.dataset.type === state.type) && (!state.sport || li.dataset.sports.split('|').includes(state.sport));
+      li.hidden = !ok;
+      if (ok) li.querySelector('.rk').textContent = ++n;
+    });
+    document.getElementById('count').textContent = `${n} pieces · ranked by score`;
+  }
+  document.querySelectorAll('[data-f]').forEach((b) => b.addEventListener('click', () => {
+    state[b.dataset.f] = b.dataset.v;
+    document.querySelectorAll(`[data-f="${b.dataset.f}"]`).forEach((x) => x.setAttribute('aria-pressed', x === b));
+    apply();
+  }));
+</script>
+</Base>
+
+<style>
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+  .filters button{font-family:var(--ui);font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--paper);border:2px solid var(--line);padding:8px 12px;cursor:pointer}
+  .filters button[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
+  .status{font-family:var(--ui);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:14px 0}
+  .best{list-style:none;padding:0;margin:0;border-top:2px solid var(--line)}
+  .best li{display:grid;grid-template-columns:44px 160px 1fr 70px;gap:16px;align-items:center;padding:14px 0;border-bottom:2px solid var(--line)}
+  .best li[hidden]{display:none}
+  .rk{font-family:var(--display);font-size:30px;text-align:center}
+  .thumb{display:block;aspect-ratio:16/9;overflow:hidden;border:2px solid var(--line)}
+  .thumb img{width:100%;height:100%;object-fit:cover}
+  .ph{display:grid;place-items:center;width:100%;height:100%;font-family:var(--display);font-size:36px;color:#fff}
+  .t-article{background:var(--teal)}.t-faq{background:var(--pink)}
+  .ttl{font-family:var(--ui);font-weight:700;font-size:17px;line-height:1.25;text-decoration:none}
+  .ttl:hover{text-decoration:underline;text-decoration-color:var(--sun);text-underline-offset:4px}
+  .meta{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px;font-size:13px;color:var(--mute)}
+  .meta a{color:inherit}
+  .ty{font-family:var(--ui);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--paper)}
+  .sc{text-align:center;font-family:var(--ui);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+  .sc b{display:block;font-family:var(--display);font-weight:400;font-size:30px;letter-spacing:0;color:var(--paper)}
+  @media (max-width:820px){.best li{grid-template-columns:32px 96px 1fr;gap:10px}.sc{grid-column:3;text-align:left}.sc b{display:inline;font-size:20px;margin-right:6px}.rk{font-size:22px}}
+</style>
+

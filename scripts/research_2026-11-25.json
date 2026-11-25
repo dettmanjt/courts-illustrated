@@ -1,0 +1,162 @@
+{
+"austin-courts-floors": {
+  "founded": "1978",
+  "address": {"street": "10208 Highway 620 North", "city": "Austin", "state": "TX", "zip": "78726"},
+  "phone": "512-335-9779", "email": "info@austincourts.com",
+  "stats": ["Building courts since 1978, with over 45 years of experience", "Formerly Sport Court of Austin; led for nearly 50 years by founders Greg Dettman and Vic Sanchez", "Employee-owned"],
+  "affiliations": ["Sport Court products dealer for Central Texas"],
+  "prices": [
+    {"label": "Backyard game courts", "text": "About $25–$35 per square foot (industry standard, per their pricing page)"},
+    {"label": "Shooting court (500–1,200 sq ft)", "text": "$15,000–$42,000"},
+    {"label": "Pickleball court (1,800–2,300 sq ft)", "text": "$40,000–$80,500"},
+    {"label": "Tennis court (5,000–7,200 sq ft)", "text": "$120,000–$250,000"},
+    {"label": "Modular gym floor", "text": "$8–$12 per square foot, before subfloor prep and accessories"},
+    {"label": "Concrete foundation", "text": "$8–$12 per square foot"},
+    {"label": "Adjustable basketball hoop", "text": "$2,000–$3,500"},
+    {"label": "Wired LED court lighting", "text": "$1,500–$10,000"}
+  ],
+  "faqs": [
+    {"q": "How much does a backyard game court cost in Austin?", "a": "Austin Courts & Floors puts backyard game courts at about $25–$35 per square foot. Their published ranges run from $15,000–$42,000 for a shooting court to $40,000–$80,500 for a pickleball court and $120,000–$250,000 for a tennis court."},
+    {"q": "How much does a modular gym floor cost?", "a": "Typically $8–$12 per square foot for a new modular gym floor, not including subfloor prep, accessories or maintenance. A 5,000 sq ft gym runs roughly $40,000–$60,000."},
+    {"q": "How long has Austin Courts & Floors been building courts?", "a": "Since 1978. The company was formerly Sport Court of Austin and describes itself as the original and longest-operating court builder in Austin and Central Texas."}
+  ],
+  "projects": ["Tennis-to-pickleball conversion at Oak Run apartments", "Historic Georgetown gym renovation (Georgetown, TX; gym in use since 1966)", "Ultimate backyard multi-sport outdoor gym", "Double pickleball game court"],
+  "articles": [
+    ["Half Court vs. Full Court: Sizes, Costs & Which Is Right for You", "https://www.austincourts.com/blog/half-court-vs-full-court-sizes-costs-which-is-right-for-you/"],
+    ["Pickleball Court Surfaces Compared: Tile, Acrylic & Cushioned", "https://www.austincourts.com/blog/pickleball-court-surfaces-compared-tile-acrylic-cushioned/"],
+    ["Tennis & Pickleball Court Resurfacing: 4 Options Compared", "https://www.austincourts.com/blog/fix-failing-asphalt-courts-best-option-roi/"],
+    ["What Size Basketball Court Is Right for Me?", "https://www.austincourts.com/blog/basketball-court-size-guide/"],
+    ["What Is Post-Tension Concrete (and Why It Matters for Courts)", "https://www.austincourts.com/blog/what-is-post-tension-concrete-and-why-it-matters-for-courts/"],
+    ["Court Lighting: Keep Playing After Sunset", "https://www.austincourts.com/blog/court-lighting-guide/"],
+    ["Rooftop Pickleball in Austin: Why the Right Surface Matters", "https://www.austincourts.com/blog/rooftop-pickleball-court-surface/"],
+    ["Options for Finishing the Perimeter of Your Court", "https://www.austincourts.com/blog/options-for-finishing-the-perimeter-of-your-court/"],
+    ["What Beach Volleyball Net System Is Right for Me?", "https://www.austincourts.com/blog/what-beach-volleyball-net-system-is-right-for-me/"],
+    ["What Indoor Volleyball Net System Is Right for Me?", "https://www.austincourts.com/blog/what-indoor-volleyball-net-system-is-right-for-me/"],
+    ["Why Our Backyard Court Became the Heart of Our Home", "https://www.austincourts.com/blog/why-our-backyard-court-became-the-heart-of-our-home/"]
+  ],
+  "sources": ["https://www.austincourts.com/about-us/", "https://www.austincourts.com/about-us/our-team-story/", "https://www.austincourts.com/pricing/", "https://www.austincourts.com/contact"]
+},
+"nexcourt": {
+  "founded": "1989",
+  "offices": [
+    {"label": "Dallas–Fort Worth & North Texas", "street": "1127 South Airport Circle", "city": "Euless", "state": "TX", "zip": "76040", "phone": "817-283-4646"},
+    {"label": "Oklahoma", "street": "2524 N. Broadway, #432", "city": "Edmond", "state": "OK", "zip": "73034", "phone": "405-254-6450"}
+  ],
+  "address": {"street": "1127 South Airport Circle", "city": "Euless", "state": "TX", "zip": "76040"},
+  "phone": "817-283-4646", "hours": "Monday–Friday, 8 AM–5 PM",
+  "stats": ["Building modular-tile athletic courts since 1989", "More than 10,000 residential and commercial game courts and gym floors installed", "Over 100 courts donated or built for underserved communities in DFW", "16-year limited warranty on tile surfacing"],
+  "affiliations": ["Official court builder for the Dallas Mavericks Foundation", "Partner of Nancy Lieberman Charities (55 donated Dream Courts)", "Dallas Stars Foundation (ball hockey courts)", "FC Dallas Foundation (mini-pitch courts)", "Bonded and insured"],
+  "faqs": [
+    {"q": "How much space does a pickleball, basketball or tennis court need?", "a": "Per NexCourt: a regulation pickleball court is 24' x 65' overall (20' x 44' playing area, 30' x 60' ideal for competitive play); a full NBA/NCAA basketball court is 94' x 50'; a full tennis court is 60' x 120' (36' x 78' playing area). Smaller variations are possible."},
+    {"q": "How long does it take to build a court?", "a": "It depends on site and design choices, but a concrete base must cure for 30 days before surfacing, fencing or lights go in, per NexCourt."},
+    {"q": "Can you build a court on a sloped yard?", "a": "Yes. NexCourt says excavation equipment can create a flat pad when needed."},
+    {"q": "What warranty comes with a NexCourt modular court?", "a": "NexCourt's limited warranty covers the tile surfacing for 16 years."},
+    {"q": "Do court builders in Texas need a license?", "a": "Texas does not license general contractors. NexCourt says it is bonded and insured, gets licensed where a city requires it, and uses only licensed electricians."}
+  ],
+  "projects": ["55 Dream Courts donated with Nancy Lieberman Charities", "30 courts for the Dallas Mavericks Foundation", "Five ball hockey courts for the Dallas Stars Foundation", "Three mini-pitch courts for FC Dallas"],
+  "articles": [["Proud to Serve the Greater Community", "https://nexcourt.com/proud-to-serve-the-greater-community/"]],
+  "sources": ["https://nexcourt.com/dfw-court-contractor/", "https://nexcourt.com/dfw-court-contractor/faqs/", "https://nexcourt.com/cost-quote/"]
+},
+"lone-star-game-courts": {
+  "phone": "(210) 241-0005", "email": "eric@lonestargamecourts.com",
+  "address": {"city": "San Antonio", "state": "TX"},
+  "serviceCities": ["San Antonio", "Laredo", "Corpus Christi", "Kingsville", "Helotes", "Schertz", "Seguin", "New Braunfels", "Beeville", "Bulverde"],
+  "stats": ["Decades of hands-on indoor and outdoor court experience", "Primary focus on San Antonio and South Texas; takes inquiries nationwide"],
+  "projects": ["Gold's Gym Rogers Ranch, San Antonio: four indoor pickleball courts", "Laredo Athletic Complex: basketball, volleyball and futsal layouts", "Ben Garza Gymnasium, Corpus Christi: renovation with basketball, volleyball and pickleball lines", "Court of Legends, Helotes: training flooring and three goals", "First Baptist Church of New Braunfels: gym floor and wall pads after 2021 freeze flooding", "Hunt ISD gym floor"],
+  "articles": [
+    ["How Much Does a Backyard Game Court Cost?", "https://lonestargamecourts.com/backyard-game-court-cost/"],
+    ["How Much Does an Outdoor Game Court Cost?", "https://lonestargamecourts.com/outdoor-game-court-cost/"],
+    ["How Much Does an Indoor Game Court Cost?", "https://lonestargamecourts.com/indoor-game-court-cost/"],
+    ["What Is the Best Gym Floor for Your Facility?", "https://lonestargamecourts.com/best-gym-floor/"],
+    ["Multi-Sport Court Design: Can Basketball and Pickleball Share?", "https://lonestargamecourts.com/multi-sport-court-design/"],
+    ["Pickleball Court Construction: What to Know Before You Build", "https://lonestargamecourts.com/pickleball-court-construction/"],
+    ["Game Court Dimensions: Plan Your Court With Eric", "https://lonestargamecourts.com/game-court-dimensions/"],
+    ["Outdoor Court Lighting: Planning for Basketball and Pickleball", "https://lonestargamecourts.com/outdoor-court-lighting/"],
+    ["Game Court Fencing: Ball Containment, Access, and Design", "https://lonestargamecourts.com/game-court-fencing/"],
+    ["Gym Wall Padding: What to Consider Before Installation", "https://lonestargamecourts.com/gym-wall-padding-installation/"],
+    ["PE Gym Floor Design That Supports Your Curriculum", "https://lonestargamecourts.com/pe-gym-floor-design-curriculum/"]
+  ],
+  "socials_add": {"facebook": "https://www.facebook.com/LoneStarGameCourts", "x": "https://x.com/STxSportCourt"},
+  "sources": ["https://lonestargamecourts.com/about-us/", "https://lonestargamecourts.com/indoor-courts/", "https://lonestargamecourts.com/ask-eric/", "https://lonestargamecourts.com/contact"]
+},
+"sportscape-builders": {
+  "offices": [
+    {"label": "Ohio HQ & design center", "street": "16191 Hunters Run", "city": "Marysville", "state": "OH", "zip": "43040"},
+    {"label": "Florida HQ", "street": "2611 Broad St.", "city": "Nokomis", "state": "FL", "zip": "34275"},
+    {"label": "Satellite office", "city": "Medina", "state": "OH"}
+  ],
+  "address": {"street": "16191 Hunters Run", "city": "Marysville", "state": "OH", "zip": "43040"},
+  "phone": "937-642-4667", "email": "info@teamsportscape.com",
+  "stats": ["More than 5,000 completed projects since 1990", "Founder Jeff Chambers has built courts and gyms for over 25 years"],
+  "affiliations": ["Certified distributor of Sport Court products"],
+  "sources": ["https://www.sportscapebuilders.com/", "https://www.sportscapebuilders.com/about-sportscape-builders", "https://www.sportscapebuilders.com/contact"]
+},
+"cba-sports": {
+  "founded": "1992",
+  "address": {"street": "3115 Medlock Bridge Road", "city": "Norcross", "state": "GA", "zip": "30071"},
+  "phone": "770-797-9990", "email": "info@cbasports.com", "hours": "Monday–Friday, 9 AM–5 PM",
+  "stats": ["Founded in 1992", "Over 15 million square feet of sports floors, athletic surfaces and synthetic turf installed", "Serves Georgia plus parts of Alabama, Florida, Tennessee and South Carolina"],
+  "affiliations": ["Strategic partner of the Atlanta Hawks"],
+  "prices": [{"label": "Multi-purpose backyard court", "text": "Typically $30,000–$75,000 depending on site prep, size, surface, lights and fencing"}],
+  "faqs": [
+    {"q": "How much does a backyard basketball or multi-sport court cost in Georgia?", "a": "CBA Sports says multi-purpose courts typically range from $30,000 to $75,000, depending on site prep, size, surface, lighting and fencing."},
+    {"q": "How much space do I need for a backyard basketball court?", "a": "Per CBA Sports: a half court can be as small as 25' x 25'; a full three-point line needs at least 42' of width; their recommended minimum full court is about 36' x 66'."},
+    {"q": "Is concrete or asphalt better under a court?", "a": "CBA Sports recommends concrete as the most durable, longest-lasting base; cracks in asphalt are structural and can only be repaired cosmetically."},
+    {"q": "Which court surface is easiest on the joints?", "a": "Modular tiles and rubber hybrid systems add cushioning; standard acrylic coatings do not, per CBA Sports."},
+    {"q": "Do I need a permit or HOA approval for a backyard court?", "a": "It depends on your county and city zoning. HOAs usually ask for plans and drawings before approving, per CBA Sports."}
+  ],
+  "projects": ["Clients include the University of Georgia, Georgia Tech, Georgia State, Clemson, Wake Forest, Florida State and the Atlanta Hawks", "Atlanta Hawks College Park community court"],
+  "sources": ["https://www.cbasports.com/", "https://www.cbasports.com/about/", "https://www.cbasports.com/contact/", "https://www.cbasports.com/areas-served/", "https://www.cbasports.com/gallery/outdoor-courts/faqs/"]
+},
+"court-builders-stl": {
+  "founded": "2011",
+  "address": {"city": "St. Louis", "state": "MO"},
+  "phone": "636-242-1350", "email": "info@courtbuilders-stl.com", "hours": "Mon–Fri 8 AM–6 PM, Sat 9 AM–4 PM",
+  "serviceCities": ["St. Louis", "St. Charles", "O'Fallon", "Chesterfield", "Ballwin", "Kirkwood", "Webster Groves", "Clayton", "Jefferson County", "Franklin County", "Warren County", "Metro East Illinois"],
+  "stats": ["Over 700 courts built across Missouri and Illinois", "Serving St. Louis since 2011"],
+  "affiliations": ["BBB Accredited Business", "Financing through Regions Bank", "Independent company; not affiliated with Connor Sport Court International"],
+  "prices": [{"label": "Consultation", "text": "Free"}, {"label": "Financing", "text": "Loans from $1,000–$70,000, including 12 months same-as-cash and a 9.99% APR 5-year option"}],
+  "faqs": [
+    {"q": "How long does it take to install a backyard court in St. Louis?", "a": "Court Builders of St. Louis says a typical backyard court takes 3–5 days to install; larger facilities take 1–2 weeks."},
+    {"q": "What areas does Court Builders of St. Louis serve?", "a": "The St. Louis metro, including St. Charles, O'Fallon, Chesterfield, Ballwin, Kirkwood, Webster Groves and Clayton, plus surrounding Missouri and Illinois communities."},
+    {"q": "Can I finance a backyard court?", "a": "Yes. Court Builders of St. Louis offers financing through Regions Bank, with loans from $1,000 to $70,000."}
+  ],
+  "sources": ["https://www.courtbuilders-stl.com/", "https://www.courtbuilders-stl.com/about", "https://www.courtbuilders-stl.com/the-process", "https://www.courtbuilders-stl.com/financing", "https://www.courtbuilders-stl.com/contact"]
+},
+"legendary-sports-construction": {
+  "phone": "702-883-8386", "email": "info@legendarysportsconstruction.com", "hours": "Monday–Friday, 8 AM–4 PM",
+  "address": {"city": "Las Vegas", "state": "NV"},
+  "offices": [{"label": "Southern Nevada", "city": "Las Vegas", "state": "NV", "phone": "702-883-8386"}, {"label": "Arizona", "city": "Phoenix area", "state": "AZ", "phone": "480-878-2292"}],
+  "serviceCities": ["Las Vegas", "Henderson", "North Las Vegas", "Boulder City", "Summerlin South", "Scottsdale", "Paradise Valley", "Phoenix", "Chandler", "Gilbert", "Mesa", "Peoria", "Glendale"],
+  "stats": ["Over 20 years of experience", "Over 10,000 completed projects (per their homepage)", "Courts in Las Vegas still in play after 30+ years"],
+  "prices": [
+    {"label": "Outdoor acrylic pickleball court", "text": "Typically $20,000–$35,000"},
+    {"label": "Backyard basketball court (Arizona)", "text": "$15,000–$30,000"},
+    {"label": "Tennis court", "text": "Starts at $150,000"},
+    {"label": "Tennis court refurbishing", "text": "Typically $5,000–$15,000"},
+    {"label": "Volleyball court", "text": "$3,000–$15,000"},
+    {"label": "Basketball court repaint", "text": "Typically $1,500–$5,000"}
+  ],
+  "faqs": [
+    {"q": "How much does it cost to build a pickleball court in Las Vegas?", "a": "Legendary Sports Construction says a standard outdoor acrylic pickleball court typically runs $20,000–$35,000. They give itemized quotes after a site visit rather than per-foot prices."},
+    {"q": "Can a sport court hold up to desert heat?", "a": "Yes, if it's built for it: UV-stable acrylic coatings, a base engineered for soil movement, and planning for orientation and shade, per Legendary."},
+    {"q": "What court surfaces are available?", "a": "Legendary offers poured acrylic, cushioned acrylic, modular tile, turf and hardwood, chosen by sport and use."},
+    {"q": "Do Las Vegas court builders work with HOAs?", "a": "Legendary builds for HOAs, apartments, resorts, schools and parks, and prepares layouts, colors and renderings for design-review committees."}
+  ],
+  "projects": ["Courts for Anthem Country Club, The Ridges, MacDonald Ranch, Southern Highlands and The Summit", "Chicken N Pickle, Henderson", "Pac-12 Fan Plaza court", "Max Pacioretty's backyard sport court"],
+  "articles": [
+    ["Cushioned Court Surface Systems: Worth It or Not", "https://legendarysportsconstruction.com/cushioned-court-surface-systems/"],
+    ["Building a Sport Court on a Sloped Lot", "https://legendarysportsconstruction.com/building-a-court-on-a-sloped-lot/"],
+    ["Basketball Goal Systems: What Actually Matters", "https://legendarysportsconstruction.com/basketball-goal-systems-buyers-guide/"],
+    ["Replacing a Lawn With a Sport Court", "https://legendarysportsconstruction.com/replacing-lawn-with-a-sport-court/"],
+    ["Court Edges, Curbs and Transitions", "https://legendarysportsconstruction.com/court-edges-curbs-and-transitions/"],
+    ["Landscaping and Irrigation Around a Sport Court", "https://legendarysportsconstruction.com/landscaping-and-irrigation-around-a-court/"],
+    ["Court Accessories: Seating, Storage, Shade and Scoreboards", "https://legendarysportsconstruction.com/court-accessories-seating-storage-and-scoreboards/"],
+    ["Practice Walls and Rebounders for Backyard Courts", "https://legendarysportsconstruction.com/practice-walls-and-rebounders/"],
+    ["Padel Court Construction in Nevada and Arizona", "https://legendarysportsconstruction.com/padel-court-construction-nevada-arizona/"],
+    ["Futsal and Small-Sided Soccer Courts", "https://legendarysportsconstruction.com/futsal-and-small-sided-soccer-courts/"]
+  ],
+  "socials_add": {"facebook": "https://www.facebook.com/legendarysportsconstruction", "instagram": "https://www.instagram.com/legendarysportsconstruction"},
+  "sources": ["https://legendarysportsconstruction.com/about-us/", "https://legendarysportsconstruction.com/faqs/", "https://legendarysportsconstruction.com/contact-us/", "https://legendarysportsconstruction.com/service-areas/nevada/", "https://legendarysportsconstruction.com/service-areas/arizona/"]
+}
+}

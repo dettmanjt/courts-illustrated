@@ -16,14 +16,49 @@ const builders = (await getCollection('builders', (b) => b.data.published && b.d
   .sort((x, y) => y.s - x.s);
 const avg = builders.length ? Math.round(builders.reduce((a, x) => a + x.s, 0) / builders.length) : 0;
 const COLORS = ['var(--teal)', 'var(--pink)', 'var(--sun)', 'var(--violet)'];
+const url = new URL(`/companies/${co.slug}`, Astro.site).href;
+const sameAs = [c.website, ...Object.values(c.socials ?? {})].filter((v, i, a) => v && a.indexOf(v) === i);
+const place = (a: any) => a && { '@type': 'PostalAddress', streetAddress: a.street, addressLocality: a.city, addressRegion: a.state, postalCode: a.zip, addressCountry: 'US' };
 const jsonld = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: c.name,
-  url: c.website,
-  areaServed: c.region,
-  employee: builders.map(({ b }) => ({ '@type': 'Person', name: b.data.name, jobTitle: b.data.role, url: new URL(`/builders/${b.slug}`, Astro.site).href })),
+  '@graph': [
+    {
+      '@type': 'HomeAndConstructionBusiness',
+      '@id': `${url}#business`,
+      name: c.name,
+      url: c.website ?? url,
+      description: c.blurb,
+      telephone: c.phone,
+      email: c.email,
+      foundingDate: c.founded,
+      address: place(c.address),
+      areaServed: c.serviceCities.length ? c.serviceCities.map((n) => ({ '@type': 'Place', name: n })) : c.region,
+      knowsAbout: c.services,
+      sameAs,
+      employee: builders.map(({ b }) => ({ '@type': 'Person', name: b.data.name, jobTitle: b.data.role, url: new URL(`/builders/${b.slug}`, Astro.site).href })),
+    },
+    c.faqs.length > 0 && {
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: c.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Courts Illustrated', item: new URL('/', Astro.site).href },
+        { '@type': 'ListItem', position: 2, name: c.name, item: url },
+      ],
+    },
+  ].filter(Boolean),
 };
+const facts = [
+  ['Founded', c.founded],
+  ['Headquarters', c.address && [c.address.street, c.address.city, [c.address.state, c.address.zip].filter(Boolean).join(' ')].filter(Boolean).join(', ')],
+  ['Phone', c.phone],
+  ['Email', c.email],
+  ['Hours', c.hours],
+  ['Service area', c.serviceCities.length ? c.serviceCities.join(', ') : c.region],
+].filter(([, v]) => v);
 ---
 <Base title={`${c.name}, court builder in ${c.region} | Courts Illustrated`} description={c.blurb} jsonld={jsonld}>
   <div class="mast wrap">
@@ -49,6 +84,48 @@ const jsonld = {
       </div>
     </div>
   </section>
+
+
+  {(facts.length > 0 || c.stats.length > 0) && (
+    <section class="wrap">
+      <div class="sh"><h2>At a glance</h2></div>
+      <div class="split">
+        <ul class="facts">{facts.map(([k, v]) => <li><span>{k}</span>{k === 'Phone' ? <a href={`tel:${String(v).replace(/[^\d]/g, '')}`}>{v}</a> : k === 'Email' ? <a href={`mailto:${v}`}>{v}</a> : v}</li>)}</ul>
+        <div>
+          {c.stats.length > 0 && <ul class="claims">{c.stats.map((t) => <li>{t}</li>)}</ul>}
+          {c.affiliations.length > 0 && <ul class="claims aff">{c.affiliations.map((t) => <li>{t}</li>)}</ul>}
+          {c.offices.length > 1 && <ul class="claims">{c.offices.map((o) => <li><b>{o.label}:</b> {[o.street, o.city, o.state].filter(Boolean).join(', ')}{o.phone && ` · ${o.phone}`}</li>)}</ul>}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {c.prices.length > 0 && (
+    <section class="wrap">
+      <div class="sh"><h2>What it costs</h2></div>
+      <p style="max-width:68ch">{c.name} publishes these prices. That kind of openness is rare in this industry, and it's one of the best signs you're dealing with a builder you can trust.</p>
+      <table class="prices">
+        <tbody>{c.prices.map((p) => <tr><th scope="row">{p.label}</th><td>{p.text}</td></tr>)}</tbody>
+      </table>
+      <p class="note">Prices as published by {c.name}{c.checkedOn && `, checked ${c.checkedOn}`}. Your quote depends on your site.</p>
+    </section>
+  )}
+
+  {c.faqs.length > 0 && (
+    <section class="wrap" id="faq">
+      <div class="sh"><h2>Questions buyers ask</h2></div>
+      <div class="faq">
+        {c.faqs.map((f, i) => <details id={`faq-${i + 1}`} open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}
+      </div>
+    </section>
+  )}
+
+  {c.projects.length > 0 && (
+    <section class="wrap">
+      <div class="sh"><h2>Notable work</h2></div>
+      <ul class="claims">{c.projects.map((t) => <li>{t}</li>)}</ul>
+    </section>
+  )}
 
   <section class="wrap">
     <div class="sh"><h2>Builders</h2></div>
@@ -103,9 +180,23 @@ const jsonld = {
   )}
 
   <ContactForm heading={`Talk to ${c.name}`} />
+
+  {c.sources.length > 0 && (
+    <section class="wrap sources">
+      <p class="note">Sources: facts on this page come from {c.name}'s own website{c.checkedOn && `, checked ${c.checkedOn}`}: {c.sources.map((u, i) => <>{i > 0 && ', '}<a href={u} target="_blank" rel="noopener">{new URL(u).pathname === '/' ? new URL(u).hostname : new URL(u).pathname}</a></>)}. Spot something out of date? <a href={`/update`}>Request a change</a>.</p>
+    </section>
+  )}
 </Base>
 
 <style>
+  .claims{list-style:none;padding:0;margin:0 0 16px;display:grid;gap:8px}
+  .claims li{padding-left:18px;position:relative}
+  .claims li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;background:var(--teal)}
+  .claims.aff li::before{background:var(--sun)}
+  .prices{width:100%;max-width:760px;border-collapse:collapse;border-top:2px solid var(--line)}
+  .prices th,.prices td{text-align:left;padding:12px 8px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  .prices th{font-family:var(--ui);font-weight:700;width:45%}
+  .sources{padding-block:24px}
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
   .chips span{font-family:var(--ui);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:2px solid var(--line);padding:6px 10px}
   .team{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--line);border-left:2px solid var(--line)}

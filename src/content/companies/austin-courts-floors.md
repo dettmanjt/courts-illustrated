@@ -27,19 +27,16 @@ socials:
   instagram: "https://www.instagram.com/austincourtsandfloors/"
   facebook: "https://www.facebook.com/profile.php?id=61587157874550"
   youtube: "https://www.youtube.com/@JTtheCourtBuilder"
-articles:
-  - title: "Half Court vs. Full Court: Sizes, Costs & Which Is Right for You"
-    url: "https://www.austincourts.com/blog/half-court-vs-full-court-sizes-costs-which-is-right-for-you/"
-  - title: "Pickleball Court Surfaces Compared: Tile, Acrylic & Cushioned"
-    url: "https://www.austincourts.com/blog/pickleball-court-surfaces-compared-tile-acrylic-cushioned/"
-  - title: "What Is Post-Tension Concrete (and Why It Matters for Courts)"
-    url: "https://www.austincourts.com/blog/what-is-post-tension-concrete-and-why-it-matters-for-courts/"
-  - title: "Options for Finishing the Perimeter of Your Court"
-    url: "https://www.austincourts.com/blog/options-for-finishing-the-perimeter-of-your-court/"
-  - title: "Why Our Backyard Court Became the Heart of Our Home"
-    url: "https://www.austincourts.com/blog/why-our-backyard-court-became-the-heart-of-our-home/"
-  - title: "What Beach Volleyball Net System Is Right for Me?"
-    url: "https://www.austincourts.com/blog/what-beach-volleyball-net-system-is-right-for-me/"
-  - title: "What Indoor Volleyball Net System Is Right for Me?"
-    url: "https://www.austincourts.com/blog/what-indoor-volleyball-net-system-is-right-for-me/"
+founded: "1978"
+address: {"street": "10208 Highway 620 North", "city": "Austin", "state": "TX", "zip": "78726"}
+phone: "512-335-9779"
+email: "info@austincourts.com"
+stats: ["Building courts since 1978, with over 45 years of experience", "Formerly Sport Court of Austin; led for nearly 50 years by founders Greg Dettman and Vic Sanchez", "Employee-owned"]
+affiliations: ["Sport Court products dealer for Central Texas"]
+prices: [{"label": "Backyard game courts", "text": "About $25\u2013$35 per square foot (industry standard, per their pricing page)"}, {"label": "Shooting court (500\u20131,200 sq ft)", "text": "$15,000\u2013$42,000"}, {"label": "Pickleball court (1,800\u20132,300 sq ft)", "text": "$40,000\u2013$80,500"}, {"label": "Tennis court (5,000\u20137,200 sq ft)", "text": "$120,000\u2013$250,000"}, {"label": "Modular gym floor", "text": "$8\u2013$12 per square foot, before subfloor prep and accessories"}, {"label": "Concrete foundation", "text": "$8\u2013$12 per square foot"}, {"label": "Adjustable basketball hoop", "text": "$2,000\u2013$3,500"}, {"label": "Wired LED court lighting", "text": "$1,500\u2013$10,000"}]
+faqs: [{"q": "How much does a backyard game court cost in Austin?", "a": "Austin Courts & Floors puts backyard game courts at about $25\u2013$35 per square foot. Their published ranges run from $15,000\u2013$42,000 for a shooting court to $40,000\u2013$80,500 for a pickleball court and $120,000\u2013$250,000 for a tennis court."}, {"q": "How much does a modular gym floor cost?", "a": "Typically $8\u2013$12 per square foot for a new modular gym floor, not including subfloor prep, accessories or maintenance. A 5,000 sq ft gym runs roughly $40,000\u2013$60,000."}, {"q": "How long has Austin Courts & Floors been building courts?", "a": "Since 1978. The company was formerly Sport Court of Austin and describes itself as the original and longest-operating court builder in Austin and Central Texas."}]
+projects: ["Tennis-to-pickleball conversion at Oak Run apartments", "Historic Georgetown gym renovation (Georgetown, TX; gym in use since 1966)", "Ultimate backyard multi-sport outdoor gym", "Double pickleball game court"]
+sources: ["https://www.austincourts.com/about-us/", "https://www.austincourts.com/about-us/our-team-story/", "https://www.austincourts.com/pricing/", "https://www.austincourts.com/contact"]
+articles: [{"title": "Half Court vs. Full Court: Sizes, Costs & Which Is Right for You", "url": "https://www.austincourts.com/blog/half-court-vs-full-court-sizes-costs-which-is-right-for-you/"}, {"title": "Pickleball Court Surfaces Compared: Tile, Acrylic & Cushioned", "url": "https://www.austincourts.com/blog/pickleball-court-surfaces-compared-tile-acrylic-cushioned/"}, {"title": "Tennis & Pickleball Court Resurfacing: 4 Options Compared", "url": "https://www.austincourts.com/blog/fix-failing-asphalt-courts-best-option-roi/"}, {"title": "What Size Basketball Court Is Right for Me?", "url": "https://www.austincourts.com/blog/basketball-court-size-guide/"}, {"title": "What Is Post-Tension Concrete (and Why It Matters for Courts)", "url": "https://www.austincourts.com/blog/what-is-post-tension-concrete-and-why-it-matters-for-courts/"}, {"title": "Court Lighting: Keep Playing After Sunset", "url": "https://www.austincourts.com/blog/court-lighting-guide/"}, {"title": "Rooftop Pickleball in Austin: Why the Right Surface Matters", "url": "https://www.austincourts.com/blog/rooftop-pickleball-court-surface/"}, {"title": "Options for Finishing the Perimeter of Your Court", "url": "https://www.austincourts.com/blog/options-for-finishing-the-perimeter-of-your-court/"}, {"title": "What Beach Volleyball Net System Is Right for Me?", "url": "https://www.austincourts.com/blog/what-beach-volleyball-net-system-is-right-for-me/"}, {"title": "What Indoor Volleyball Net System Is Right for Me?", "url": "https://www.austincourts.com/blog/what-indoor-volleyball-net-system-is-right-for-me/"}, {"title": "Why Our Backyard Court Became the Heart of Our Home", "url": "https://www.austincourts.com/blog/why-our-backyard-court-became-the-heart-of-our-home/"}]
+checkedOn: "2026-11-25"
 ---

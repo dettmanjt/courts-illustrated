@@ -14,7 +14,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:url" content={canonical}>
-  <link rel="icon" href="/ci-logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Courts Illustrated">
+  <meta property="og:image" content={new URL('/ci-logo.png', Astro.site)}>
+  <meta name="twitter:card" content="summary">
+  <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Archivo:wght@500;700&display=swap">
   <link rel="stylesheet" href="/ci.css">
@@ -25,7 +32,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <div class="frame">
     <header class="top wrap">
       <a href="/" aria-label="Courts Illustrated home"><span class="lockup"><img src="/ci-mark.png" alt=""><b>Courts Illustrated</b></span></a>
-      <nav class="dir" aria-label="Site"><a href="/">Find a builder</a><a href="/#how">How rankings work</a><a href="/join">Get listed</a></nav>
+      <nav class="dir" aria-label="Site"><a href="/">Find a builder</a><a href="/best">Best of</a><a href="/#how">How rankings work</a><a href="/join">Get listed</a></nav>
     </header>
     <slot />
     <footer class="wrap">

@@ -21,6 +21,21 @@ const companies = defineCollection({
     socials,
     videoIds: z.array(z.string()).default([]),   // YouTube videos from the company channel
     articles: z.array(z.object({ title: z.string(), url: z.string().url() })).default([]), // from their own blog
+    // Facts from the company's own website (each section lists its source pages).
+    founded: z.string().optional(),
+    address: z.object({ street: z.string().optional(), city: z.string(), state: z.string(), zip: z.string().optional() }).optional(),
+    offices: z.array(z.object({ label: z.string(), city: z.string(), state: z.string(), street: z.string().optional(), zip: z.string().optional(), phone: z.string().optional() })).default([]),
+    phone: z.string().optional(),
+    email: z.string().optional(),
+    hours: z.string().optional(),
+    serviceCities: z.array(z.string()).default([]),
+    stats: z.array(z.string()).default([]),          // quoted claims, e.g. "over 700 courts built"
+    affiliations: z.array(z.string()).default([]),
+    prices: z.array(z.object({ label: z.string(), text: z.string() })).default([]),
+    faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
+    projects: z.array(z.string()).default([]),
+    sources: z.array(z.string().url()).default([]),
+    checkedOn: z.string().optional(),
     published: z.boolean().default(false),
   }),
 });

@@ -5,7 +5,7 @@ role: Founder, President & Co-Owner
 photo: /mark-kundysek.webp
 # Source: nexcourt.com team page. Confirm numbers, then set published: true after verification.
 courts: 0
-years: 37   # in court surfacing since 1988
+years: 38
 certs: []
 published: true
 ---

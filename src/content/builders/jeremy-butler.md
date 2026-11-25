@@ -5,7 +5,7 @@ role: Outside Sales, Tarrant County
 photo: /jeremy-butler.png
 # Source: nexcourt.com team page. Confirm numbers, then set published: true after verification.
 courts: 0
-years: 10   # with NexCourt since 2015
+years: 11
 certs: []
 published: true
 ---

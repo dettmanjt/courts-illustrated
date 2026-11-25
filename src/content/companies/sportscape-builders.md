@@ -13,4 +13,12 @@ socials:
   instagram: "https://www.instagram.com/sportscapebuilders/"
   facebook: "https://www.facebook.com/teamsportscape/"
   x: "https://x.com/sportscapebldrs"
+offices: [{"label": "Ohio HQ & design center", "street": "16191 Hunters Run", "city": "Marysville", "state": "OH", "zip": "43040"}, {"label": "Florida HQ", "street": "2611 Broad St.", "city": "Nokomis", "state": "FL", "zip": "34275"}, {"label": "Satellite office", "city": "Medina", "state": "OH"}]
+address: {"street": "16191 Hunters Run", "city": "Marysville", "state": "OH", "zip": "43040"}
+phone: "937-642-4667"
+email: "info@teamsportscape.com"
+stats: ["More than 5,000 completed projects since 1990", "Founder Jeff Chambers has built courts and gyms for over 25 years"]
+affiliations: ["Certified distributor of Sport Court products"]
+sources: ["https://www.sportscapebuilders.com/", "https://www.sportscapebuilders.com/about-sportscape-builders", "https://www.sportscapebuilders.com/contact"]
+checkedOn: "2026-11-25"
 ---

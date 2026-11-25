@@ -32,12 +32,24 @@ const jsonld = {
     name: d.name,
     jobTitle: d.role,
     image: d.photo ? new URL(d.photo, Astro.site).href : undefined,
-    worksFor: { '@type': 'Organization', name: c.name, url: c.website, areaServed: c.region },
-    sameAs: d.youtube ? [d.youtube] : undefined,
+    url: new URL(`/builders/${b.slug}`, Astro.site).href,
+    description: b.body?.trim().split('\n')[0] || undefined,
+    worksFor: { '@type': 'HomeAndConstructionBusiness', '@id': new URL(`/companies/${company.slug}#business`, Astro.site).href, name: c.name, url: c.website },
+    knowsAbout: c.services,
+    hasOccupation: { '@type': 'Occupation', name: 'Court builder', occupationLocation: { '@type': 'Place', name: c.region } },
+    sameAs: [d.youtube, ...Object.values(d.socials ?? {})].filter((v, i, a) => v && a.indexOf(v) === i),
+  },
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Courts Illustrated', item: new URL('/', Astro.site).href },
+      { '@type': 'ListItem', position: 2, name: c.name, item: new URL(`/companies/${company.slug}`, Astro.site).href },
+      { '@type': 'ListItem', position: 3, name: d.name },
+    ],
   },
 };
 ---
-<Base title={`${d.name}, ${d.role} at ${c.name} | Courts Illustrated`} description={`${d.name} builds courts with ${c.name} in ${c.region}. Verified builder profile, projects and articles.`} jsonld={jsonld}>
+<Base title={`${d.name}, ${d.role} at ${c.name} | Courts Illustrated`} description={`${d.name} is ${/^[AEIOU]/.test(d.role) ? 'an' : 'a'} ${d.role} at ${c.name}, building courts in ${c.region}.${d.years ? ` ${d.years} years building courts.` : ''}${d.videos ? ` ${d.videos} videos.` : ''} Profile, videos and how to reach them.`} jsonld={jsonld}>
   <div class="mast wrap">
     <div class="eyebrow">Builder Profile · {c.region}</div>
     <h1>{d.name}</h1>
