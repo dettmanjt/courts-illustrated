@@ -5,7 +5,7 @@ role: Court Advisor
 photo: /brent-murphy.png
 # Source: austincourts.com team page. Confirm numbers, then set published: true after verification.
 courts: 174
-years: 0
+years: 3
 certs: []
 published: true
 ---
