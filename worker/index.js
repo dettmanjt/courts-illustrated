@@ -23,6 +23,8 @@ const SCHEMA = [
     approval TEXT, photos INTEGER DEFAULT 0, status TEXT NOT NULL DEFAULT 'new', notes TEXT DEFAULT '')`,
   `CREATE TABLE IF NOT EXISTS content_photos (
     id INTEGER PRIMARY KEY AUTOINCREMENT, submission_id INTEGER NOT NULL, mime TEXT, data TEXT NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS join_photos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, submission_id INTEGER NOT NULL, role TEXT, mime TEXT, data TEXT NOT NULL)`,
 ];
 
 let schemaReady = false;
@@ -84,7 +86,7 @@ async function handleContact(request, env) {
   return json({ ok: true });
 }
 
-const JOIN_FIELDS = ['name', 'title', 'company', 'company_url', 'email', 'phone', 'headshot', 'bio', 'courts', 'years',
+const JOIN_FIELDS = ['name', 'title', 'company', 'company_url', 'email', 'phone', 'gallery', 'bio', 'courts', 'years',
   'certs', 'court_types', 'service_area', 'website', 'instagram', 'facebook', 'youtube', 'tiktok', 'linkedin', 'x',
   'videos', 'articles', 'reviews', 'license', 'notes'];
 
@@ -95,8 +97,17 @@ async function handleJoin(request, env) {
   for (const k of JOIN_FIELDS) d[k] = clean(b[k], k === 'bio' || k === 'reviews' ? 6000 : 1000);
   if (!d.name || !d.company || !isEmail(d.email)) return json({ ok: false, error: 'Name, company and a valid email are required.' }, 400);
   if (!b.consent) return json({ ok: false, error: 'Please confirm the consent box.' }, 400);
-  await env.DB.prepare('INSERT INTO builder_submissions (name,email,company,data) VALUES (?,?,?,?)')
+  const headshot = validPhotos(b.headshot, 1), projects = validPhotos(b.project_photos, 6);
+  d.photos = `${headshot.length ? 'headshot + ' : ''}${projects.length} project`;
+  const res = await env.DB.prepare('INSERT INTO builder_submissions (name,email,company,data) VALUES (?,?,?,?)')
     .bind(d.name, d.email, d.company, JSON.stringify(d)).run();
+  const sid = res.meta.last_row_id;
+  for (const [role, list] of [['headshot', headshot], ['project', projects]]) {
+    for (const p of list) {
+      const { mime, data } = splitPhoto(p);
+      await env.DB.prepare('INSERT INTO join_photos (submission_id,role,mime,data) VALUES (?,?,?,?)').bind(sid, role, mime, data).run();
+    }
+  }
   await sendEmail(env, [env.ADMIN_EMAIL || ADMIN_EMAIL], `New builder profile: ${d.name}, ${d.company}`,
     `A builder submitted a profile for review.\n\n${lines(d)}\n\nReview it at https://courtsillustrated.com/admin`, d.email);
   return json({ ok: true });
@@ -127,6 +138,9 @@ async function handleUpdate(request, env) {
 }
 
 const MAX_PHOTOS = 4, MAX_PHOTO_CHARS = 1_400_000; // ~1 MB per photo after in-browser resizing
+const validPhotos = (list, max) => (Array.isArray(list) ? list : []).slice(0, max)
+  .filter((p) => typeof p === 'string' && /^data:image\/(jpeg|png|webp);base64,/.test(p) && p.length <= MAX_PHOTO_CHARS);
+const splitPhoto = (p) => ({ mime: p.slice(5, p.indexOf(';')), data: p.slice(p.indexOf(',') + 1) });
 
 async function handleSubmit(request, env) {
   const b = await readBody(request);
@@ -136,8 +150,7 @@ async function handleSubmit(request, env) {
     approval: b.approval === 'trust' ? 'trust' : 'review' };
   if (!isEmail(c.email)) return json({ ok: false, error: 'Please add a valid email.' }, 400);
   if (!c.body && !c.youtube && !(b.photos || []).length) return json({ ok: false, error: 'Add some text, a YouTube link or a photo.' }, 400);
-  const photos = (Array.isArray(b.photos) ? b.photos : []).slice(0, MAX_PHOTOS)
-    .filter((p) => typeof p === 'string' && /^data:image\/(jpeg|png|webp);base64,/.test(p) && p.length <= MAX_PHOTO_CHARS);
+  const photos = validPhotos(b.photos, MAX_PHOTOS);
   const matched = await matchProfile(env, c.email, c.profile);
   const res = await env.DB.prepare('INSERT INTO content_submissions (name,email,profile,matched,kind,title,body,youtube,approval,photos) VALUES (?,?,?,?,?,?,?,?,?,?)')
     .bind(c.name, c.email, c.profile, matched, c.kind, c.title, c.body, c.youtube, c.approval, photos.length).run();
@@ -206,16 +219,25 @@ async function handleAdminApi(request, env, url) {
       .bind(b.status ?? null, b.notes === undefined ? null : clean(b.notes, 8000), b.id).run();
     return json({ ok: true });
   }
+  const PHOTO_TABLE = url.searchParams.get('type') === 'builders' ? 'join_photos' : 'content_photos';
   if (path === 'photos') {
     const sid = Number(url.searchParams.get('submission'));
-    const { results } = await env.DB.prepare('SELECT id, mime FROM content_photos WHERE submission_id = ? ORDER BY id').bind(sid).all();
+    const cols = PHOTO_TABLE === 'join_photos' ? 'id, mime, role' : 'id, mime';
+    const { results } = await env.DB.prepare(`SELECT ${cols} FROM ${PHOTO_TABLE} WHERE submission_id = ? ORDER BY id`).bind(sid).all();
     return json(results);
   }
   if (path === 'photo') {
-    const row = await env.DB.prepare('SELECT mime, data FROM content_photos WHERE id = ?').bind(Number(url.searchParams.get('id'))).first();
+    const row = await env.DB.prepare(`SELECT mime, data FROM ${PHOTO_TABLE} WHERE id = ?`).bind(Number(url.searchParams.get('id'))).first();
     if (!row) return new Response('Not found', { status: 404 });
     const bin = Uint8Array.from(atob(row.data), (ch) => ch.charCodeAt(0));
     return new Response(bin, { headers: { 'content-type': row.mime, 'cache-control': 'private, max-age=3600' } });
+  }
+  if (path === 'delete-photos' && request.method === 'POST') {
+    const b = await request.json();
+    if (!Number.isInteger(b.id)) return json({ error: 'bad request' }, 400);
+    const table = b.type === 'builders' ? 'join_photos' : 'content_photos';
+    const r = await env.DB.prepare(`DELETE FROM ${table} WHERE submission_id = ?`).bind(b.id).run();
+    return json({ ok: true, deleted: r.meta.changes });
   }
   if (path === 'builder-emails') {
     if (request.method === 'POST') {
@@ -283,7 +305,7 @@ main{padding:16px 20px 40px}.bar{display:flex;gap:10px;align-items:center;margin
 .pill.new{background:var(--accent);color:#fff}.empty{color:var(--mute);padding:30px 0}
 table{border-collapse:collapse;width:100%;max-width:640px}td,th{text-align:left;padding:6px;border-bottom:1px solid var(--line)}
 .saved{color:var(--accent);font-size:13px}
-.thumbs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.thumbs img{width:140px;height:105px;object-fit:cover;border:1px solid var(--line)}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;align-items:center}.thumbs img{width:140px;height:105px;object-fit:cover;border:1px solid var(--line)}
 </style></head><body>
 <header><b>Courts Illustrated CRM</b><span>Signed in as {{EMAIL}}</span></header>
 <nav><button data-t="contacts" aria-pressed="true">Contacts</button><button data-t="builders" aria-pressed="false">Builder submissions</button><button data-t="changes" aria-pressed="false">Change requests</button><button data-t="content" aria-pressed="false">Content</button><button data-t="emails" aria-pressed="false">Builder emails</button></nav>
@@ -311,8 +333,15 @@ function render(){
     el.querySelector('.savenote').onclick=()=>save(id,{notes:el.querySelector('textarea').value},el);
   });
   main.querySelectorAll('.thumbs').forEach(async t=>{
-    const ps=await (await fetch('/api/admin/photos?submission='+t.dataset.sub)).json();
-    t.innerHTML=ps.map(p=>'<a href="/api/admin/photo?id='+p.id+'" target="_blank"><img src="/api/admin/photo?id='+p.id+'" alt=""></a>').join('');
+    const ps=await (await fetch('/api/admin/photos?type='+tab+'&submission='+t.dataset.sub)).json();
+    if(!ps.length){t.remove();return;}
+    t.innerHTML=ps.map(p=>'<a href="/api/admin/photo?type='+tab+'&id='+p.id+'" target="_blank" title="'+esc(p.role||'')+'"><img src="/api/admin/photo?type='+tab+'&id='+p.id+'" alt=""></a>').join('')+
+      '<button class="btn delph">Delete photos</button>';
+    t.querySelector('.delph').onclick=async()=>{
+      if(!confirm('Delete these '+ps.length+' photo(s) from the database? Do this after they are saved to the site, or for spam. This cannot be undone.'))return;
+      const res=await fetch('/api/admin/delete-photos',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({type:tab,id:+t.dataset.sub})});
+      if(res.ok)t.innerHTML='<span class="meta">Photos deleted.</span>';
+    };
   });
 }
 function card(r){
@@ -321,6 +350,7 @@ function card(r){
     const d=JSON.parse(r.data||'{}');fields={};
     for(const[k,v]of Object.entries(d))if(v&&!['name','bio','reviews','videos','articles','notes'].includes(k))fields[k.replace(/_/g,' ')]=v;
     r._long=['bio','videos','articles','reviews','notes'].filter(k=>d[k]).map(k=>'<i class="meta">'+k+'</i><div class="msg">'+esc(d[k])+'</div>').join('');
+    r._long+='<div class="thumbs" data-sub="'+r.id+'"></div>';
   }else{
     const LONG=['message','details','body'],SKIP=['id','created_at','name','status','notes','photos','_long','company'];
     fields={};for(const[k,v]of Object.entries(r))if(v&&!LONG.includes(k)&&!SKIP.includes(k))fields[k==='matched'?'Email match':k==='approval'?(v==='trust'?'Approval':'Approval'):k.replace(/_/g,' ')]=k==='approval'?(v==='trust'?'OK to post without final approval':'Send back for final approval'):v;

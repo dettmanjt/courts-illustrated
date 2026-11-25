@@ -26,7 +26,7 @@ import Base from '../layouts/Base.astro';
       <fieldset><legend>About you</legend>
         <div class="two"><label>Full name *<input name="name" required autocomplete="name"></label><label>Job title<input name="title" placeholder="e.g. Owner, Court Advisor"></label></div>
         <div class="two"><label>Work email *<input name="email" type="email" required autocomplete="email"><span class="hint">Used to verify you. Never shown on the site.</span></label><label>Phone<input name="phone" type="tel" autocomplete="tel"><span class="hint">For verification only.</span></label></div>
-        <label>Headshot link<input name="headshot" type="url" placeholder="Link to a photo (LinkedIn, company site, Google Drive…)"></label>
+        <label>Headshot<input type="file" accept="image/*" data-photos data-name="headshot" data-max="1" data-size="900"><span class="hint">A clear, recent photo of your face. Square works best.</span></label>
         <label>Bio<textarea name="bio" placeholder="In your own words: how you got into court building, what you're known for, the courts you know best. 100–250 words."></textarea></label>
       </fieldset>
 
@@ -39,6 +39,8 @@ import Base from '../layouts/Base.astro';
       <fieldset><legend>Experience</legend>
         <div class="two"><label>Courts built (approx.)<input name="courts" inputmode="numeric" placeholder="e.g. 150"><span class="hint">Self-reported until we verify it.</span></label><label>Years building courts<input name="years" inputmode="numeric" placeholder="e.g. 8"></label></div>
         <label>Certifications<input name="certs" placeholder="e.g. ASBA Certified Tennis Court Builder, ASBA member"></label>
+        <label>Project photos (up to 6)<input type="file" accept="image/*" multiple data-photos data-name="project_photos" data-max="6"><span class="hint">Finished courts you're proud of. Please skip photos showing customers' faces or house numbers.</span></label>
+        <label>Link to more of your work (optional)<input name="gallery" type="url" placeholder="Website gallery, Instagram, Google Drive folder…"></label>
         <label>Court types you build
           <span class="checks" data-group="court_types">
             <label><input type="checkbox" value="Pickleball">Pickleball</label><label><input type="checkbox" value="Basketball">Basketball</label><label><input type="checkbox" value="Tennis">Tennis</label><label><input type="checkbox" value="Multi-sport">Multi-sport</label><label><input type="checkbox" value="Indoor floors">Indoor floors</label><label><input type="checkbox" value="Resurfacing">Resurfacing</label>
