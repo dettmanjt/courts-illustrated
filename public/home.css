@@ -47,3 +47,10 @@
   .how{grid-template-columns:1fr 1fr}
 }
 .how b small{font-family:var(--ui);font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin-left:4px}
+@media (max-width:640px){
+  .row{grid-template-columns:30px 48px 1fr;gap:10px;padding:14px 0}
+  .row .score{grid-column:3}
+  .score .num b{font-size:24px}
+  .rank{font-size:24px}.av{width:44px;height:44px;font-size:17px}
+  .how{grid-template-columns:1fr}
+}
