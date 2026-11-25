@@ -86,6 +86,13 @@ const facts = [
   </section>
 
 
+  {c.awards.length > 0 && (
+    <section class="wrap">
+      <div class="sh"><h2>Awards</h2></div>
+      <ul class="awards">{c.awards.map((w) => <li><b>{w.year}</b><span>{w.title}</span><small>{w.from}</small></li>)}</ul>
+    </section>
+  )}
+
   {(facts.length > 0 || c.stats.length > 0) && (
     <section class="wrap">
       <div class="sh"><h2>At a glance</h2></div>
