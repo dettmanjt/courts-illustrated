@@ -251,7 +251,7 @@ a:has(> .lockup){text-decoration:none}
   .top>a{align-self:center}
   .top .lockup img{height:44px}
   .top .lockup b{font-size:14px}
-  .top nav.dir{display:flex;flex-wrap:nowrap;justify-content:space-between;gap:12px;overflow-x:auto;font-size:11px;letter-spacing:.06em;white-space:nowrap;scrollbar-width:none}
+  .top nav.dir{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;font-size:11px;letter-spacing:.06em;white-space:nowrap}
   .top nav.dir::-webkit-scrollbar{display:none}
   .stats{display:grid;grid-template-columns:1fr 1fr;border-bottom:0}
   .stats div{border-right:0;border-bottom:2px solid var(--line);padding:12px 8px}
