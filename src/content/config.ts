@@ -48,6 +48,7 @@ const builders = defineCollection({
     company: reference('companies'),
     role: z.string().default('Court builder'),
     photo: z.string().optional(),          // path under /public
+    photos: z.array(z.object({ src: z.string(), title: z.string(), type: z.string() })).default([]),
     youtube: z.string().url().optional(),
     videoIds: z.array(z.string()).default([]), // YouTube video IDs to feature
     socials,

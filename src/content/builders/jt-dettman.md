@@ -4,6 +4,13 @@ company: austin-courts-floors
 role: Director of Sales and Marketing
 photo: /jt-dettman.png
 youtube: https://www.youtube.com/@JTtheCourtBuilder
+photos:
+  - { src: /projects/jt-dettman/3787543874.jpg, title: "Community pickleball courts", type: Pickleball }
+  - { src: /projects/jt-dettman/3787594490.jpg, title: "Tennis and pickleball complex", type: Tennis }
+  - { src: /projects/jt-dettman/3787561022.jpg, title: "Tennis net and court lines", type: Tennis }
+  - { src: /projects/jt-dettman/3773290256.jpg, title: "Backyard multi-sport court", type: Multi-sport }
+  - { src: /projects/jt-dettman/3773281975.jpg, title: "Hillside basketball court", type: Basketball }
+  - { src: /projects/jt-dettman/3773275589.jpg, title: "Backyard court with shaded seating", type: Multi-sport }
 videoIds: ["0uqiIQ8sDLc", "rs5VYR8zJpI", "bwbqzRIERAk", "lALwJwGZqbM", "LY_fIn5YV5A", "ZpaSd2YWr4Q", "Cz0-d7zwxM0", "6CaHIuj7-UA"]
 # CONFIRM: real numbers before launch (these came from the mockup).
 courts: 263

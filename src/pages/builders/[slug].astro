@@ -121,6 +121,19 @@ const jsonld = {
       )}
     </section>
   )}
+  {d.photos.length > 0 && (
+    <section class="wrap">
+      <div class="sh"><h2>Courts {first} has built</h2></div>
+      <div class="gallery">
+        {d.photos.map((p) => (
+          <figure class="shot">
+            <img src={p.src} alt={`${p.title} by ${d.name}, ${c.name}`} loading="lazy" style="width:100%;height:100%;object-fit:cover" />
+            <figcaption><b>{p.title}</b>{p.type} · {c.region}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  )}
   <ContactForm builder={b.slug} builderName={d.name} />
 
   <section class="wrap">
