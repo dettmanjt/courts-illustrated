@@ -5,7 +5,7 @@ import { score, initials } from '../../lib/score';
 
 export async function getStaticPaths() {
   const live = new Set((await getCollection('companies', (c) => c.data.published)).map((c) => c.slug));
-  const builders = await getCollection('builders', (b) => b.data.published && live.has(b.data.company.id));
+  const builders = await getCollection('builders', (b) => b.data.published && live.has(b.data.company.slug));
   return builders.map((b) => ({ params: { slug: b.slug }, props: { b } }));
 }
 const { b } = Astro.props;

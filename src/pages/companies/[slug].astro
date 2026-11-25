@@ -9,7 +9,7 @@ export async function getStaticPaths() {
 }
 const { co } = Astro.props;
 const c = co.data;
-const builders = (await getCollection('builders', (b) => b.data.published && b.data.company.id === co.slug))
+const builders = (await getCollection('builders', (b) => b.data.published && b.data.company.slug === co.slug))
   .map((b) => ({ b, s: score(b.data).total }))
   .sort((x, y) => y.s - x.s);
 const avg = builders.length ? Math.round(builders.reduce((a, x) => a + x.s, 0) / builders.length) : 0;

@@ -5,7 +5,7 @@ import { score, initials } from '../lib/score';
 
 const companies = await getCollection('companies', (c) => c.data.published);
 const live = new Set(companies.map((c) => c.slug));
-const builders = await getCollection('builders', (b) => b.data.published && live.has(b.data.company.id));
+const builders = await getCollection('builders', (b) => b.data.published && live.has(b.data.company.slug));
 
 // Small JSON payload for the in-page search.
 const data = {
@@ -13,7 +13,7 @@ const data = {
     name: c.data.name, region: c.data.region, states: c.data.states, zip3: c.data.zip3, services: c.data.services,
   }])),
   builders: builders.map((b) => ({
-    slug: b.slug, name: b.data.name, company: b.data.company.id, photo: b.data.photo, initials: initials(b.data.name),
+    slug: b.slug, name: b.data.name, company: b.data.company.slug, photo: b.data.photo, initials: initials(b.data.name),
     courts: b.data.courts, years: b.data.years, certs: b.data.certs, articles: b.data.articles, videos: b.data.videos,
     verified: b.data.verified.identity && b.data.verified.employment, score: score(b.data),
   })),
