@@ -6,7 +6,7 @@
     dlg.querySelector('img').src = img.currentSrc || img.src;
     dlg.querySelector('img').alt = img.alt;
     var cap = fig && fig.querySelector('figcaption');
-    dlg.querySelector('.pv-cap').textContent = (cap ? cap.textContent : img.alt) + '  ·  ' + (at + 1) + ' / ' + list.length;
+    dlg.querySelector('.pv-cap').textContent = (cap ? [].map.call(cap.childNodes, function (n) { return n.textContent.trim(); }).filter(Boolean).join(' — ') : img.alt) + '  ·  ' + (at + 1) + ' / ' + list.length;
   }
   function go(n) { at = (at + n + list.length) % list.length; show(); }
   function build() {

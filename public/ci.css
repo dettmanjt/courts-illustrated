@@ -236,7 +236,7 @@ a:has(> .lockup){text-decoration:none}
 .subh{font-family:var(--ui);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:28px 0 8px}
 /* Photo viewer */
 .gallery .shot img{cursor:zoom-in}
-.pv{padding:0;border:0;background:transparent;width:100vw;height:100vh;max-width:none;max-height:none;display:none;place-items:center}
+.pv{padding:0;border:0;background:rgba(0,0,0,.94);width:100vw;height:100vh;max-width:none;max-height:none;display:none;place-items:center}
 .pv[open]{display:grid}
 .pv::backdrop{background:rgba(0,0,0,.92)}
 .pv img{max-width:94vw;max-height:84vh;object-fit:contain;display:block}
