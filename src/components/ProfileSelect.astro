@@ -1,0 +1,12 @@
+---
+// Dropdown of published builder profiles; preselects ?builder=slug from the URL.
+import { getCollection } from 'astro:content';
+const builders = (await getCollection('builders', (b) => b.data.published)).sort((a, b) => a.data.name.localeCompare(b.data.name));
+const companies = Object.fromEntries((await getCollection('companies')).map((c) => [c.slug, c.data.name]));
+---
+<label>Your profile
+  <select name="profile" data-prefill="builder">
+    <option value="">Not listed yet / general</option>
+    {builders.map((b) => <option value={b.slug}>{b.data.name} · {companies[b.data.company.slug]}</option>)}
+  </select>
+</label>

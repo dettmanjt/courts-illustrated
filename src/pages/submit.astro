@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import ProfileSelect from '../components/ProfileSelect.astro';
+---
+<Base title="Submit a post | Courts Illustrated" description="Builders: share a finished court, a video, a blog idea or an FAQ. We'll turn it into a post for your Courts Illustrated profile.">
+  <div class="mast wrap">
+    <div class="eyebrow">For listed builders</div>
+    <h1>Share a post</h1>
+    <p class="role">Send us a finished court, a video, or an idea. Rough notes are fine. We'll shape it into a post in your voice.</p>
+  </div>
+  <section class="wrap">
+    <form class="ci-form" data-endpoint="/api/submit" data-done="Thanks. Your post is in, and a confirmation is on its way to your inbox." novalidate style="max-width:720px">
+      <div class="hp" aria-hidden="true"><label>Company website<input name="company_website" tabindex="-1" autocomplete="off"></label></div>
+      <div class="two"><label>Your name<input name="name" autocomplete="name"></label><label>Email *<input name="email" type="email" required autocomplete="email"><span class="hint">Use the email on file for your profile.</span></label></div>
+      <ProfileSelect />
+      <label>What are you sharing?
+        <select name="kind"><option>Finished court / project</option><option>YouTube video</option><option>Blog idea or article</option><option>FAQ (a question buyers ask you)</option><option>Other</option></select>
+      </label>
+      <label>Title (optional)<input name="title" placeholder="e.g. Backyard pickleball court in Westlake"></label>
+      <label>Your notes or draft<textarea name="body" style="min-height:160px" placeholder="Tell the story, answer the question, or jot the idea. Bullet points are fine."></textarea></label>
+      <label>YouTube link (optional)<input name="youtube" type="url" placeholder="https://youtube.com/watch?v=…"></label>
+      <label>Photos (optional, up to 4)<input type="file" accept="image/*" multiple data-photos><span class="hint">No photos showing customers' faces or house numbers, please.</span></label>
+      <fieldset><legend style="font-size:20px">When it's ready…</legend>
+        <span class="checks" style="flex-direction:column;align-items:flex-start">
+          <label><input type="radio" name="approval" value="review" checked> Send it back to me for final approval before posting</label>
+          <label><input type="radio" name="approval" value="trust"> I trust you to post it</label>
+        </span>
+      </fieldset>
+      <button class="btn" type="submit">Submit post</button>
+      <p class="sent" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</Base>
+<script is:inline src="/forms.js"></script>

@@ -65,6 +65,7 @@ const jsonld = {
           {d.certs.length > 0 && <li><span>Certifications</span>{d.certs.join(' · ')}</li>}
         </ul>
         <Socials links={{ ...d.socials, youtube: d.youtube ?? d.socials.youtube }} />
+        <p class="own">Is this you? <a href={`/update?builder=${b.slug}`}>Request a change</a> · <a href={`/submit?builder=${b.slug}`}>Share a post</a></p>
       </div>
     </div>
   </section>
@@ -129,6 +130,8 @@ const jsonld = {
 </Base>
 
 <style>
+  .own{font-size:13px;color:var(--mute);margin-top:14px}
+  .own a{color:inherit}
   .revs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
   .rev{margin:0;border:2px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:14px}
   .rev blockquote{margin:0;font-size:17px;line-height:1.55}

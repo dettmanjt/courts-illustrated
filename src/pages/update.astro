@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import ProfileSelect from '../components/ProfileSelect.astro';
+---
+<Base title="Request a profile change | Courts Illustrated" description="Builders and companies: tell us about a correction or change to your Courts Illustrated profile.">
+  <div class="mast wrap">
+    <div class="eyebrow">For listed builders</div>
+    <h1>Request a change</h1>
+    <p class="role">Spotted something wrong, or want something updated? Tell us here. We review requests every week and email you when it's done.</p>
+  </div>
+  <section class="wrap">
+    <form class="ci-form" data-endpoint="/api/update" data-done="Thanks. Your request is logged and a confirmation is on its way to your inbox." novalidate style="max-width:720px">
+      <div class="hp" aria-hidden="true"><label>Company website<input name="company_website" tabindex="-1" autocomplete="off"></label></div>
+      <div class="two"><label>Your name<input name="name" autocomplete="name"></label><label>Email *<input name="email" type="email" required autocomplete="email"><span class="hint">Use the email on file for your profile so we can match it to you.</span></label></div>
+      <ProfileSelect />
+      <label>What kind of change?
+        <select name="kind"><option>Something is inaccurate</option><option>Update my info</option><option>Add something</option><option>Remove something</option><option>Other</option></select>
+      </label>
+      <label>Details *<textarea name="details" required placeholder="What's wrong or what should change? Include the correct information."></textarea></label>
+      <label>Supporting link (optional)<input name="link" type="url" placeholder="e.g. your team page, a certificate, a new photo"></label>
+      <button class="btn" type="submit">Send request</button>
+      <p class="sent" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</Base>
+<script is:inline src="/forms.js"></script>

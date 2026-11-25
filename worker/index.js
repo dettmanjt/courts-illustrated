@@ -13,6 +13,16 @@ const SCHEMA = [
     id INTEGER PRIMARY KEY AUTOINCREMENT, created_at TEXT NOT NULL DEFAULT (datetime('now')),
     name TEXT, email TEXT, company TEXT, data TEXT, status TEXT NOT NULL DEFAULT 'new', notes TEXT DEFAULT '')`,
   `CREATE TABLE IF NOT EXISTS builder_emails (slug TEXT PRIMARY KEY, email TEXT NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS change_requests (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    name TEXT, email TEXT, profile TEXT, matched TEXT, kind TEXT, details TEXT, link TEXT,
+    status TEXT NOT NULL DEFAULT 'new', notes TEXT DEFAULT '')`,
+  `CREATE TABLE IF NOT EXISTS content_submissions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    name TEXT, email TEXT, profile TEXT, matched TEXT, kind TEXT, title TEXT, body TEXT, youtube TEXT,
+    approval TEXT, photos INTEGER DEFAULT 0, status TEXT NOT NULL DEFAULT 'new', notes TEXT DEFAULT '')`,
+  `CREATE TABLE IF NOT EXISTS content_photos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, submission_id INTEGER NOT NULL, mime TEXT, data TEXT NOT NULL)`,
 ];
 
 let schemaReady = false;
@@ -92,6 +102,58 @@ async function handleJoin(request, env) {
   return json({ ok: true });
 }
 
+
+// Match a submitter's email to a builder profile (via the admin "Builder emails" list).
+async function matchProfile(env, email, profile) {
+  const row = await env.DB.prepare('SELECT slug FROM builder_emails WHERE lower(email) = lower(?)').bind(email).first();
+  if (!row) return 'unverified';
+  return profile && profile !== row.slug ? `mismatch (email belongs to ${row.slug})` : row.slug;
+}
+
+async function handleUpdate(request, env) {
+  const b = await readBody(request);
+  if (b.company_website) return json({ ok: true });
+  const r = { name: clean(b.name, 120), email: clean(b.email, 200), profile: clean(b.profile, 80).replace(/[^a-z0-9-]/g, ''),
+    kind: clean(b.kind, 60), details: clean(b.details, 6000), link: clean(b.link, 500) };
+  if (!isEmail(r.email) || !r.details) return json({ ok: false, error: 'Please add your email and describe the change.' }, 400);
+  const matched = await matchProfile(env, r.email, r.profile);
+  await env.DB.prepare('INSERT INTO change_requests (name,email,profile,matched,kind,details,link) VALUES (?,?,?,?,?,?,?)')
+    .bind(r.name, r.email, r.profile, matched, r.kind, r.details, r.link).run();
+  await sendEmail(env, [env.ADMIN_EMAIL || ADMIN_EMAIL], `Change request: ${r.profile || 'site'} (${matched})`,
+    `${lines({ Name: r.name, Email: r.email, Profile: r.profile, 'Email match': matched, Type: r.kind, Link: r.link })}\n\n${r.details}`, r.email);
+  await sendEmail(env, [r.email], 'We got your change request',
+    `Thanks${r.name ? ' ' + r.name.split(' ')[0] : ''}. Your request about ${r.profile ? 'your Courts Illustrated profile' : 'Courts Illustrated'} is logged. We review requests weekly and will email you when it's done or if we have questions.\n\nYour request:\n${r.details}\n\nCourts Illustrated`);
+  return json({ ok: true });
+}
+
+const MAX_PHOTOS = 4, MAX_PHOTO_CHARS = 1_400_000; // ~1 MB per photo after in-browser resizing
+
+async function handleSubmit(request, env) {
+  const b = await readBody(request);
+  if (b.company_website) return json({ ok: true });
+  const c = { name: clean(b.name, 120), email: clean(b.email, 200), profile: clean(b.profile, 80).replace(/[^a-z0-9-]/g, ''),
+    kind: clean(b.kind, 60), title: clean(b.title, 200), body: clean(b.body, 20000), youtube: clean(b.youtube, 300),
+    approval: b.approval === 'trust' ? 'trust' : 'review' };
+  if (!isEmail(c.email)) return json({ ok: false, error: 'Please add a valid email.' }, 400);
+  if (!c.body && !c.youtube && !(b.photos || []).length) return json({ ok: false, error: 'Add some text, a YouTube link or a photo.' }, 400);
+  const photos = (Array.isArray(b.photos) ? b.photos : []).slice(0, MAX_PHOTOS)
+    .filter((p) => typeof p === 'string' && /^data:image\/(jpeg|png|webp);base64,/.test(p) && p.length <= MAX_PHOTO_CHARS);
+  const matched = await matchProfile(env, c.email, c.profile);
+  const res = await env.DB.prepare('INSERT INTO content_submissions (name,email,profile,matched,kind,title,body,youtube,approval,photos) VALUES (?,?,?,?,?,?,?,?,?,?)')
+    .bind(c.name, c.email, c.profile, matched, c.kind, c.title, c.body, c.youtube, c.approval, photos.length).run();
+  const sid = res.meta.last_row_id;
+  for (const p of photos) {
+    const mime = p.slice(5, p.indexOf(';'));
+    await env.DB.prepare('INSERT INTO content_photos (submission_id,mime,data) VALUES (?,?,?)').bind(sid, mime, p.slice(p.indexOf(',') + 1)).run();
+  }
+  const mode = c.approval === 'trust' ? 'OK to publish without final approval' : 'Send back for final approval';
+  await sendEmail(env, [env.ADMIN_EMAIL || ADMIN_EMAIL], `New content: ${c.title || c.kind} (${c.profile || 'no profile'})`,
+    `${lines({ Name: c.name, Email: c.email, Profile: c.profile, 'Email match': matched, Type: c.kind, Title: c.title, YouTube: c.youtube, Photos: photos.length, Approval: mode })}\n\n${c.body}`, c.email);
+  await sendEmail(env, [c.email], 'We got your post',
+    `Thanks${c.name ? ' ' + c.name.split(' ')[0] : ''}. Your ${c.kind || 'post'} is in. We prepare submissions weekly. ${c.approval === 'trust' ? "You told us we can publish it once it's ready; we'll email you the link." : "We'll send you the finished version to approve before it goes live."}\n\nCourts Illustrated`);
+  return json({ ok: true });
+}
+
 // ---------- Cloudflare Access check for /admin ----------
 let jwks = null;
 const b64u = (s) => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/').padEnd(Math.ceil(s.length / 4) * 4, '=')), (c) => c.charCodeAt(0));
@@ -115,8 +177,8 @@ async function accessEmail(request, env) {
 }
 
 // ---------- admin API ----------
-const TABLES = { contacts: 'contacts', builders: 'builder_submissions' };
-const STATUSES = ['new', 'contacted', 'in review', 'verified', 'published', 'closed', 'spam'];
+const TABLES = { contacts: 'contacts', builders: 'builder_submissions', changes: 'change_requests', content: 'content_submissions' };
+const STATUSES = ['new', 'contacted', 'in review', 'needs revision', 'awaiting approval', 'approved', 'verified', 'published', 'closed', 'spam'];
 
 function csv(rows) {
   if (!rows.length) return '';
@@ -143,6 +205,17 @@ async function handleAdminApi(request, env, url) {
     await env.DB.prepare(`UPDATE ${table} SET status = COALESCE(?, status), notes = COALESCE(?, notes) WHERE id = ?`)
       .bind(b.status ?? null, b.notes === undefined ? null : clean(b.notes, 8000), b.id).run();
     return json({ ok: true });
+  }
+  if (path === 'photos') {
+    const sid = Number(url.searchParams.get('submission'));
+    const { results } = await env.DB.prepare('SELECT id, mime FROM content_photos WHERE submission_id = ? ORDER BY id').bind(sid).all();
+    return json(results);
+  }
+  if (path === 'photo') {
+    const row = await env.DB.prepare('SELECT mime, data FROM content_photos WHERE id = ?').bind(Number(url.searchParams.get('id'))).first();
+    if (!row) return new Response('Not found', { status: 404 });
+    const bin = Uint8Array.from(atob(row.data), (ch) => ch.charCodeAt(0));
+    return new Response(bin, { headers: { 'content-type': row.mime, 'cache-control': 'private, max-age=3600' } });
   }
   if (path === 'builder-emails') {
     if (request.method === 'POST') {
@@ -171,6 +244,8 @@ export default {
       if (p.startsWith('/api/') || p === '/admin' || p.startsWith('/admin/')) await ensureSchema(env.DB);
       if (p === '/api/contact' && request.method === 'POST') return await handleContact(request, env);
       if (p === '/api/join' && request.method === 'POST') return await handleJoin(request, env);
+      if (p === '/api/update' && request.method === 'POST') return await handleUpdate(request, env);
+      if (p === '/api/submit' && request.method === 'POST') return await handleSubmit(request, env);
       if (p === '/admin' || p.startsWith('/admin/') || p.startsWith('/api/admin/')) {
         const who = await accessEmail(request, env);
         if (!who) return new Response('Not authorized.', { status: 401 });
@@ -208,9 +283,10 @@ main{padding:16px 20px 40px}.bar{display:flex;gap:10px;align-items:center;margin
 .pill.new{background:var(--accent);color:#fff}.empty{color:var(--mute);padding:30px 0}
 table{border-collapse:collapse;width:100%;max-width:640px}td,th{text-align:left;padding:6px;border-bottom:1px solid var(--line)}
 .saved{color:var(--accent);font-size:13px}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.thumbs img{width:140px;height:105px;object-fit:cover;border:1px solid var(--line)}
 </style></head><body>
 <header><b>Courts Illustrated CRM</b><span>Signed in as {{EMAIL}}</span></header>
-<nav><button data-t="contacts" aria-pressed="true">Contacts</button><button data-t="builders" aria-pressed="false">Builder submissions</button><button data-t="emails" aria-pressed="false">Builder emails</button></nav>
+<nav><button data-t="contacts" aria-pressed="true">Contacts</button><button data-t="builders" aria-pressed="false">Builder submissions</button><button data-t="changes" aria-pressed="false">Change requests</button><button data-t="content" aria-pressed="false">Content</button><button data-t="emails" aria-pressed="false">Builder emails</button></nav>
 <main id="main"></main>
 <script>
 const STATUSES=${JSON.stringify(STATUSES)};
@@ -234,15 +310,22 @@ function render(){
     el.querySelector('select').onchange=e=>save(id,{status:e.target.value},el);
     el.querySelector('.savenote').onclick=()=>save(id,{notes:el.querySelector('textarea').value},el);
   });
+  main.querySelectorAll('.thumbs').forEach(async t=>{
+    const ps=await (await fetch('/api/admin/photos?submission='+t.dataset.sub)).json();
+    t.innerHTML=ps.map(p=>'<a href="/api/admin/photo?id='+p.id+'" target="_blank"><img src="/api/admin/photo?id='+p.id+'" alt=""></a>').join('');
+  });
 }
 function card(r){
-  let fields;
-  if(tab==='contacts'){
-    fields={Email:r.email,Phone:r.phone,ZIP:r.zip,'Court type':r.court_type,Timeline:r.timeline,Builder:r.builder,Page:r.page};
-  }else{
+  let fields;r._long='';
+  if(tab==='builders'){
     const d=JSON.parse(r.data||'{}');fields={};
     for(const[k,v]of Object.entries(d))if(v&&!['name','bio','reviews','videos','articles','notes'].includes(k))fields[k.replace(/_/g,' ')]=v;
     r._long=['bio','videos','articles','reviews','notes'].filter(k=>d[k]).map(k=>'<i class="meta">'+k+'</i><div class="msg">'+esc(d[k])+'</div>').join('');
+  }else{
+    const LONG=['message','details','body'],SKIP=['id','created_at','name','status','notes','photos','_long','company'];
+    fields={};for(const[k,v]of Object.entries(r))if(v&&!LONG.includes(k)&&!SKIP.includes(k))fields[k==='matched'?'Email match':k==='approval'?(v==='trust'?'Approval':'Approval'):k.replace(/_/g,' ')]=k==='approval'?(v==='trust'?'OK to post without final approval':'Send back for final approval'):v;
+    r._long=LONG.filter(k=>r[k]&&k!=='message').map(k=>'<div class="msg">'+esc(r[k])+'</div>').join('');
+    if(r.photos)r._long+='<div class="thumbs" data-sub="'+r.id+'"></div>';
   }
   return '<div class="card" data-id="'+r.id+'"><h3>'+esc(r.name)+(r.company?' · '+esc(r.company):'')+'<span class="pill '+esc(r.status)+'">'+esc(r.status)+'</span></h3>'+
     '<div class="meta">#'+r.id+' · '+esc(r.created_at)+' UTC</div>'+

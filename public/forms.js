@@ -1,5 +1,25 @@
+// Resize a photo in the browser to at most 1600px and re-encode as JPEG.
+function shrink(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const scale = Math.min(1, 1600 / Math.max(img.width, img.height));
+      const c = document.createElement('canvas');
+      c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(img.src);
+      resolve(c.toDataURL('image/jpeg', 0.82));
+    };
+    img.onerror = reject;
+    img.src = URL.createObjectURL(file);
+  });
+}
+
 document.querySelectorAll('form.ci-form:not([data-ready])').forEach((form) => {
     form.dataset.ready = '1';
+    const pre = form.querySelector('[data-prefill]');
+    const want = new URLSearchParams(location.search).get('builder');
+    if (pre && want && pre.querySelector(`option[value="${CSS.escape(want)}"]`)) pre.value = want;
     const page = form.querySelector('[name=page]');
     if (page) page.value = location.pathname;
     form.addEventListener('submit', async (e) => {
@@ -12,6 +32,11 @@ document.querySelectorAll('form.ci-form:not([data-ready])').forEach((form) => {
         data[g.dataset.group] = [...g.querySelectorAll('input:checked')].map((i) => i.value).join(', ');
       });
       out.className = 'sent'; out.textContent = 'Sending…'; btn.disabled = true;
+      const fileInput = form.querySelector('input[data-photos]');
+      if (fileInput) {
+        try { data.photos = await Promise.all([...fileInput.files].slice(0, 4).map(shrink)); }
+        catch { out.className = 'sent err'; out.textContent = 'One of the photos could not be read. Try a JPG or PNG.'; btn.disabled = false; return; }
+      }
       try {
         const res = await fetch(form.dataset.endpoint, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) });
         const body = await res.json().catch(() => ({}));
