@@ -24,12 +24,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 <body>
   <div class="frame">
     <header class="top wrap">
-      <a href="/"><img src="/ci-logo.png" alt="Courts Illustrated" height="52"></a>
+      <a href="/" aria-label="Courts Illustrated home"><span class="lockup"><img src="/ci-mark.png" alt=""><b>Courts Illustrated</b></span></a>
       <nav class="dir" aria-label="Site"><a href="/">Find a builder</a><a href="/#how">How rankings work</a></nav>
     </header>
     <slot />
     <footer class="wrap">
-      <img src="/ci-logo.png" alt="" height="64">
+      <span class="lockup"><img src="/ci-mark.png" alt=""><b>Courts Illustrated</b></span>
       <span>Courts Illustrated · Verified court builders</span>
     </footer>
   </div>
