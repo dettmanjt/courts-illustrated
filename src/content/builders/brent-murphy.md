@@ -4,7 +4,7 @@ company: austin-courts-floors
 role: Court Advisor
 photo: /brent-murphy.png
 # Source: austincourts.com team page. Confirm numbers, then set published: true after verification.
-courts: 0
+courts: 174
 years: 0
 certs: []
 published: true

@@ -6,7 +6,7 @@ photo: /jt-dettman.png
 youtube: https://www.youtube.com/@JTtheCourtBuilder
 videoIds: ["0uqiIQ8sDLc", "rs5VYR8zJpI", "bwbqzRIERAk", "lALwJwGZqbM", "LY_fIn5YV5A", "ZpaSd2YWr4Q", "Cz0-d7zwxM0", "6CaHIuj7-UA"]
 # CONFIRM: real numbers before launch (these came from the mockup).
-courts: 120
+courts: 263
 years: 8
 certs: [ASBA member]
 articles: 0

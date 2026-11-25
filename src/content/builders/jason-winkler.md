@@ -4,7 +4,7 @@ company: austin-courts-floors
 role: Senior Court Advisor
 photo: /jason-winkler.png
 # Source: austincourts.com team page. Confirm numbers, then set published: true after verification.
-courts: 0
+courts: 745
 years: 0
 certs: []
 published: true
