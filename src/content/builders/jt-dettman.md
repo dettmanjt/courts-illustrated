@@ -17,7 +17,7 @@ faqs: [{"q": "Is it hard to tell if the ball is in or out on a one-color court?"
 videoIds: ["0uqiIQ8sDLc", "rs5VYR8zJpI", "bwbqzRIERAk", "lALwJwGZqbM", "LY_fIn5YV5A", "ZpaSd2YWr4Q", "Cz0-d7zwxM0", "6CaHIuj7-UA"]
 # CONFIRM: real numbers before launch (these came from the mockup).
 courts: 263
-years: 8
+years: 6
 certs: [ASBA member]
 articles: 9
 videos: 40
