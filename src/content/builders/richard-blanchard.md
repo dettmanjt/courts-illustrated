@@ -6,6 +6,6 @@ role: Certified Court Builder
 courts: 0
 years: 30
 certs: []   # "Certified Court Builder" per NexCourt; confirm which certification (ASBA?)
-published: true
+published: false  # removed 2026-11-25 at Greg Dettman's request
 ---
 Richard is a court installer with 30 years of experience at NexCourt, building modular-tile courts across North Texas.

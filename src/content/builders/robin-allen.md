@@ -7,6 +7,6 @@ photo: /robin-allen.png
 courts: 0
 years: 20
 certs: []
-published: true
+published: false  # removed 2026-11-25 at Greg Dettman's request
 ---
 Robin is a sports and athletic flooring consultant who has been part of the NexCourt team for more than 20 years.
